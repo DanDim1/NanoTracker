@@ -187,10 +187,28 @@
             <h2 class="text-4xl font-bold text-white mb-4">Scarica Nano Tracker</h2>
             <p class="text-nanoText text-lg">Prova gratis per 15 giorni. Nessuna carta di credito richiesta.</p>
         </div>
-        <div class="flex flex-col md:flex-row justify-center gap-8 max-w-3xl mx-auto">
+
+        <!-- Email gate -->
+        <div id="downloadEmailGate" class="max-w-md mx-auto text-center mb-12">
+            <p class="text-nanoText text-sm mb-4">Inserisci la tua email per accedere al download.</p>
+            <form id="downloadEmailForm" onsubmit="unlockDownload(event)" class="flex gap-3">
+                <input type="email" id="downloadEmail" required placeholder="La tua email"
+                    class="flex-1 bg-nanoBg border border-gray-700 focus:border-nanoGreen text-white rounded-lg px-4 py-3 text-sm outline-none transition">
+                <button type="submit"
+                    class="bg-nanoGreen hover:bg-nanoGreenHover text-nanoBg font-bold py-3 px-6 rounded-lg transition whitespace-nowrap">
+                    Scarica
+                </button>
+            </form>
+            <p class="text-gray-600 text-xs mt-3">Niente spam. Solo aggiornamenti importanti sul prodotto.</p>
+        </div>
+
+        <!-- Download cards (hidden until email submitted) -->
+        <div id="downloadCards" class="flex flex-col md:flex-row justify-center gap-8 max-w-3xl mx-auto hidden">
             <a href="https://github.com/DanDim1/NanoTracker/releases/latest/download/NanoTracker_Setup_v1.5.0.exe"
                class="bg-nanoPanel border border-gray-800 hover:border-nanoGreen/50 p-10 rounded-2xl flex-1 text-center transition duration-300 group">
-                <div class="text-5xl mb-4">🪟</div>
+                <div class="text-5xl mb-4">
+                    <svg class="inline w-12 h-12" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.548c.235-.85.546-1.67.93-2.452.16-.326.347-.638.555-.932.36-.508.783-.945 1.272-1.297A4.94 4.94 0 017.576.143c.46-.097.925-.14 1.392-.127.34.009.676.048 1.008.113.546.107 1.065.287 1.562.52.394.185.77.404 1.14.634.094.058.186.12.287.165.093-.052.183-.107.273-.163.373-.233.753-.45 1.15-.638a7.028 7.028 0 011.6-.533c.327-.063.658-.1.992-.109.461-.012.92.032 1.374.128.578.123 1.117.34 1.611.65.484.305.906.68 1.264 1.125.056.069.105.143.165.205-.058.043-.117.082-.178.12-.545.342-1.04.748-1.468 1.226-.666.741-1.126 1.6-1.36 2.563a5.133 5.133 0 00.15 2.883c.261.826.688 1.558 1.268 2.195.347.381.738.713 1.172.993.17.11.35.207.537.297-.068.207-.126.418-.2.624-.252.698-.56 1.374-.92 2.022a12.19 12.19 0 01-1.088 1.617c-.383.465-.804.887-1.302 1.222-.616.414-1.293.635-2.04.632-.473-.002-.937-.084-1.387-.23a6.267 6.267 0 00-.903-.24c-.365-.06-.73-.06-1.094.003-.28.047-.556.122-.825.214-.453.155-.89.353-1.373.377-.74.036-1.404-.18-2.012-.583-.513-.34-.946-.77-1.338-1.245a13.564 13.564 0 01-1.623-2.553 12.89 12.89 0 01-.9-2.292C3.098 13.27 2.95 12.412 2.93 11.536c-.013-.672.04-1.34.18-1.998.2-.94.567-1.797 1.128-2.573.348-.482.76-.897 1.245-1.24A4.768 4.768 0 017.226 5.1c.397-.06.796-.073 1.196-.027.453.052.89.168 1.312.338.455.183.887.41 1.325.633.103.053.21.1.32.148.038-.018.07-.038.103-.056.382-.22.765-.438 1.16-.632a6.437 6.437 0 011.36-.49c.32-.074.644-.115.972-.118.465-.005.923.052 1.37.17.09.024.177.054.267.076-.03.027-.055.056-.084.078a6.588 6.588 0 00-1.66 1.804c-.49.818-.793 1.702-.887 2.65a5.892 5.892 0 00.2 2.268c.19.59.465 1.133.82 1.63.08.112.167.218.255.326-.104.072-.19.144-.284.205-.51.33-1.059.57-1.652.706-.384.088-.774.13-1.167.117a3.82 3.82 0 01-.943-.147c-.416-.127-.813-.302-1.2-.5"/></svg>
+                </div>
                 <h3 class="text-2xl font-bold text-white mb-2">Windows</h3>
                 <p class="text-nanoText text-sm mb-6">Windows 10 / 11 (64-bit)</p>
                 <span class="inline-block bg-nanoGreen/10 text-nanoGreen border border-nanoGreen/50 group-hover:bg-nanoGreen group-hover:text-nanoBg font-bold py-3 px-8 rounded-lg transition">
@@ -198,18 +216,39 @@
                 </span>
                 <p class="text-gray-500 text-xs mt-3">NanoTracker_Setup_v1.5.0.exe — 36 MB</p>
             </a>
-            <a href="#"
-               class="bg-nanoPanel border border-gray-800 p-10 rounded-2xl flex-1 text-center opacity-60 cursor-default">
-                <div class="text-5xl mb-4">🍎</div>
+            <div class="bg-nanoPanel border border-gray-800 p-10 rounded-2xl flex-1 text-center opacity-60 cursor-default">
+                <div class="text-5xl mb-4">
+                    <svg class="inline w-12 h-12" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+                </div>
                 <h3 class="text-2xl font-bold text-white mb-2">macOS</h3>
                 <p class="text-nanoText text-sm mb-6">macOS 12+ (Intel & Apple Silicon)</p>
                 <span class="inline-block bg-gray-800 text-gray-400 border border-gray-700 font-bold py-3 px-8 rounded-lg">
                     Prossimamente
                 </span>
                 <p class="text-gray-500 text-xs mt-3">In fase di sviluppo</p>
-            </a>
+            </div>
         </div>
     </section>
+
+    <script>
+    function unlockDownload(e) {
+        e.preventDefault();
+        var email = document.getElementById('downloadEmail').value;
+        if (!email) return;
+        // Store email in localStorage
+        localStorage.setItem('nt_download_email', email);
+        // Hide form, show download cards
+        document.getElementById('downloadEmailGate').classList.add('hidden');
+        document.getElementById('downloadCards').classList.remove('hidden');
+    }
+    // If already submitted, show cards directly
+    if (localStorage.getItem('nt_download_email')) {
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('downloadEmailGate').classList.add('hidden');
+            document.getElementById('downloadCards').classList.remove('hidden');
+        });
+    }
+    </script>
 
     <section id="faq" class="container mx-auto px-6 py-24">
         <div class="text-center mb-16">
@@ -271,13 +310,13 @@
                     <div class="w-14 h-14 bg-nanoPanel border border-gray-700 rounded-lg flex items-center justify-center mx-auto mb-6 text-2xl">&#128027;</div>
                     <h3 class="text-xl font-bold text-white mb-3">Bug Report</h3>
                     <p class="text-nanoText text-sm mb-6">Hai trovato un bug? Segnalalo su GitHub e lo risolveremo.</p>
-                    <a href="https://github.com/dandim1/NanoTracker/issues" target="_blank" class="text-nanoGreen hover:text-nanoGreenHover font-semibold transition">Apri una segnalazione</a>
+                    <a href="https://github.com/DanDim1/NanoTracker/issues" target="_blank" class="text-nanoGreen hover:text-nanoGreenHover font-semibold transition">Apri una segnalazione</a>
                 </div>
                 <div class="bg-nanoBg border border-gray-800 p-8 rounded-2xl flex-1 text-center">
                     <div class="w-14 h-14 bg-nanoPanel border border-gray-700 rounded-lg flex items-center justify-center mx-auto mb-6 text-2xl">&#128218;</div>
                     <h3 class="text-xl font-bold text-white mb-3">Documentazione</h3>
                     <p class="text-nanoText text-sm mb-6">Guide per l'installazione, configurazione MariaDB e utilizzo.</p>
-                    <a href="https://github.com/dandim1/NanoTracker/wiki" target="_blank" class="text-nanoGreen hover:text-nanoGreenHover font-semibold transition">Leggi la guida</a>
+                    <a href="https://github.com/DanDim1/NanoTracker/wiki" target="_blank" class="text-nanoGreen hover:text-nanoGreenHover font-semibold transition">Leggi la guida</a>
                 </div>
             </div>
         </div>
@@ -286,7 +325,9 @@
     <footer class="container mx-auto px-6 py-8 text-center border-t border-gray-800 mt-12">
         <p class="text-gray-500 text-sm">© 2026 Nano Tracker by Sixpeaks Solutions. Tutti i diritti riservati.</p>
     </footer>
-<script>window.lemonSqueezyAffiliateConfig = { store: "sixpeaks" };</script>
-<script src="https://lmsqueezy.com/affiliate.js" defer></script>
+
+    <script>window.lemonSqueezyAffiliateConfig = { store: "sixpeaks" };</script>
+    <script src="https://lmsqueezy.com/affiliate.js" defer></script>
+
 </body>
 </html>
