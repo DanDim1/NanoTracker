@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="it" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nano Tracker - Trova i tuoi file in un istante</title>
+    <title>Nano Tracker - Find your files in an instant</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
     <script>
@@ -11,11 +11,11 @@
             theme: {
                 extend: {
                     colors: {
-                        nanoBg: '#111316',      /* Lo sfondo scuro principale */
-                        nanoPanel: '#1A1D21',   /* Il colore dei riquadri interni */
-                        nanoGreen: '#34D399',   /* Il verde brillante dei bottoni/testi */
+                        nanoBg: '#111316',
+                        nanoPanel: '#1A1D21',
+                        nanoGreen: '#34D399',
                         nanoGreenHover: '#10B981',
-                        nanoText: '#9CA3AF'     /* Grigio per i testi lunghi */
+                        nanoText: '#9CA3AF'
                     }
                 }
             }
@@ -31,16 +31,16 @@
                 <span class="text-xl font-semibold text-white tracking-tight">Nano<span class="text-gray-400">Tracker</span></span>
             </div>
             <nav class="hidden md:flex space-x-8">
-                <a href="#features" class="text-sm font-medium text-gray-400 hover:text-white transition">Funzionalità</a>
-                <a href="#prezzi" class="text-sm font-medium text-gray-400 hover:text-white transition">Prezzi</a>
+                <a href="#features" class="text-sm font-medium text-gray-400 hover:text-white transition">Features</a>
+                <a href="#pricing" class="text-sm font-medium text-gray-400 hover:text-white transition">Pricing</a>
                 <a href="#download" class="text-sm font-medium text-gray-400 hover:text-white transition">Download</a>
                 <a href="#faq" class="text-sm font-medium text-gray-400 hover:text-white transition">FAQ</a>
-                <a href="#supporto" class="text-sm font-medium text-gray-400 hover:text-white transition">Supporto</a>
+                <a href="#support" class="text-sm font-medium text-gray-400 hover:text-white transition">Support</a>
             </nav>
             <div class="flex items-center space-x-4">
-                <span class="text-xs text-white font-semibold">IT</span>
+                <a href="/" class="text-xs text-gray-500 hover:text-white transition" title="Italiano">IT</a>
                 <span class="text-xs text-gray-700">|</span>
-                <a href="/en/" class="text-xs text-gray-500 hover:text-white transition" title="English">EN</a>
+                <span class="text-xs text-white font-semibold">EN</span>
                 <a href="#download" class="bg-nanoGreen/10 text-nanoGreen border border-nanoGreen/50 hover:bg-nanoGreen hover:text-nanoBg text-sm font-semibold py-2 px-4 rounded transition duration-300">
                     Download
                 </a>
@@ -51,133 +51,133 @@
     <section class="container mx-auto px-6 pt-40 pb-20 flex flex-col lg:flex-row items-center gap-12">
         <div class="lg:w-1/2 text-center lg:text-left">
             <div class="inline-block bg-nanoPanel border border-gray-700 rounded-full px-4 py-1 text-xs font-semibold text-nanoGreen mb-6">
-                ✨ Versione 1.5.3 Disponibile per Mac e Windows
+                ✨ Version 1.5.3 Available for Mac and Windows
             </div>
             <h1 class="text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 tracking-tight">
-                Trova qualsiasi progetto in pochi secondi. <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-nanoGreen to-teal-400">Anche se l'hard disk è nel cassetto.</span>
+                Find any project in seconds. <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-nanoGreen to-teal-400">Even if the hard drive is in a drawer.</span>
             </h1>
             <p class="text-xl text-nanoText mb-8 max-w-2xl mx-auto lg:mx-0">
-                Nano Tracker cataloga i tuoi hard disk e ti dice esattamente dove si trova la cartella del tuo cliente. Niente più panico da "dove l'ho salvato?".
+                Nano Tracker catalogs your hard drives and tells you exactly where your client's folder is. No more "where did I save it?" panic.
             </p>
             <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
                 <a href="#download" class="bg-nanoGreen hover:bg-nanoGreenHover text-nanoBg font-bold py-4 px-8 rounded-lg shadow-[0_0_20px_rgba(52,211,153,0.3)] transition duration-300 text-lg">
-                    Scarica Gratis — Prova 15 Giorni
+                    Download Free — 15-Day Trial
                 </a>
             </div>
-            <p class="mt-4 text-sm text-gray-500">Senza carta di credito. Scarichi, installi e cerchi.</p>
+            <p class="mt-4 text-sm text-gray-500">No credit card. Download, install and search.</p>
         </div>
         <div class="lg:w-1/2 relative">
             <div class="absolute inset-0 bg-nanoGreen/20 blur-[100px] rounded-full"></div>
-            <img src="dashboard.jpg" alt="Nano Tracker Dashboard" class="relative z-10 rounded-xl border border-gray-700 shadow-2xl w-full">
+            <img src="../dashboard.jpg" alt="Nano Tracker Dashboard" class="relative z-10 rounded-xl border border-gray-700 shadow-2xl w-full">
         </div>
     </section>
 
     <section class="bg-nanoPanel/50 border-y border-gray-800 py-20">
         <div class="container mx-auto px-6 text-center max-w-4xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">La stagione "calda" è finita. <br>E ora, dove sono i file?</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">The busy season is over. <br>Now, where are the files?</h2>
             <p class="text-lg text-nanoText leading-relaxed">
-                Conosci la sensazione. Ti chiedono di recuperare la cartella del lavoro "Panettone Antonini" fatto tre mesi fa. Hai 15 hard disk impilati sulla scrivania. Inizi a collegarli e scollegarli uno a uno, aspettando che il sistema operativo li legga, sprecando ore preziose. <strong class="text-white">Non deve per forza andare così.</strong>
+                You know the feeling. A client asks you to retrieve the "Antonini Wedding" folder from three months ago. You have 15 hard drives stacked on your desk. You start plugging and unplugging them one by one, waiting for the OS to read each one, wasting precious hours. <strong class="text-white">It doesn't have to be this way.</strong>
             </p>
         </div>
     </section>
 
     <section id="features" class="container mx-auto px-6 py-24">
         <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold text-white mb-4">Progettato per i flussi di lavoro creativi</h2>
-            <p class="text-nanoText text-lg">Fotografi, videomaker e studi: abbiamo risolto il vostro problema numero uno.</p>
+            <h2 class="text-4xl font-bold text-white mb-4">Designed for creative workflows</h2>
+            <p class="text-nanoText text-lg">Photographers, videographers and studios: we solved your number one problem.</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
             <div class="bg-nanoPanel border border-gray-800 p-8 rounded-2xl hover:border-nanoGreen/50 transition duration-300">
                 <div class="w-12 h-12 bg-nanoBg border border-gray-700 rounded-lg flex items-center justify-center mb-6 text-2xl">⚡️</div>
-                <h3 class="text-xl font-bold text-white mb-3">Ottimizzato per i Progetti</h3>
+                <h3 class="text-xl font-bold text-white mb-3">Optimized for Projects</h3>
                 <p class="text-nanoText text-sm leading-relaxed">
-                    Nano Tracker non intasa il database tracciando milioni di file singoli inutili (a meno che tu non lo voglia). Traccia di default le <strong>cartelle</strong>. Cerchi il nome del cliente o dell'evento e hai il risultato in un lampo.
+                    Nano Tracker doesn't bloat your database by tracking millions of individual files (unless you want it to). It tracks <strong>folders</strong> by default. Search a client name or event and get results instantly.
                 </p>
             </div>
             <div class="bg-nanoPanel border border-gray-800 p-8 rounded-2xl hover:border-nanoGreen/50 transition duration-300">
                 <div class="w-12 h-12 bg-nanoBg border border-gray-700 rounded-lg flex items-center justify-center mb-6 text-2xl">🔌</div>
-                <h3 class="text-xl font-bold text-white mb-3">Ricerca Offline Immediata</h3>
+                <h3 class="text-xl font-bold text-white mb-3">Instant Offline Search</h3>
                 <p class="text-nanoText text-sm leading-relaxed">
-                    Il disco è in un cassetto? Nessun problema. Interroga il database e Nano Tracker ti dirà il nome esatto dell'hard disk e in quale percorso si trova il tuo lavoro, ancora prima di collegarlo.
+                    Drive in a drawer? No problem. Query the database and Nano Tracker will tell you the exact drive name and path where your work is stored, before you even plug it in.
                 </p>
             </div>
             <div class="bg-nanoPanel border border-gray-800 p-8 rounded-2xl border-t-4 border-t-nanoGreen">
                 <div class="w-12 h-12 bg-nanoBg border border-gray-700 rounded-lg flex items-center justify-center mb-6 text-2xl">🤝</div>
-                <h3 class="text-xl font-bold text-white mb-3">Database Condiviso (Studi)</h3>
+                <h3 class="text-xl font-bold text-white mb-3">Shared Database (Studios)</h3>
                 <p class="text-nanoText text-sm leading-relaxed">
-                    Lavori in team? Punta tutti i PC dello studio allo stesso <strong>MariaDB</strong>. Se oggi scarichi un lavoro sul PC di Giovanna, domani Josy lo troverà con una ricerca dal suo Mac. Tutto sincronizzato.
+                    Work in a team? Point all studio PCs to the same <strong>MariaDB</strong>. If John downloads a job on his PC today, Jane will find it with a search from her Mac tomorrow. Fully synced.
                 </p>
             </div>
         </div>
 
         <div class="mt-20 flex flex-col md:flex-row-reverse items-center gap-12">
             <div class="md:w-1/2 relative">
-                <img src="dischi-in-rete.jpg" alt="Dischi in Rete Nano Tracker" class="rounded-xl border border-gray-700 shadow-lg">
+                <img src="../dischi-in-rete.jpg" alt="Network Disks Nano Tracker" class="rounded-xl border border-gray-700 shadow-lg">
             </div>
             <div class="md:w-1/2">
-                <h3 class="text-3xl font-bold text-white mb-4">Lavora in Rete senza stress.</h3>
+                <h3 class="text-3xl font-bold text-white mb-4">Work across your network, stress-free.</h3>
                 <p class="text-nanoText text-lg mb-6">
-                    L'interfaccia ti mostra chiaramente non solo i tuoi dischi offline, ma anche quelli attualmente connessi ad altri computer sulla tua rete locale. Un unico "cervello" per tutto lo storage del tuo studio.
+                    The interface clearly shows not just your offline disks, but also those currently connected to other computers on your local network. One single "brain" for all your studio storage.
                 </p>
             </div>
         </div>
     </section>
 
-    <section id="prezzi" class="bg-nanoPanel border-y border-gray-800 py-24">
+    <section id="pricing" class="bg-nanoPanel border-y border-gray-800 py-24">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-white mb-4">Paga una volta. Nessun abbonamento.</h2>
-                <p class="text-nanoText text-lg">Scegli la licenza più adatta al tuo flusso di lavoro.</p>
+                <h2 class="text-4xl font-bold text-white mb-4">Pay once. No subscription.</h2>
+                <p class="text-nanoText text-lg">Choose the license that fits your workflow.</p>
             </div>
 
             <div class="flex flex-col md:flex-row justify-center gap-8 max-w-5xl mx-auto">
 
                 <div class="bg-nanoBg border border-gray-800 p-8 rounded-2xl w-full md:w-1/3 flex flex-col">
-                    <h3 class="text-2xl font-bold text-white mb-2">Prova</h3>
-                    <p class="text-nanoText text-sm mb-6">Testa il software con i tuoi dischi.</p>
-                    <div class="text-4xl font-extrabold text-white mb-6">0€ <span class="text-sm font-normal text-gray-500">/ 15 giorni</span></div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Trial</h3>
+                    <p class="text-nanoText text-sm mb-6">Test the software with your drives.</p>
+                    <div class="text-4xl font-extrabold text-white mb-6">$0 <span class="text-sm font-normal text-gray-500">/ 15 days</span></div>
                     <ul class="text-sm text-gray-400 space-y-3 mb-8 flex-grow">
-                        <li class="flex items-center">✓ Tutte le funzioni sbloccate</li>
-                        <li class="flex items-center">✓ Nessuna carta di credito</li>
-                        <li class="flex items-center">✓ Database Locale</li>
+                        <li class="flex items-center">✓ All features unlocked</li>
+                        <li class="flex items-center">✓ No credit card required</li>
+                        <li class="flex items-center">✓ Local Database</li>
                     </ul>
                     <a href="#download" class="block text-center border border-gray-600 hover:border-white text-white font-bold py-3 px-4 rounded transition">
-                        Scarica Gratis
+                        Download Free
                     </a>
                 </div>
 
                 <div class="bg-nanoBg border border-gray-800 p-8 rounded-2xl w-full md:w-1/3 flex flex-col">
                     <h3 class="text-2xl font-bold text-white mb-2">Solo</h3>
-                    <p class="text-nanoText text-sm mb-6">Perfetto per freelance e nomadi digitali.</p>
-                    <div class="text-4xl font-extrabold text-white mb-6">49€ <span class="text-sm font-normal text-gray-500">una tantum</span></div>
+                    <p class="text-nanoText text-sm mb-6">Perfect for freelancers and digital nomads.</p>
+                    <div class="text-4xl font-extrabold text-white mb-6">€49 <span class="text-sm font-normal text-gray-500">one-time</span></div>
                     <ul class="text-sm text-gray-400 space-y-3 mb-8 flex-grow">
-                        <li class="flex items-center">✓ Licenza per 1 Computer</li>
-                        <li class="flex items-center">✓ Mac OS & Windows</li>
-                        <li class="flex items-center">✓ Database Locale SQLite</li>
-                        <li class="flex items-center">✓ Aggiornamenti minori inclusi</li>
+                        <li class="flex items-center">✓ License for 1 Computer</li>
+                        <li class="flex items-center">✓ macOS & Windows</li>
+                        <li class="flex items-center">✓ Local SQLite Database</li>
+                        <li class="flex items-center">✓ Minor updates included</li>
                     </ul>
                     <a href="https://sixpeaks.lemonsqueezy.com/checkout/buy/13149065-7c4f-4364-9ba2-3e988d3d6503" class="lemonsqueezy-button block text-center border border-nanoGreen text-nanoGreen hover:bg-nanoGreen hover:text-nanoBg font-bold py-3 px-4 rounded transition">
-                        Acquista Solo
+                        Buy Solo
                     </a>
                 </div>
 
                 <div class="bg-nanoBg border-2 border-nanoGreen p-8 rounded-2xl w-full md:w-1/3 flex flex-col relative transform md:-translate-y-4 shadow-[0_10px_30px_rgba(52,211,153,0.15)]">
                     <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-nanoGreen text-nanoBg font-bold text-xs py-1 px-3 rounded-full">
-                        IL PIÙ SCELTO
+                        MOST POPULAR
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-2">Studio</h3>
-                    <p class="text-nanoText text-sm mb-6">Per team che condividono risorse.</p>
-                    <div class="text-4xl font-extrabold text-white mb-6">99€ <span class="text-sm font-normal text-gray-500">una tantum</span></div>
+                    <p class="text-nanoText text-sm mb-6">For teams that share resources.</p>
+                    <div class="text-4xl font-extrabold text-white mb-6">€99 <span class="text-sm font-normal text-gray-500">one-time</span></div>
                     <ul class="text-sm text-gray-400 space-y-3 mb-8 flex-grow">
-                        <li class="flex items-center text-white font-semibold">✓ Licenza per 5 Computer</li>
-                        <li class="flex items-center">✓ Mac OS & Windows</li>
-                        <li class="flex items-center text-nanoGreen font-semibold">✓ Sblocca MariaDB Condiviso</li>
-                        <li class="flex items-center">✓ Tracciamento dischi di rete</li>
+                        <li class="flex items-center text-white font-semibold">✓ License for 5 Computers</li>
+                        <li class="flex items-center">✓ macOS & Windows</li>
+                        <li class="flex items-center text-nanoGreen font-semibold">✓ Unlocks Shared MariaDB</li>
+                        <li class="flex items-center">✓ Network disk tracking</li>
                     </ul>
                     <a href="https://sixpeaks.lemonsqueezy.com/checkout/buy/6c642f1f-fc22-4652-991f-dadef4032178" class="lemonsqueezy-button block text-center bg-nanoGreen hover:bg-nanoGreenHover text-nanoBg font-bold py-3 px-4 rounded transition">
-                        Acquista Studio
+                        Buy Studio
                     </a>
                 </div>
 
@@ -187,22 +187,22 @@
 
     <section id="download" class="container mx-auto px-6 py-24">
         <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold text-white mb-4">Scarica Nano Tracker</h2>
-            <p class="text-nanoText text-lg">Prova gratis per 15 giorni. Nessuna carta di credito richiesta.</p>
+            <h2 class="text-4xl font-bold text-white mb-4">Download Nano Tracker</h2>
+            <p class="text-nanoText text-lg">Free 15-day trial. No credit card required.</p>
         </div>
 
         <!-- Email gate -->
         <div id="downloadEmailGate" class="max-w-md mx-auto text-center mb-12">
-            <p class="text-nanoText text-sm mb-4">Inserisci la tua email per accedere al download.</p>
+            <p class="text-nanoText text-sm mb-4">Enter your email to access the download.</p>
             <form id="downloadEmailForm" onsubmit="unlockDownload(event)" class="flex gap-3">
-                <input type="email" id="downloadEmail" required placeholder="La tua email"
+                <input type="email" id="downloadEmail" required placeholder="Your email"
                     class="flex-1 bg-nanoBg border border-gray-700 focus:border-nanoGreen text-white rounded-lg px-4 py-3 text-sm outline-none transition">
                 <button type="submit"
                     class="bg-nanoGreen hover:bg-nanoGreenHover text-nanoBg font-bold py-3 px-6 rounded-lg transition whitespace-nowrap">
-                    Scarica
+                    Download
                 </button>
             </form>
-            <p class="text-gray-600 text-xs mt-3">Niente spam. Solo aggiornamenti importanti sul prodotto.</p>
+            <p class="text-gray-600 text-xs mt-3">No spam. Only important product updates.</p>
         </div>
 
         <!-- Download cards (hidden until email submitted) -->
@@ -215,7 +215,7 @@
                 <h3 class="text-2xl font-bold text-white mb-2">Windows</h3>
                 <p class="text-nanoText text-sm mb-6">Windows 10 / 11 (64-bit)</p>
                 <span class="inline-block bg-nanoGreen/10 text-nanoGreen border border-nanoGreen/50 group-hover:bg-nanoGreen group-hover:text-nanoBg font-bold py-3 px-8 rounded-lg transition">
-                    Scarica per Windows
+                    Download for Windows
                 </span>
                 <p class="text-gray-500 text-xs mt-3">NanoTracker_Setup_v1.5.0.exe — 36 MB</p>
             </a>
@@ -226,9 +226,9 @@
                 <h3 class="text-2xl font-bold text-white mb-2">macOS</h3>
                 <p class="text-nanoText text-sm mb-6">macOS 12+ (Intel & Apple Silicon)</p>
                 <span class="inline-block bg-gray-800 text-gray-400 border border-gray-700 font-bold py-3 px-8 rounded-lg">
-                    Prossimamente
+                    Coming Soon
                 </span>
-                <p class="text-gray-500 text-xs mt-3">In fase di sviluppo</p>
+                <p class="text-gray-500 text-xs mt-3">In development</p>
             </div>
         </div>
     </section>
@@ -238,13 +238,10 @@
         e.preventDefault();
         var email = document.getElementById('downloadEmail').value;
         if (!email) return;
-        // Store email in localStorage
         localStorage.setItem('nt_download_email', email);
-        // Hide form, show download cards
         document.getElementById('downloadEmailGate').classList.add('hidden');
         document.getElementById('downloadCards').classList.remove('hidden');
     }
-    // If already submitted, show cards directly
     if (localStorage.getItem('nt_download_email')) {
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('downloadEmailGate').classList.add('hidden');
@@ -255,78 +252,78 @@
 
     <section id="faq" class="container mx-auto px-6 py-24">
         <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold text-white mb-4">Domande Frequenti</h2>
+            <h2 class="text-4xl font-bold text-white mb-4">Frequently Asked Questions</h2>
         </div>
         <div class="max-w-3xl mx-auto space-y-6">
             <details class="bg-nanoPanel border border-gray-800 rounded-xl p-6 group">
                 <summary class="text-white font-semibold cursor-pointer flex justify-between items-center">
-                    Come funziona la prova gratuita?
+                    How does the free trial work?
                     <span class="text-gray-500 group-open:rotate-45 transition-transform text-xl">+</span>
                 </summary>
-                <p class="text-nanoText text-sm mt-4 leading-relaxed">Scarichi e installi Nano Tracker. Hai 15 giorni per provare tutte le funzionalità con database locale. Non serve carta di credito. Alla scadenza puoi acquistare una licenza per continuare a usarlo.</p>
+                <p class="text-nanoText text-sm mt-4 leading-relaxed">Download and install Nano Tracker. You have 15 days to try all features with a local database. No credit card required. After the trial, purchase a license to keep using it.</p>
             </details>
             <details class="bg-nanoPanel border border-gray-800 rounded-xl p-6 group">
                 <summary class="text-white font-semibold cursor-pointer flex justify-between items-center">
-                    Posso usare la stessa licenza su Mac e Windows?
+                    Can I use the same license on Mac and Windows?
                     <span class="text-gray-500 group-open:rotate-45 transition-transform text-xl">+</span>
                 </summary>
-                <p class="text-nanoText text-sm mt-4 leading-relaxed">Sì. La licenza Solo vale per 1 computer (Mac o Windows). La licenza Studio vale per 5 computer, anche misti Mac e Windows.</p>
+                <p class="text-nanoText text-sm mt-4 leading-relaxed">Yes. The Solo license covers 1 computer (Mac or Windows). The Studio license covers 5 computers, even mixed Mac and Windows.</p>
             </details>
             <details class="bg-nanoPanel border border-gray-800 rounded-xl p-6 group">
                 <summary class="text-white font-semibold cursor-pointer flex justify-between items-center">
-                    Cosa succede se cambio computer?
+                    What happens if I change computers?
                     <span class="text-gray-500 group-open:rotate-45 transition-transform text-xl">+</span>
                 </summary>
-                <p class="text-nanoText text-sm mt-4 leading-relaxed">Puoi disattivare la licenza dal vecchio PC direttamente dalle Impostazioni dell'app e riattivarla sul nuovo. Nessun contatto con il supporto necessario.</p>
+                <p class="text-nanoText text-sm mt-4 leading-relaxed">You can deactivate the license on your old PC directly from the app Settings and reactivate it on the new one. No support contact needed.</p>
             </details>
             <details class="bg-nanoPanel border border-gray-800 rounded-xl p-6 group">
                 <summary class="text-white font-semibold cursor-pointer flex justify-between items-center">
-                    Qual è la differenza tra Solo e Studio?
+                    What's the difference between Solo and Studio?
                     <span class="text-gray-500 group-open:rotate-45 transition-transform text-xl">+</span>
                 </summary>
-                <p class="text-nanoText text-sm mt-4 leading-relaxed">Solo usa un database locale sul tuo PC. Studio sblocca il database condiviso MariaDB: tutti i PC dello studio vedono gli stessi dischi e possono cercare i file degli altri. Perfetto per team di 2-5 persone.</p>
+                <p class="text-nanoText text-sm mt-4 leading-relaxed">Solo uses a local database on your PC. Studio unlocks shared MariaDB: all studio PCs see the same disks and can search each other's files. Perfect for teams of 2-5 people.</p>
             </details>
             <details class="bg-nanoPanel border border-gray-800 rounded-xl p-6 group">
                 <summary class="text-white font-semibold cursor-pointer flex justify-between items-center">
-                    Quali metodi di pagamento accettate?
+                    What payment methods do you accept?
                     <span class="text-gray-500 group-open:rotate-45 transition-transform text-xl">+</span>
                 </summary>
-                <p class="text-nanoText text-sm mt-4 leading-relaxed">Carte di credito/debito (Visa, Mastercard, Amex), PayPal, Apple Pay e Google Pay. I pagamenti sono gestiti da Lemon Squeezy in modo sicuro.</p>
+                <p class="text-nanoText text-sm mt-4 leading-relaxed">Credit/debit cards (Visa, Mastercard, Amex), PayPal, Apple Pay and Google Pay. Payments are securely handled by Lemon Squeezy.</p>
             </details>
         </div>
     </section>
 
-    <section id="supporto" class="bg-nanoPanel/50 border-y border-gray-800 py-24">
+    <section id="support" class="bg-nanoPanel/50 border-y border-gray-800 py-24">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold text-white mb-4">Supporto</h2>
-                <p class="text-nanoText text-lg">Hai bisogno di aiuto? Siamo qui per te.</p>
+                <h2 class="text-4xl font-bold text-white mb-4">Support</h2>
+                <p class="text-nanoText text-lg">Need help? We're here for you.</p>
             </div>
             <div class="flex flex-col md:flex-row justify-center gap-8 max-w-4xl mx-auto">
                 <div class="bg-nanoBg border border-gray-800 p-8 rounded-2xl flex-1 text-center">
                     <div class="w-14 h-14 bg-nanoPanel border border-gray-700 rounded-lg flex items-center justify-center mx-auto mb-6 text-2xl">&#9993;</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Assistenza Email</h3>
-                    <p class="text-nanoText text-sm mb-6">Per domande su licenze, configurazione e problemi tecnici.</p>
+                    <h3 class="text-xl font-bold text-white mb-3">Email Support</h3>
+                    <p class="text-nanoText text-sm mb-6">For questions about licenses, setup and technical issues.</p>
                     <a href="mailto:support@nanotracker.pro" class="text-nanoGreen hover:text-nanoGreenHover font-semibold transition">support@nanotracker.pro</a>
                 </div>
                 <div class="bg-nanoBg border border-gray-800 p-8 rounded-2xl flex-1 text-center">
                     <div class="w-14 h-14 bg-nanoPanel border border-gray-700 rounded-lg flex items-center justify-center mx-auto mb-6 text-2xl">&#128027;</div>
                     <h3 class="text-xl font-bold text-white mb-3">Bug Report</h3>
-                    <p class="text-nanoText text-sm mb-6">Hai trovato un bug? Segnalalo su GitHub e lo risolveremo.</p>
-                    <a href="https://github.com/DanDim1/NanoTracker/issues" target="_blank" class="text-nanoGreen hover:text-nanoGreenHover font-semibold transition">Apri una segnalazione</a>
+                    <p class="text-nanoText text-sm mb-6">Found a bug? Report it on GitHub and we'll fix it.</p>
+                    <a href="https://github.com/DanDim1/NanoTracker/issues" target="_blank" class="text-nanoGreen hover:text-nanoGreenHover font-semibold transition">Open an issue</a>
                 </div>
                 <div class="bg-nanoBg border border-gray-800 p-8 rounded-2xl flex-1 text-center">
                     <div class="w-14 h-14 bg-nanoPanel border border-gray-700 rounded-lg flex items-center justify-center mx-auto mb-6 text-2xl">&#128218;</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Documentazione</h3>
-                    <p class="text-nanoText text-sm mb-6">Guide per l'installazione, configurazione MariaDB e utilizzo.</p>
-                    <a href="https://github.com/DanDim1/NanoTracker/wiki" target="_blank" class="text-nanoGreen hover:text-nanoGreenHover font-semibold transition">Leggi la guida</a>
+                    <h3 class="text-xl font-bold text-white mb-3">Documentation</h3>
+                    <p class="text-nanoText text-sm mb-6">Installation guides, MariaDB setup and usage instructions.</p>
+                    <a href="https://github.com/DanDim1/NanoTracker/wiki" target="_blank" class="text-nanoGreen hover:text-nanoGreenHover font-semibold transition">Read the guide</a>
                 </div>
             </div>
         </div>
     </section>
 
     <footer class="container mx-auto px-6 py-8 text-center border-t border-gray-800 mt-12">
-        <p class="text-gray-500 text-sm">© 2026 Nano Tracker by Sixpeaks Solutions. Tutti i diritti riservati.</p>
+        <p class="text-gray-500 text-sm">© 2026 Nano Tracker by Sixpeaks Solutions. All rights reserved.</p>
     </footer>
 
     <script>window.lemonSqueezyAffiliateConfig = { store: "sixpeaks" };</script>
