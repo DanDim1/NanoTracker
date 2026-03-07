@@ -238,9 +238,20 @@
         e.preventDefault();
         var email = document.getElementById('downloadEmail').value;
         if (!email) return;
-        localStorage.setItem('nt_download_email', email);
-        document.getElementById('downloadEmailGate').classList.add('hidden');
-        document.getElementById('downloadCards').classList.remove('hidden');
+        var btn = e.target.querySelector('button');
+        btn.textContent = '...';
+        btn.disabled = true;
+        // Send to Brevo form (no API key needed)
+        var formData = new FormData();
+        formData.append('EMAIL', email);
+        fetch('https://86bd8aa6.sibforms.com/serve/MUIFAISs4Dbu-YpM4At50QOrbKBMiKK1nOiqXrItfsMH6bpPCQk_nk21X5xMJSvcytAUe_X5qJOqYfeZRT38EbDWsKZixhhDvP5YItWJ6HDkog5V27ZPuTWjXf3sQ7OE3q8tICIq5w1-FczYJJYRmQsrUsOQ3JBgbU7USddgJVukUfq7pVfQyLcJ5eSx3lCBcbHf5izjPxXacitLmg==', {
+            method: 'POST',
+            body: formData
+        }).finally(function() {
+            localStorage.setItem('nt_download_email', email);
+            document.getElementById('downloadEmailGate').classList.add('hidden');
+            document.getElementById('downloadCards').classList.remove('hidden');
+        });
     }
     if (localStorage.getItem('nt_download_email')) {
         document.addEventListener('DOMContentLoaded', function() {
