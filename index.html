@@ -3,6 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function() {
+            if (localStorage.getItem('nt_lang_override')) return;
+            var lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+            if (!lang.startsWith('it')) {
+                window.location.replace('/en/');
+            }
+        })();
+    </script>
     <title>Nano Tracker - Trova i tuoi file in un istante</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
@@ -40,7 +49,7 @@
             <div class="flex items-center space-x-4">
                 <span class="text-xs text-white font-semibold">IT</span>
                 <span class="text-xs text-gray-700">|</span>
-                <a href="/en/" class="text-xs text-gray-500 hover:text-white transition" title="English">EN</a>
+                <a href="/en/" onclick="localStorage.setItem('nt_lang_override','en')" class="text-xs text-gray-500 hover:text-white transition" title="English">EN</a>
                 <a href="#download" class="bg-nanoGreen/10 text-nanoGreen border border-nanoGreen/50 hover:bg-nanoGreen hover:text-nanoBg text-sm font-semibold py-2 px-4 rounded transition duration-300">
                     Download
                 </a>

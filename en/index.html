@@ -38,7 +38,7 @@
                 <a href="#support" class="text-sm font-medium text-gray-400 hover:text-white transition">Support</a>
             </nav>
             <div class="flex items-center space-x-4">
-                <a href="/" class="text-xs text-gray-500 hover:text-white transition" title="Italiano">IT</a>
+                <a href="/" onclick="localStorage.setItem('nt_lang_override','it')" class="text-xs text-gray-500 hover:text-white transition" title="Italiano">IT</a>
                 <span class="text-xs text-gray-700">|</span>
                 <span class="text-xs text-white font-semibold">EN</span>
                 <a href="#download" class="bg-nanoGreen/10 text-nanoGreen border border-nanoGreen/50 hover:bg-nanoGreen hover:text-nanoBg text-sm font-semibold py-2 px-4 rounded transition duration-300">
@@ -245,7 +245,7 @@
         // Send to Brevo form (no API key needed)
         var formData = new FormData();
         formData.append('EMAIL', email);
-        fetch('https://86bd8aa6.sibforms.com/serve/MUIFAISs4Dbu-YpM4At50QOrbKBMiKK1nOiqXrItfsMH6bpPCQk_nk21X5xMJSvcytAUe_X5qJOqYfeZRT38EbDWsKZixhhDvP5YItWJ6HDkog5V27ZPuTWjXf3sQ7OE3q8tICIq5w1-FczYJJYRmQsrUsOQ3JBgbU7USddgJVukUfq7pVfQyLcJ5eSx3lCBcbHf5izjPxXacitLmg==', {
+        fetch('https://86bd8aa6.sibforms.com/serve/MUIFAOONRFJrOWViWciOjxQC0dTLJn7UQmQ2slVdZh28Ukf2DDCvomy0cDu55iU8wCznJ41NFQhF6fhMj9v_12U5MNOnv00L-ZdnYbbJAQJJlGFsRd-2_5sw0H6herT3dBhWx4Yn7sV_2PIYlCM-X268EMX7CJPtzv5XpjE7WVKaSFBZu2XHYtN_-qdQrQrA_oG-XG8LnEWBgnCpuA==', {
             method: 'POST',
             body: formData
         }).finally(function() {
