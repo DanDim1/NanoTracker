@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function() {
+            if (localStorage.getItem('nt_lang_override')) return;
+            var lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+            if (!lang.startsWith('it')) {
+                window.location.replace('/en/changelog.html');
+            }
+        })();
+    </script>
+    <title>Nano Tracker - Changelog e Versioni</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nanoBg: '#111316',
+                        nanoPanel: '#1A1D21',
+                        nanoGreen: '#34D399',
+                        nanoGreenHover: '#10B981',
+                        nanoText: '#9CA3AF'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-nanoBg text-gray-200 font-sans antialiased selection:bg-nanoGreen selection:text-nanoBg">
+
+    <header class="fixed w-full top-0 z-50 bg-nanoBg/90 backdrop-blur-md border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/" class="flex items-center space-x-3 cursor-pointer">
+                <div class="bg-nanoGreen text-nanoBg font-extrabold rounded px-2 py-1 text-sm tracking-wider">NT</div>
+                <span class="text-xl font-semibold text-white tracking-tight">Nano<span class="text-gray-400">Tracker</span></span>
+            </a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="/#features" class="text-sm font-medium text-gray-400 hover:text-white transition">Funzionalita</a>
+                <a href="/#prezzi" class="text-sm font-medium text-gray-400 hover:text-white transition">Prezzi</a>
+                <a href="/#download" class="text-sm font-medium text-gray-400 hover:text-white transition">Download</a>
+                <a href="/changelog.html" class="text-sm font-medium text-white transition">Changelog</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <span class="text-xs text-white font-semibold">IT</span>
+                <span class="text-xs text-gray-700">|</span>
+                <a href="/en/changelog.html" onclick="localStorage.setItem('nt_lang_override','en')" class="text-xs text-gray-500 hover:text-white transition" title="English">EN</a>
+                <a href="/#download" class="bg-nanoGreen/10 text-nanoGreen border border-nanoGreen/50 hover:bg-nanoGreen hover:text-nanoBg text-sm font-semibold py-2 px-4 rounded transition duration-300">
+                    Download
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="container mx-auto px-6 pt-32 pb-12">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl font-bold text-white mb-4">Changelog</h1>
+            <p class="text-nanoText text-lg">Tutte le versioni e le novita di Nano Tracker</p>
+        </div>
+
+        <div class="max-w-3xl mx-auto space-y-8">
+
+            <!-- v1.5.1 -->
+            <div class="bg-nanoPanel border border-nanoGreen/30 rounded-2xl p-8 relative">
+                <div class="absolute -top-3 left-6 bg-nanoGreen text-nanoBg text-xs font-bold px-3 py-1 rounded-full">ULTIMA VERSIONE</div>
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 mt-2">
+                    <h2 class="text-2xl font-bold text-white">v1.5.1</h2>
+                    <span class="text-nanoText text-sm">11 Marzo 2026</span>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-nanoGreen font-semibold text-sm uppercase tracking-wider mb-2">Miglioramenti</h3>
+                        <ul class="text-nanoText text-sm space-y-2">
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Protezione codice sorgente con compilazione nativa (impossibile decompilare)</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Installer aggiornato: disinstalla automaticamente la versione precedente</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Publisher aggiornato a Sixpeaks Solutions</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-yellow-400 font-semibold text-sm uppercase tracking-wider mb-2">Fix</h3>
+                        <ul class="text-nanoText text-sm space-y-2">
+                            <li class="flex items-start gap-2"><span class="text-yellow-400 mt-0.5">&#9679;</span> Risolto problema di avvio su alcune installazioni</li>
+                            <li class="flex items-start gap-2"><span class="text-yellow-400 mt-0.5">&#9679;</span> Rimosso wizard di configurazione al primo avvio (ora si configura dalle Impostazioni)</li>
+                            <li class="flex items-start gap-2"><span class="text-yellow-400 mt-0.5">&#9679;</span> Collegamento desktop corretto (non punta piu al sito)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6 pt-4 border-t border-gray-700 flex flex-wrap gap-3">
+                    <a href="https://github.com/DanDim1/NanoTracker/releases/download/win-v1.5.1/NanoTracker_Setup_v1.5.1.exe"
+                       class="bg-nanoGreen hover:bg-nanoGreenHover text-nanoBg text-sm font-semibold py-2 px-5 rounded transition">
+                        Scarica per Windows
+                    </a>
+                </div>
+            </div>
+
+            <!-- v1.5.0 -->
+            <div class="bg-nanoPanel border border-gray-800 rounded-2xl p-8">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-white">v1.5.0</h2>
+                    <span class="text-nanoText text-sm">7 Febbraio 2026</span>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-nanoGreen font-semibold text-sm uppercase tracking-wider mb-2">Novita</h3>
+                        <ul class="text-nanoText text-sm space-y-2">
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Supporto database MariaDB condiviso su NAS</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Rebranding: Nano HDD Tracker diventa Nano Tracker</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Nuova icona NT verde</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Pagina "Dischi in Rete" con heartbeat automatico</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-yellow-400 font-semibold text-sm uppercase tracking-wider mb-2">Fix</h3>
+                        <ul class="text-nanoText text-sm space-y-2">
+                            <li class="flex items-start gap-2"><span class="text-yellow-400 mt-0.5">&#9679;</span> Ricerca: 3 stati (online locale, online in rete, offline)</li>
+                            <li class="flex items-start gap-2"><span class="text-yellow-400 mt-0.5">&#9679;</span> Dischi con lo stesso nome ora separati correttamente</li>
+                            <li class="flex items-start gap-2"><span class="text-yellow-400 mt-0.5">&#9679;</span> Fix heartbeat e connessione MariaDB</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v1.4.2 -->
+            <div class="bg-nanoPanel border border-gray-800 rounded-2xl p-8">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-white">v1.4.2</h2>
+                    <span class="text-nanoText text-sm">7 Febbraio 2026</span>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-nanoGreen font-semibold text-sm uppercase tracking-wider mb-2">Novita</h3>
+                        <ul class="text-nanoText text-sm space-y-2">
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Esclusione manuale dischi dalla scansione</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Pulsante "Non tracciare" su ogni disco</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v1.4.0 -->
+            <div class="bg-nanoPanel border border-gray-800 rounded-2xl p-8">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-white">v1.4.0</h2>
+                    <span class="text-nanoText text-sm">5 Febbraio 2026</span>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-nanoGreen font-semibold text-sm uppercase tracking-wider mb-2">Novita</h3>
+                        <ul class="text-nanoText text-sm space-y-2">
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Multilingua completo Italiano/Inglese</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Eject disco USB funzionante con elevazione automatica</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Pulsante "Scansiona" manuale su ogni disco</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Pagina istruzioni eject nell'installer</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-yellow-400 font-semibold text-sm uppercase tracking-wider mb-2">Fix</h3>
+                        <ul class="text-nanoText text-sm space-y-2">
+                            <li class="flex items-start gap-2"><span class="text-yellow-400 mt-0.5">&#9679;</span> Fix sicurezza: SQL injection, socket leak</li>
+                            <li class="flex items-start gap-2"><span class="text-yellow-400 mt-0.5">&#9679;</span> Watcher ottimizzato: da 2.7 GB a 50 MB di RAM</li>
+                            <li class="flex items-start gap-2"><span class="text-yellow-400 mt-0.5">&#9679;</span> Filtro SD card intelligente</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v1.3.4 -->
+            <div class="bg-nanoPanel border border-gray-800 rounded-2xl p-8">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-white">v1.3.4</h2>
+                    <span class="text-nanoText text-sm">3 Febbraio 2026</span>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-nanoGreen font-semibold text-sm uppercase tracking-wider mb-2">Novita</h3>
+                        <ul class="text-nanoText text-sm space-y-2">
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Database locale in cartella sicura (%LOCALAPPDATA%)</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Fallback automatico tra database condiviso e locale</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Manutenzione database: pulizia e compattazione</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Pulizia automatica del database all'avvio</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Logging diagnostico su file</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v1.0.0 -->
+            <div class="bg-nanoPanel border border-gray-800 rounded-2xl p-8">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-white">v1.0.0</h2>
+                    <span class="text-nanoText text-sm">Gennaio 2026</span>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-nanoGreen font-semibold text-sm uppercase tracking-wider mb-2">Prima versione</h3>
+                        <ul class="text-nanoText text-sm space-y-2">
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Scansione e catalogazione dischi esterni USB</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Ricerca istantanea cartelle e file</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Monitoraggio automatico connessione dischi</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Struttura ad albero per navigare le cartelle</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> System tray con accesso rapido</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Database SQLite locale</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="container mx-auto px-6 py-8 text-center border-t border-gray-800 mt-12">
+        <p class="text-gray-500 text-sm">&copy; 2026 Nano Tracker by Sixpeaks Solutions. Tutti i diritti riservati.</p>
+        <div class="mt-2 space-x-4">
+            <a href="/terms.html" class="text-gray-600 hover:text-gray-400 text-xs transition">Termini di Servizio</a>
+            <a href="/refund.html" class="text-gray-600 hover:text-gray-400 text-xs transition">Politica di Rimborso</a>
+            <a href="/changelog.html" class="text-gray-600 hover:text-gray-400 text-xs transition">Changelog</a>
+        </div>
+    </footer>
+
+</body>
+</html>
