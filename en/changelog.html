@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nano Tracker - Changelog & Versions</title>
+    <title>Nano Tracker - Version</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -33,7 +33,7 @@
                 <a href="/en/#features" class="text-sm font-medium text-gray-400 hover:text-white transition">Features</a>
                 <a href="/en/#pricing" class="text-sm font-medium text-gray-400 hover:text-white transition">Pricing</a>
                 <a href="/en/#download" class="text-sm font-medium text-gray-400 hover:text-white transition">Download</a>
-                <a href="/en/changelog.html" class="text-sm font-medium text-white transition">Changelog</a>
+                <a href="/en/changelog.html" class="text-sm font-medium text-white transition">Version</a>
             </nav>
             <div class="flex items-center space-x-4">
                 <a href="/changelog.html" onclick="localStorage.setItem('nt_lang_override','it')" class="text-xs text-gray-500 hover:text-white transition" title="Italiano">IT</a>
@@ -48,16 +48,53 @@
 
     <section class="container mx-auto px-6 pt-32 pb-12">
         <div class="text-center mb-16">
-            <h1 class="text-4xl font-bold text-white mb-4">Changelog</h1>
+            <h1 class="text-4xl font-bold text-white mb-4">Version</h1>
             <p class="text-nanoText text-lg">All versions and updates of Nano Tracker</p>
         </div>
 
         <div class="max-w-3xl mx-auto space-y-8">
 
-            <!-- v1.5.1 -->
+            <!-- v1.6.6 -->
             <div class="bg-nanoPanel border border-nanoGreen/30 rounded-2xl p-8 relative">
                 <div class="absolute -top-3 left-6 bg-nanoGreen text-nanoBg text-xs font-bold px-3 py-1 rounded-full">LATEST VERSION</div>
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 mt-2">
+                    <h2 class="text-2xl font-bold text-white">v1.6.6</h2>
+                    <span class="text-nanoText text-sm">June 3, 2026</span>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-nanoGreen font-semibold text-sm uppercase tracking-wider mb-2">New Features</h3>
+                        <ul class="text-nanoText text-sm space-y-2">
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Reformatted disk recognition: the same physical disk, even after format and rename, is recognized without creating duplicates (via hardware serial number)</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Automatic Windows Defender protection: the app auto-recovers if Defender blocks it, no user intervention</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> MariaDB setup on Synology/QNAP NAS in 1 minute with automatic wizard</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Bulletproof disk ejection: works even with Explorer, OneDrive, Dropbox open</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> "Repair Defender protection" button in Settings for manual recovery</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Cross-OS disk unification: the same disk seen from Windows and macOS appears as a single entry</li>
+                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Accurate recursive folder size computation</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-yellow-400 font-semibold text-sm uppercase tracking-wider mb-2">Fixes</h3>
+                        <ul class="text-nanoText text-sm space-y-2">
+                            <li class="flex items-start gap-2"><span class="text-yellow-400 mt-0.5">&#9679;</span> Tray "zero disks" at startup: menu populates correctly within 10 seconds (HTTP timeout raised from 5s to 15s)</li>
+                            <li class="flex items-start gap-2"><span class="text-yellow-400 mt-0.5">&#9679;</span> Settings and license now save correctly on installed PCs (config.json in %LOCALAPPDATA%)</li>
+                            <li class="flex items-start gap-2"><span class="text-yellow-400 mt-0.5">&#9679;</span> Automatic cleanup of duplicate disks across PCs (orphan-merge)</li>
+                            <li class="flex items-start gap-2"><span class="text-yellow-400 mt-0.5">&#9679;</span> Diagnostic logging for troubleshooting (Tray, Watcher, Web)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6 pt-4 border-t border-gray-700 flex flex-wrap gap-3">
+                    <a href="https://github.com/DanDim1/NanoTracker/releases/download/win-v1.6.6/NanoTracker_Setup_v1.6.6.exe"
+                       class="bg-nanoGreen hover:bg-nanoGreenHover text-nanoBg text-sm font-semibold py-2 px-5 rounded transition">
+                        Download for Windows
+                    </a>
+                </div>
+            </div>
+
+            <!-- v1.5.1 -->
+            <div class="bg-nanoPanel border border-gray-800 rounded-2xl p-8">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
                     <h2 class="text-2xl font-bold text-white">v1.5.1</h2>
                     <span class="text-nanoText text-sm">March 11, 2026</span>
                 </div>
@@ -114,71 +151,7 @@
                 </div>
             </div>
 
-            <!-- v1.4.2 -->
-            <div class="bg-nanoPanel border border-gray-800 rounded-2xl p-8">
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
-                    <h2 class="text-2xl font-bold text-white">v1.4.2</h2>
-                    <span class="text-nanoText text-sm">February 7, 2026</span>
-                </div>
-                <div class="space-y-4">
-                    <div>
-                        <h3 class="text-nanoGreen font-semibold text-sm uppercase tracking-wider mb-2">New Features</h3>
-                        <ul class="text-nanoText text-sm space-y-2">
-                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Manual disk exclusion from automatic scanning</li>
-                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> "Do not track" button on each disk</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- v1.4.0 -->
-            <div class="bg-nanoPanel border border-gray-800 rounded-2xl p-8">
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
-                    <h2 class="text-2xl font-bold text-white">v1.4.0</h2>
-                    <span class="text-nanoText text-sm">February 5, 2026</span>
-                </div>
-                <div class="space-y-4">
-                    <div>
-                        <h3 class="text-nanoGreen font-semibold text-sm uppercase tracking-wider mb-2">New Features</h3>
-                        <ul class="text-nanoText text-sm space-y-2">
-                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Full Italian/English multilingual support</li>
-                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> USB disk eject with automatic elevation</li>
-                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Manual "Scan" button on each disk</li>
-                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Eject instructions page in installer</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-yellow-400 font-semibold text-sm uppercase tracking-wider mb-2">Fixes</h3>
-                        <ul class="text-nanoText text-sm space-y-2">
-                            <li class="flex items-start gap-2"><span class="text-yellow-400 mt-0.5">&#9679;</span> Security fix: SQL injection, socket leak</li>
-                            <li class="flex items-start gap-2"><span class="text-yellow-400 mt-0.5">&#9679;</span> Optimized watcher: from 2.7 GB to 50 MB RAM</li>
-                            <li class="flex items-start gap-2"><span class="text-yellow-400 mt-0.5">&#9679;</span> Smart SD card filter</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- v1.3.4 -->
-            <div class="bg-nanoPanel border border-gray-800 rounded-2xl p-8">
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
-                    <h2 class="text-2xl font-bold text-white">v1.3.4</h2>
-                    <span class="text-nanoText text-sm">February 3, 2026</span>
-                </div>
-                <div class="space-y-4">
-                    <div>
-                        <h3 class="text-nanoGreen font-semibold text-sm uppercase tracking-wider mb-2">New Features</h3>
-                        <ul class="text-nanoText text-sm space-y-2">
-                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Local database in safe folder (%LOCALAPPDATA%)</li>
-                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Automatic fallback between shared and local database</li>
-                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Database maintenance: cleanup and compaction</li>
-                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Automatic database cleanup at startup</li>
-                            <li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span> Diagnostic logging to file</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- v1.0.0 -->
+            <!-- v1.0.0 — Initial public release -->
             <div class="bg-nanoPanel border border-gray-800 rounded-2xl p-8">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
                     <h2 class="text-2xl font-bold text-white">v1.0.0</h2>
@@ -207,7 +180,7 @@
         <div class="mt-2 space-x-4">
             <a href="/en/terms.html" class="text-gray-600 hover:text-gray-400 text-xs transition">Terms of Service</a>
             <a href="/en/refund.html" class="text-gray-600 hover:text-gray-400 text-xs transition">Refund Policy</a>
-            <a href="/en/changelog.html" class="text-gray-600 hover:text-gray-400 text-xs transition">Changelog</a>
+            <a href="/en/changelog.html" class="text-gray-600 hover:text-gray-400 text-xs transition">Version</a>
         </div>
     </footer>
 
