@@ -52,7 +52,7 @@
             <p class="text-nanoText text-lg">All versions and updates of Nano Tracker</p>
         </div>
 
-        <div class="max-w-3xl mx-auto space-y-8">
+        <div id="clStatic" class="max-w-3xl mx-auto space-y-8">
 
             <!-- v1.6.6 -->
             <div class="bg-nanoPanel border border-nanoGreen/30 rounded-2xl p-8 relative">
@@ -237,5 +237,190 @@
         </div>
     </footer>
 
+<!-- Pagina Versioni auto-aggiornante dalle note delle release GitHub (v1.7.0+).
+     Il contenuto statico qui sopra resta come FALLBACK se l'API non risponde:
+     la pagina non puo' restare vuota. -->
+<script>
+(function () {
+  var REPO = 'DanDim1/NanoTracker';
+  var CACHE_KEY = 'nt_releases_cache_v1';   // condivisa con le card download
+  var CACHE_TTL = 30 * 60 * 1000;
+  var T = (document.documentElement.lang === 'en') ? {
+    loading: 'Loading versions…', dl: 'Download', latest: 'LATEST VERSION',
+    none: 'No versions found for this platform.', src: 'Updated automatically from GitHub releases'
+  } : {
+    loading: 'Caricamento versioni…', dl: 'Scarica', latest: 'ULTIMA VERSIONE',
+    none: 'Nessuna versione trovata per questa piattaforma.', src: 'Aggiornata automaticamente dalle release GitHub'
+  };
+  var LOCALE = (document.documentElement.lang === 'en') ? 'en-GB' : 'it-IT';
+
+  function esc(s) {
+    return String(s || '').replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  // Markdown minimo: titoli, grassetto, corsivo, code, liste, hr, paragrafi.
+  // Preferito a una libreria esterna: nessuna dipendenza da CDN che possa
+  // rallentare o sparire, e l'input e' solo il nostro testo di release.
+  function md(src) {
+    var lines = String(src || '').replace(/\r/g, '').split('\n');
+    var out = [], inList = false, para = [];
+    function closeList() { if (inList) { out.push('</ul>'); inList = false; } }
+    // Le righe consecutive fanno UN paragrafo: senza unirle, un **grassetto**
+    // che va a capo resta visibile come asterischi e il testo si spezza.
+    function flushPara() {
+      if (!para.length) return;
+      out.push('<p class="text-nanoText text-sm leading-relaxed mb-3">' + inline(para.join(' ')) + '</p>');
+      para = [];
+    }
+    function inline(t) {
+      return esc(t)
+        .replace(/`([^`]+)`/g, '<code class="bg-nanoBg px-1.5 py-0.5 rounded text-nanoGreen text-xs">$1</code>')
+        .replace(/\*\*([^*]+)\*\*/g, '<strong class="text-white font-semibold">$1</strong>')
+        .replace(/(^|[^*])\*([^*]+)\*/g, '$1<em>$2</em>');
+    }
+    for (var i = 0; i < lines.length; i++) {
+      var l = lines[i], m;
+      if (!l.trim()) { flushPara(); closeList(); continue; }
+      if (/^\s*(---+|___+)\s*$/.test(l)) { flushPara(); closeList(); out.push('<hr class="border-gray-800 my-5">'); continue; }
+      if ((m = l.match(/^(#{1,4})\s+(.*)$/))) {
+        flushPara(); closeList();
+        out.push('<h3 class="text-nanoGreen font-semibold text-sm uppercase tracking-wider mt-6 mb-3">' + inline(m[2]) + '</h3>');
+        continue;
+      }
+      if ((m = l.match(/^\s*[-*]\s+(.*)$/))) {
+        flushPara();
+        if (!inList) { out.push('<ul class="text-nanoText text-sm space-y-2 mb-3">'); inList = true; }
+        out.push('<li class="flex items-start gap-2"><span class="text-nanoGreen mt-0.5">&#9679;</span><span>' + inline(m[1]) + '</span></li>');
+        continue;
+      }
+      // riga di continuazione di un elenco puntato: appendila all'ultima voce
+      if (inList && /^\s{2,}\S/.test(l)) {
+        out[out.length - 1] = out[out.length - 1].replace(/<\/span><\/li>$/, ' ' + inline(l.trim()) + '</span></li>');
+        continue;
+      }
+      closeList();
+      para.push(l.trim());
+    }
+    flushPara();
+    closeList();
+    return out.join('');
+  }
+
+  function fmtSize(b) {
+    if (!b) return '';
+    var mb = b / 1048576;
+    return mb >= 1 ? Math.round(mb) + ' MB' : Math.round(b / 1024) + ' KB';
+  }
+
+  function fmtDate(iso) {
+    try {
+      return new Date(iso).toLocaleDateString(LOCALE, { day: 'numeric', month: 'long', year: 'numeric' });
+    } catch (e) { return ''; }
+  }
+
+  function card(rel, isLatest) {
+    var tag = rel.tag_name || '';
+    var ver = tag.replace(/^(win|mac)-v/, '');
+    var asset = (rel.assets || []).filter(function (a) {
+      var n = (a.name || '').toLowerCase();
+      return n.endsWith('.exe') || n.endsWith('.dmg') || n.endsWith('.pkg');
+    })[0];
+    var border = isLatest ? 'border-nanoGreen/30' : 'border-gray-800';
+    var h = '<div class="bg-nanoPanel border ' + border + ' rounded-2xl p-8 relative">';
+    if (isLatest) {
+      h += '<div class="absolute -top-3 left-6 bg-nanoGreen text-nanoBg text-xs font-bold px-3 py-1 rounded-full">' + T.latest + '</div>';
+    }
+    h += '<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 mt-2 gap-2">'
+       + '<h2 class="text-2xl font-bold text-white">v' + esc(ver) + '</h2>'
+       + '<div class="flex items-center gap-4">'
+       + '<span class="text-nanoText text-sm">' + fmtDate(rel.published_at) + '</span>';
+    if (asset) {
+      h += '<a href="' + esc(asset.browser_download_url) + '" class="text-nanoGreen hover:text-nanoGreenHover text-sm font-semibold whitespace-nowrap">&#8595; ' + T.dl + ' (' + fmtSize(asset.size) + ')</a>';
+    }
+    h += '</div></div><div>' + md(rel.body) + '</div></div>';
+    return h;
+  }
+
+  function render(rels, platform) {
+    var box = document.getElementById('clList');
+    if (!box) return;
+    var mine = (rels || []).filter(function (r) {
+      return !r.draft && !r.prerelease && (r.tag_name || '').indexOf(platform + '-v') === 0;
+    });
+    if (!mine.length) {
+      box.innerHTML = '<p class="text-nanoText text-center">' + T.none + '</p>';
+      return;
+    }
+    box.innerHTML = mine.map(function (r, i) { return card(r, i === 0); }).join('');
+  }
+
+  function setTab(platform, rels) {
+    ['win', 'mac'].forEach(function (p) {
+      var b = document.getElementById('clTab_' + p);
+      if (!b) return;
+      if (p === platform) {
+        b.className = 'px-5 py-2 rounded-lg text-sm font-semibold bg-nanoGreen text-nanoBg transition';
+      } else {
+        b.className = 'px-5 py-2 rounded-lg text-sm font-semibold bg-nanoPanel text-nanoText border border-gray-800 hover:text-white transition';
+      }
+    });
+    render(rels, platform);
+  }
+
+  function guessPlatform() {
+    var ua = (navigator.userAgent || '') + ' ' + (navigator.platform || '');
+    return /Mac|iPhone|iPad/i.test(ua) ? 'mac' : 'win';
+  }
+
+  function boot(rels) {
+    var host = document.getElementById('clList');
+    if (!host) return;
+    var start = guessPlatform();
+    ['win', 'mac'].forEach(function (p) {
+      var b = document.getElementById('clTab_' + p);
+      if (b) b.onclick = function () { setTab(p, rels); };
+    });
+    var note = document.getElementById('clSource');
+    if (note) note.textContent = T.src;
+    setTab(start, rels);
+  }
+
+  // struttura: schede + contenitore. Se l'API fallisce non tocchiamo nulla
+  // e resta il contenuto statico gia' presente nella pagina.
+  var anchor = document.getElementById('clStatic');
+  if (!anchor) return;
+
+  function activate(rels) {
+    if (!rels || !rels.length) return;
+    anchor.innerHTML =
+      '<div class="flex justify-center gap-3 mb-10">'
+      + '<button id="clTab_win" type="button">Windows</button>'
+      + '<button id="clTab_mac" type="button">macOS</button>'
+      + '</div>'
+      + '<div id="clList" class="space-y-8"></div>'
+      + '<p id="clSource" class="text-center text-gray-600 text-xs mt-10"></p>';
+    boot(rels);
+  }
+
+  try {
+    var c = JSON.parse(sessionStorage.getItem(CACHE_KEY) || 'null');
+    if (c && (Date.now() - c.t) < CACHE_TTL) { activate(c.d); return; }
+  } catch (e) {}
+
+  fetch('https://api.github.com/repos/' + REPO + '/releases?per_page=30')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) {
+      if (!d) return;
+      try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ t: Date.now(), d: d })); } catch (e) {}
+      activate(d);
+    })
+    .catch(function () {});
+})();
+</script>
+
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c49dc1dda10948f59561e98eba162800"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
