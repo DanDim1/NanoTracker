@@ -237,6 +237,10 @@
         </div>
     </footer>
 
+
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c49dc1dda10948f59561e98eba162800"}'></script><!-- End Cloudflare Web Analytics -->
+
 <!-- Pagina Versioni auto-aggiornante dalle note delle release GitHub (v1.7.0+).
      Il contenuto statico qui sopra resta come FALLBACK se l'API non risponde:
      la pagina non puo' restare vuota. -->
@@ -253,6 +257,24 @@
     none: 'Nessuna versione trovata per questa piattaforma.', src: 'Aggiornata automaticamente dalle release GitHub'
   };
   var LOCALE = (document.documentElement.lang === 'en') ? 'en-GB' : 'it-IT';
+
+  // Note bilingui: un commento HTML contenente solo "EN", su riga propria, separa
+  // l'italiano (sopra) dall'inglese (sotto). Essendo un commento resta invisibile
+  // sulla pagina release di GitHub, dove si vedono entrambe le lingue; qui invece
+  // mostriamo solo quella corrente.
+  // Se il separatore manca (release precedenti alla convenzione) si mostra tutto.
+  // NB: la stringa letterale del marcatore non va scritta in questo commento —
+  // una sequenza di apertura commento HTML dentro <script> confonde il parser.
+  function pickLang(body) {
+    var src = String(body || '');
+    var m = src.split(/<!--\s*EN\s*-->/i);
+    if (m.length < 2) return src;
+    if (document.documentElement.lang === 'en') {
+      return m.slice(1).join('').replace(/^\s+/, '');
+    }
+    // italiano: togli il separatore visivo lasciato per GitHub
+    return m[0].replace(/\s*(-{3,}|_{3,})\s*$/, '').replace(/\s+$/, '');
+  }
 
   function esc(s) {
     return String(s || '').replace(/[&<>"]/g, function (c) {
@@ -339,7 +361,7 @@
     if (asset) {
       h += '<a href="' + esc(asset.browser_download_url) + '" class="text-nanoGreen hover:text-nanoGreenHover text-sm font-semibold whitespace-nowrap">&#8595; ' + T.dl + ' (' + fmtSize(asset.size) + ')</a>';
     }
-    h += '</div></div><div>' + md(rel.body) + '</div></div>';
+    h += '</div></div><div>' + md(pickLang(rel.body)) + '</div></div>';
     return h;
   }
 
@@ -420,7 +442,5 @@
 })();
 </script>
 
-
-<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c49dc1dda10948f59561e98eba162800"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
