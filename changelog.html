@@ -367,9 +367,8 @@
        + '<h2 class="text-2xl font-bold text-white">v' + esc(ver) + '</h2>'
        + '<div class="flex items-center gap-4">'
        + '<span class="text-nanoText text-sm">' + fmtDate(rel.published_at) + '</span>';
-    if (asset) {
-      h += '<a href="' + esc(asset.browser_download_url) + '" class="text-nanoGreen hover:text-nanoGreenHover text-sm font-semibold whitespace-nowrap">&#8595; ' + T.dl + ' (' + fmtSize(asset.size) + ')</a>';
-    }
+    // download rimosso di proposito: gli installer si scaricano solo dalla home,
+    // dietro l'email gate. La pagina Versioni resta puramente informativa.
     h += '</div></div><div>' + md(pickLang(rel.body)) + '</div></div>';
     return h;
   }
