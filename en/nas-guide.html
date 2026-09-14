@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, follow">
+<title>Nano Tracker — sharing one catalogue across computers</title>
+<meta name="description" content="Step-by-step guide to letting several computers see the same catalogue: on a NAS, on a PC, or by connecting to one that already exists.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2334D399'/><text x='32' y='44' font-family='monospace' font-size='30' font-weight='bold' text-anchor='middle' fill='%230B0D10'>NT</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+:root{
+  --ground:#111316; --panel:#1A1D21; --raised:#22262C; --line:#2C3138;
+  --green:#34D399; --green-dim:#1F7A5A; --amber:#F0B429; --red:#F87171; --blue:#60A5FA;
+  --text:#E7EAEE; --text-soft:#AAB2BD; --text-dim:#7C8794;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--text);
+     font-family:'IBM Plex Sans',system-ui,-apple-system,Segoe UI,sans-serif;
+     line-height:1.62;font-size:16.5px}
+.wrap{max-width:760px;margin:0 auto;padding:44px 22px 90px}
+h1{font-size:30px;line-height:1.22;margin:0 0 10px;letter-spacing:-.02em}
+h2{font-size:21px;margin:0 0 6px;letter-spacing:-.01em}
+p{margin:0 0 14px;color:var(--text-soft)}
+strong{color:var(--text);font-weight:600}
+code{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.86em;
+     background:var(--raised);padding:1.5px 6px;border-radius:4px;color:#CFE8DC}
+a{color:var(--green)}
+.badge{display:inline-block;font-size:12px;letter-spacing:.09em;text-transform:uppercase;
+       color:var(--green);border:1px solid var(--green-dim);border-radius:100px;
+       padding:3px 12px;margin-bottom:18px}
+.lede{font-size:18px;color:var(--text-soft)}
+
+.scelte{display:grid;gap:12px;margin:26px 0 0}
+.scelta{display:block;width:100%;text-align:left;background:var(--panel);
+        border:1px solid var(--line);border-radius:12px;padding:18px 20px;
+        cursor:pointer;font:inherit;color:inherit;
+        transition:border-color .15s,background .15s}
+.scelta:hover{border-color:var(--green-dim);background:var(--raised)}
+.scelta b{display:block;font-size:17px;color:var(--green);margin-bottom:5px}
+.scelta span{display:block;color:var(--text-soft);font-size:15px;line-height:1.5}
+
+.percorso{display:none}
+.percorso.aperto{display:block}
+.torna{display:inline-block;margin:0 0 20px;color:var(--text-dim);
+       font-size:14px;text-decoration:none;cursor:pointer;background:none;
+       border:none;padding:0;font-family:inherit}
+.torna:hover{color:var(--green)}
+
+.passo{display:grid;grid-template-columns:36px 1fr;gap:14px;margin-bottom:22px}
+.n{width:32px;height:32px;border-radius:9px;background:var(--raised);color:var(--green);
+   font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center}
+.passo-c p{margin:0 0 8px}
+.passo-c p:last-child{margin-bottom:0}
+.passo-c strong{color:var(--text)}
+
+.chiave{border-left:3px solid var(--amber);background:rgba(240,180,41,.08);
+        padding:13px 16px;border-radius:0 8px 8px 0;margin:10px 0}
+.chiave p{margin:0;color:var(--text-soft)}
+.nota{border-left:3px solid var(--blue);background:rgba(96,165,250,.07);
+      padding:13px 16px;border-radius:0 8px 8px 0;margin:10px 0}
+.nota p{margin:0;color:var(--text-soft)}
+.fine{background:var(--panel);border:1px solid var(--green-dim);border-radius:12px;
+      padding:18px 20px;margin:26px 0 0}
+.fine p{margin:0;color:var(--text-soft)}
+
+details{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+        padding:14px 18px;margin:26px 0 0}
+summary{cursor:pointer;color:var(--text);font-weight:600;font-size:15px}
+details[open] summary{margin-bottom:10px}
+details ul{margin:0;padding-left:20px}
+details li{color:var(--text-soft);margin-bottom:8px}
+
+.come{margin:10px 0 0;background:var(--raised);border:1px solid var(--line);
+      border-radius:8px;padding:10px 14px}
+.come summary{font-size:13.5px;font-weight:600;color:var(--blue);cursor:pointer}
+.come[open] summary{margin-bottom:8px}
+.come p{font-size:14px;margin:0 0 8px}
+.come p:last-child{margin-bottom:0}
+.come ol{margin:0;padding-left:20px;font-size:14px}
+.come li{color:var(--text-soft);margin-bottom:6px}
+kbd{font-family:'JetBrains Mono',monospace;font-size:.82em;background:var(--raised);
+    border:1px solid var(--line);border-bottom-width:2px;padding:1px 6px;border-radius:5px;
+    color:var(--text)}
+.esempio{font-family:'JetBrains Mono',monospace;font-size:.86em;color:var(--green)}
+
+footer{margin-top:52px;border-top:1px solid var(--line);padding-top:20px;
+       color:var(--text-dim);font-size:14px}
+@media(max-width:600px){.wrap{padding:30px 16px 60px}h1{font-size:24px}}
+</style>
+</head>
+<body>
+<script>const LANG = 'en';</script>
+<div class="wrap">
+
+<span class="badge">Nano Tracker</span>
+<h1 id="cima">Sharing one catalogue across computers</h1>
+<p class="lede">You only need this if several of you work together. If you use Nano Tracker on
+a single computer, everything is already fine and this page is not for you.</p>
+
+<!-- ══════════ THE QUESTION ══════════ -->
+<div id="domanda">
+  <h2 style="margin-top:34px;">What do you need to do?</h2>
+  <p>Pick the line that matches your situation: we will show you <strong>only</strong> the
+  steps you need.</p>
+
+  <div class="scelte">
+    <button class="scelta" onclick="apri('nas')">
+      <b>I want to create the database on a NAS</b>
+      <span>You have a NAS running in the studio, whatever the brand. This is the most common
+      choice: it uses little power and is always available.</span>
+    </button>
+    <button class="scelta" onclick="apri('pc')">
+      <b>I want to create the database on a computer</b>
+      <span>You have no NAS, but there is a Windows PC that stays switched on. This is the
+      simplest of the three.</span>
+    </button>
+    <button class="scelta" onclick="apri('collega')">
+      <b>The database already exists, I just need to connect</b>
+      <span>A colleague has already created it and sent you the details, or you have them.</span>
+    </button>
+  </div>
+</div>
+
+<!-- ══════════ NAS ══════════ -->
+<div class="percorso" id="p-nas">
+  <button class="torna" onclick="chiudi()">← That is not my situation</button>
+  <h2>Creating the database on a NAS</h2>
+  <p>Seven steps. The first four on the NAS, the last three in Nano Tracker.</p>
+
+  <div class="passo"><div class="n">1</div><div class="passo-c">
+    <p>Open the NAS in your browser, as if it were a website. The address is the NAS number
+    followed by <code>:5000</code> - for example
+    <span class="esempio">http://192.168.1.101:5000</span> - and log in with the NAS
+    administrator account.</p>
+    <details class="come"><summary>I do not know my NAS address</summary>
+      <p>Four ways, easiest first:</p>
+      <ol>
+        <li><strong>With your NAS maker's own tool.</strong> Synology:
+            <a href="https://finds.synology.com" target="_blank">finds.synology.com</a>, opens in
+            the browser and finds the NAS by itself. QNAP: <em>Qfinder Pro</em>. Other brands
+            (ASUSTOR, UGREEN, TerraMaster, Western Digital and so on) have an equivalent tool,
+            usually called <em>finder</em> or <em>discovery</em>.</li>
+        <li><strong>From Windows</strong>: open <strong>File Explorer</strong> and click
+            <strong>Network</strong> in the left column. The NAS appears under its name;
+            right-click it and choose <strong>Properties</strong>: the address is there.</li>
+        <li><strong>From a Mac</strong>: in Finder open <strong>Go → Connect to Server</strong>
+            (or <kbd>⌘K</kbd>). If you have used the NAS before, the recent servers list
+            shows something like <span class="esempio">smb://192.168.1.101</span>: the number is
+            what you need. Otherwise press <strong>Browse</strong> to see the devices on your
+            network.</li>
+        <li><strong>From your router</strong>: in the list of connected devices. The most
+            awkward way, but it always works, whatever the brand.</li>
+      </ol>
+      <p>The address is four numbers separated by dots, like
+      <span class="esempio">192.168.1.101</span>.</p>
+    </details>
+    <details class="come"><summary>I typed the address and nothing opens</summary>
+      <p>Try <code>:5001</code> instead of <code>:5000</code>, writing <strong>https</strong>
+      rather than http - some NAS units only accept that:
+      <span class="esempio">https://192.168.1.101:5001</span></p>
+    </details>
+  </div></div>
+
+  <div class="passo"><div class="n">2</div><div class="passo-c">
+    <p>Open <strong>Package Center</strong>, search for <strong>MariaDB 10</strong> and press
+    <strong>Install</strong>.</p>
+    <div class="nota"><p><strong>Brands only change the names.</strong> On QNAP the Package
+    Center is called the <em>App Center</em>; on other brands it is the <em>App Store</em> or
+    <em>App Management</em>. <strong>Any NAS that can install MariaDB will do</strong>: we
+    describe the Synology clicks because it is the most widespread, but the steps are the same
+    everywhere.</p></div>
+  </div></div>
+
+  <div class="passo"><div class="n">3</div><div class="passo-c">
+    <p>During installation it asks you to choose a <strong>password</strong>. This is the
+    database administrator password, and it is <strong>not</strong> the one you use to log into
+    the NAS: it is something new, you choose it.</p>
+    <div class="chiave"><p><strong>Write it down on paper.</strong> You need it at step 7 and
+    the NAS will never show it to you again. Lose it and you start over.</p></div>
+  </div></div>
+
+  <div class="passo"><div class="n">4</div><div class="passo-c">
+    <p>Once it has finished, open <strong>MariaDB 10</strong> in Package Center and press
+    <strong>Open</strong>.</p>
+    <div class="chiave"><p><strong>This is the step where nearly everyone gets stuck.</strong>
+    In the window that appears, tick <strong>«Enable TCP/IP connection»</strong> and press
+    <strong>Apply</strong>. Without that tick the NAS answers nobody, and it looks like
+    nothing works.</p></div>
+    <p>Next to the tick box there is a <strong>number</strong>: that is the database port,
+    usually <code>3306</code>. Note it down.</p>
+    <details class="come"><summary>Hold on: earlier it was 5000, now 3306. Why?</summary>
+      <p>They are two different ports with nothing to do with each other. <code>5000</code> is
+      only for <em>you</em>, to open the NAS in a browser. <code>3306</code> is the one Nano
+      Tracker will use to talk to the database. It is the second one you need.</p>
+      <p>If you see <code>3307</code> next to the tick box instead of 3306, that is fine: write
+      that one down. It happens when an older MariaDB is also installed on the NAS.</p>
+    </details>
+  </div></div>
+
+  <div class="passo"><div class="n">5</div><div class="passo-c">
+    <p>Go back to Nano Tracker. At the bottom of the left-hand menu there is the
+    <strong>Settings</strong> gear: open it and scroll to the <strong>Database</strong> box.
+    Press the <strong>+</strong> next to «Connection» and choose
+    <strong>«Create a new shared database»</strong>.</p>
+  </div></div>
+
+  <div class="passo"><div class="n">6</div><div class="passo-c">
+    <p>Press <strong>«Search for MariaDB on the network»</strong>. If your NAS shows up, click
+    it: from there the app does the rest.</p>
+    <div class="nota"><p>Not finding it? Open <strong>«I would rather type the address
+    myself»</strong>, type the NAS address, leave the port empty and press
+    <strong>Check</strong>. If it stays red, see <em>if something does not work</em> below.</p></div>
+  </div></div>
+
+  <div class="passo"><div class="n">7</div><div class="passo-c">
+    <p>It asks for the <strong>password from step 3</strong>, then a name and a password for
+    the new database. Press <strong>Create and connect</strong>.</p>
+  </div></div>
+
+  <div class="fine"><p><strong>Done.</strong> The other computers in the studio do not need any
+  of this: on this computer open <strong>Settings → Database → Copy Credentials</strong>, send
+  those details to your colleagues, and they follow the third route on this page — the one
+  about connecting.</p></div>
+</div>
+
+<!-- ══════════ PC ══════════ -->
+<div class="percorso" id="p-pc">
+  <button class="torna" onclick="chiudi()">← That is not my situation</button>
+  <h2>Creating the database on a computer</h2>
+  <p>Pick a Windows PC that <strong>stays switched on</strong> while the others work. Six
+  steps.</p>
+
+  <div class="passo"><div class="n">1</div><div class="passo-c">
+    <p>On that computer go to
+    <a href="https://mariadb.org/download/" target="_blank">mariadb.org/download</a> and download
+    MariaDB for Windows.</p>
+    <details class="come"><summary>The page asks me things, what do I pick?</summary>
+      <p>Leave the version it offers you (that is the recommended one). Then choose
+      <strong>Windows</strong> as the operating system and <strong>MSI Package</strong> as the
+      file type. The architecture is <strong>x86_64</strong>, which is what every computer of
+      the last fifteen years uses.</p>
+      <p>Download it and double-click: the file ends in <code>.msi</code>.</p>
+    </details>
+  </div></div>
+
+  <div class="passo"><div class="n">2</div><div class="passo-c">
+    <p>Run it and continue until it asks you for a password.</p>
+  </div></div>
+
+  <div class="passo"><div class="n">3</div><div class="passo-c">
+    <p>Type a <strong>password</strong> and confirm it. <strong>Write it down</strong>: you
+    will need it at the end.</p>
+    <div class="chiave"><p><strong>On the same page, tick the box
+    «Enable access from remote machines for 'root' user».</strong> It is a long line of text,
+    but it is the one that lets the other computers connect. Without it, nothing works.</p></div>
+  </div></div>
+
+  <div class="passo"><div class="n">4</div><div class="passo-c">
+    <p>Continue, leaving everything as it is, and finish the installation.</p>
+  </div></div>
+
+  <div class="passo"><div class="n">5</div><div class="passo-c">
+    <p>On that computer open the Start menu, type <code>cmd</code>, open the
+    <strong>Command Prompt</strong> and type <code>ipconfig</code>. You want the
+    <strong>IPv4 Address</strong> line: a number like <code>192.168.1.50</code>. Note it
+    down.</p>
+    <div class="chiave"><p>Windows blocks incoming connections. On that PC open
+    <strong>Windows Defender Firewall → Advanced settings → Inbound Rules → New Rule → Port →
+    TCP → 3306 → Allow</strong>. It is the equivalent of the NAS tick box: without it, the
+    others cannot reach it.</p></div>
+  </div></div>
+
+  <div class="passo"><div class="n">6</div><div class="passo-c">
+    <p>In Nano Tracker open the <strong>Settings</strong> gear at the bottom of the left-hand
+    menu and scroll to the <strong>Database</strong> box. Press the <strong>+</strong>, choose
+    <strong>«Create a new shared database»</strong> and press
+    <strong>«Search for MariaDB on the network»</strong>.</p>
+    <p>It then asks for the <strong>password from step 3</strong> and a name for the new
+    database. Press <strong>Create and connect</strong>.</p>
+    <div class="nota"><p>If the search does not find the computer, open
+    <strong>«I would rather type the address myself»</strong> and type the number from
+    step 5.</p></div>
+  </div></div>
+
+  <div class="fine"><p><strong>Done.</strong> Send the details to the other computers with
+  <strong>Settings → Database → Copy Credentials</strong>: all they need is the third route on
+  this page.</p></div>
+</div>
+
+<!-- ══════════ CONNECTING ══════════ -->
+<div class="percorso" id="p-collega">
+  <button class="torna" onclick="chiudi()">← That is not my situation</button>
+  <h2>Connecting to a database that already exists</h2>
+  <p>Three steps, two minutes.</p>
+
+  <div class="passo"><div class="n">1</div><div class="passo-c">
+    <p>Ask whoever created it to send you the details. On <em>their</em> computer they are in
+    <strong>Settings → Database → Copy Credentials</strong>: one button copies everything at
+    once, so nobody has to type anything out and nobody gets it wrong.</p>
+    <details class="come"><summary>What exactly do they need to send me?</summary>
+      <p>Five things: the <strong>address</strong> (like
+      <span class="esempio">192.168.1.101</span>), the <strong>port</strong> (like
+      <span class="esempio">3306</span>), the <strong>database name</strong>, the
+      <strong>user name</strong> and the <strong>password</strong>.</p>
+      <p>The Copy Credentials button puts them all on the clipboard together: they just paste
+      them into a message.</p>
+    </details>
+  </div></div>
+
+  <div class="passo"><div class="n">2</div><div class="passo-c">
+    <p>On your computer open the <strong>Settings</strong> gear at the bottom of the left-hand
+    menu, scroll to the <strong>Database</strong> box, press the <strong>+</strong> and choose
+    <strong>«Connect to an existing shared database»</strong>.</p>
+  </div></div>
+
+  <div class="passo"><div class="n">3</div><div class="passo-c">
+    <p>Fill the fields with what you were sent, press <strong>Test Connection</strong> and then
+    <strong>Save Connection</strong>.</p>
+  </div></div>
+
+  <div class="fine"><p><strong>Done.</strong> From now on you see the same catalogue as your
+  colleagues: the disks they have already catalogued show up for you too, even if you have
+  never plugged those disks into this computer.</p></div>
+</div>
+
+<!-- ══════════ TROUBLE ══════════ -->
+<details id="problemi">
+  <summary>If something does not work</summary>
+
+  <p style="margin-top:12px;"><strong>«No answer»</strong> when you press Check. Look at these,
+  in this order:</p>
+  <ul>
+    <li>the <strong>«Enable TCP/IP connection»</strong> tick box on the NAS (or the firewall
+        rule, if it is a Windows PC);</li>
+    <li>the <strong>port</strong>: on some NAS units it is not 3306 but <strong>3307</strong>.
+        The right number is written in the MariaDB window on the NAS;</li>
+    <li>the <strong>address</strong>: make sure it really is the NAS or the PC.</li>
+  </ul>
+
+  <p><strong>«Answers but refuses this computer».</strong> The database is there and the port
+  is right, but it will not accept connections from outside. On many NAS units the
+  administrator can only log in from the NAS itself. Ask whoever runs your network, or create
+  it on the NAS with phpMyAdmin using these three lines (change only the password):</p>
+  <ul style="list-style:none;padding-left:0">
+    <li><code>CREATE DATABASE nano_tracker CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</code></li>
+    <li><code>CREATE USER 'nano_tracker'@'%' IDENTIFIED BY 'your-password';</code></li>
+    <li><code>GRANT ALL PRIVILEGES ON nano_tracker.* TO 'nano_tracker'@'%';</code></li>
+  </ul>
+  <p>Then come back here and follow the third route, the one about connecting.</p>
+
+  <p><strong>Do I lose what I have already catalogued?</strong> No. The catalogue stays on your
+  computer and the app copies it across to the shared one: nobody starts from scratch.</p>
+
+  <p><strong>Does the NAS have to stay on?</strong> Only while you work. If it does not answer,
+  Nano Tracker falls back to the catalogue on your computer and never blocks you.</p>
+
+  <p><strong>Is it safe?</strong> The database stays inside your own network. Do not forward
+  that port on your router — there is no need.</p>
+</details>
+
+<footer>
+  Broader questions — what a shared database is, whether your files end up on the NAS, how
+  to bring across the catalogue you already have:
+  <a href="shared-database-faq.html">frequently asked questions</a>.<br><br>
+  Still stuck? Write to us saying which step you are on and what the Check button says —
+  <a href="mailto:support@nanotracker.pro">support@nanotracker.pro</a>.<br>
+  <a href="https://nanotracker.pro/en/">nanotracker.pro</a>
+</footer>
+
+</div>
+
+<script>
+// One route at a time: someone who does not know what a database is should not
+// have to read the steps that do not apply to them. No library, and without
+// JavaScript the page stays readable (see the <noscript> below).
+function apri(quale) {
+  document.getElementById('domanda').style.display = 'none';
+  ['nas', 'pc', 'collega'].forEach(function (k) {
+    document.getElementById('p-' + k).classList.toggle('aperto', k === quale);
+  });
+  document.getElementById('cima').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function chiudi() {
+  ['nas', 'pc', 'collega'].forEach(function (k) {
+    document.getElementById('p-' + k).classList.remove('aperto');
+  });
+  document.getElementById('domanda').style.display = 'block';
+  document.getElementById('cima').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+<noscript><style>.percorso{display:block}.torna{display:none}</style></noscript>
+</body>
+</html>
