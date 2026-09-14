@@ -383,6 +383,10 @@ h2 { font-size: var(--step-3); line-height: 1.15; letter-spacing: -.025em; margi
 }
 .gate input:focus { border-color: var(--green); }
 .gate input::placeholder { color: var(--text-dim); }
+/* Campo esca per i raccoglitori automatici: invisibile e non raggiungibile
+   da tastiera. Se arriva compilato, l'iscrizione viene scartata. */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px;
+      opacity: 0; pointer-events: none; }
 .gate .fine { font-family: var(--mono); font-size: .7rem; color: var(--text-dim); margin: 14px 0 0; }
 
 .dls { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: var(--reading); margin: 0 auto; }
@@ -670,20 +674,23 @@ h2 { font-size: var(--step-3); line-height: 1.15; letter-spacing: -.025em; margi
       <form id="downloadEmailForm" onsubmit="unlockDownload(event)">
         <label for="downloadEmail" class="sr-only">Indirizzo email</label>
         <input type="email" id="downloadEmail" required placeholder="La tua email">
+        <input type="text" id="dlWebsite" name="website" class="hp"
+               tabindex="-1" autocomplete="off" aria-hidden="true"
+               placeholder="Non compilare">
         <button type="submit" class="btn btn-primary">Scarica</button>
       </form>
       <p class="fine">Niente spam. Solo aggiornamenti importanti sul prodotto.</p>
     </div>
 
     <div id="downloadCards" class="dls hidden">
-      <a href="https://github.com/DanDim1/NanoTracker/releases/download/win-v1.7.8/NanoTracker_Setup_v1.7.8.exe" id="dlWin" class="dl">
+      <a href="https://github.com/DanDim1/NanoTracker/releases/download/win-v1.8.0/NanoTracker_Setup_v1.8.0.exe" id="dlWin" class="dl">
         <span class="dl-os">
           <svg width="40" height="40" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zm203.8 28L448 480V268.4H203.8v177.9zm0-380.6v180.1H448V32L203.8 65.7z"/></svg>
         </span>
         <h3>Windows</h3>
         <p class="dl-req">Windows 10 / 11 (64-bit)</p>
         <span class="btn btn-outline">Scarica per Windows</span>
-        <p class="dl-meta" id="dlWinMeta">NanoTracker_Setup_v1.7.8.exe — 66 MB</p>
+        <p class="dl-meta" id="dlWinMeta">NanoTracker_Setup_v1.8.0.exe — 66 MB</p>
       </a>
 
       <a href="https://github.com/DanDim1/NanoTracker/releases/download/mac-v1.7.6/NanoTracker_v1.7.6.dmg" id="dlMac" class="dl">
@@ -858,32 +865,74 @@ h2 { font-size: var(--step-3); line-height: 1.15; letter-spacing: -.025em; margi
 })();
 </script>
 
-<!-- ═══ email gate: invariato rispetto alla versione online ══ -->
+<!-- ═══ email gate: iscrizione dal Worker, esito controllato ══ -->
 <script>
-function unlockDownload(e) {
+(function () {
+  var WORKER = 'https://nanotracker-webhook.sixpeaks.workers.dev/subscribe';
+  var LANG = 'it';
+  var K_OK = 'nt_download_email';      // gia' iscritto: il gate resta aperto
+  var K_CODA = 'nt_subscribe_pending'; // iscrizione non riuscita: da ritentare
+
+  function iscrivi(email, hp) {
+    return fetch(WORKER, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, lang: LANG, stage: 'download', hp: hp || '' })
+    }).then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    });
+  }
+
+  function sblocca() {
+    document.getElementById('downloadEmailGate').classList.add('hidden');
+    document.getElementById('downloadCards').classList.remove('hidden');
+  }
+
+  // Prima questa funzione sbloccava dentro un `.finally()`: qualunque cosa
+  // rispondesse Brevo il download partiva e il contatto si perdeva SENZA che
+  // nessuno potesse accorgersene. Il download continua a sbloccarsi comunque —
+  // un guasto nostro non deve impedire a un utente di scaricare — ma adesso
+  // l'indirizzo non si perde: se l'iscrizione fallisce resta in coda e si
+  // ritenta alla visita successiva.
+  window.unlockDownload = function (e) {
     e.preventDefault();
-    var email = document.getElementById('downloadEmail').value;
+    var campo = document.getElementById('downloadEmail');
+    var email = (campo.value || '').trim();
     if (!email) return;
+    var esca = document.getElementById('dlWebsite');
+    var hp = esca ? esca.value : '';
     var btn = e.target.querySelector('button');
+    var testo = btn.textContent;
     btn.textContent = '...';
     btn.disabled = true;
-    var formData = new FormData();
-    formData.append('EMAIL', email);
-    fetch('https://86bd8aa6.sibforms.com/serve/MUIFAISs4Dbu-YpM4At50QOrbKBMiKK1nOiqXrItfsMH6bpPCQk_nk21X5xMJSvcytAUe_X5qJOqYfeZRT38EbDWsKZixhhDvP5YItWJ6HDkog5V27ZPuTWjXf3sQ7OE3q8tICIq5w1-FczYJJYRmQsrUsOQ3JBgbU7USddgJVukUfq7pVfQyLcJ5eSx3lCBcbHf5izjPxXacitLmg==', {
-        method: 'POST',
-        body: formData
-    }).finally(function() {
-        localStorage.setItem('nt_download_email', email);
-        document.getElementById('downloadEmailGate').classList.add('hidden');
-        document.getElementById('downloadCards').classList.remove('hidden');
+
+    iscrivi(email, hp).then(function () {
+      try { localStorage.removeItem(K_CODA); } catch (_) {}
+    }).catch(function (err) {
+      try { localStorage.setItem(K_CODA, email); } catch (_) {}
+      if (window.console) console.warn('Iscrizione non riuscita, messa in coda:', err.message);
+    }).then(function () {
+      try { localStorage.setItem(K_OK, email); } catch (_) {}
+      btn.textContent = testo;
+      btn.disabled = false;
+      sblocca();
     });
-}
-if (localStorage.getItem('nt_download_email')) {
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('downloadEmailGate').classList.add('hidden');
-        document.getElementById('downloadCards').classList.remove('hidden');
-    });
-}
+  };
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var inCoda = null;
+    try {
+      if (localStorage.getItem(K_OK)) sblocca();
+      inCoda = localStorage.getItem(K_CODA);
+    } catch (_) {}
+    if (inCoda) {
+      iscrivi(inCoda, '').then(function () {
+        try { localStorage.removeItem(K_CODA); } catch (_) {}
+      }).catch(function () { /* si ritenta alla prossima visita */ });
+    }
+  });
+})();
 </script>
 
 <script>window.lemonSqueezyAffiliateConfig = { store: "sixpeaks" };</script>
