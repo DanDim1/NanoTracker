@@ -1,0 +1,9 @@
+# nanotracker.pro
+# 12 pagine indicizzabili, elencate nella sitemap qui sotto.
+# I crawler degli assistenti AI sono ammessi di proposito: vogliamo
+# essere citati quando qualcuno chiede se il suo disco sta per rompersi.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://nanotracker.pro/sitemap.xml

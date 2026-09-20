@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://nanotracker.pro/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/"/>
+  </url>
+  <url>
+    <loc>https://nanotracker.pro/changelog.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/changelog.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/changelog.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/changelog.html"/>
+  </url>
+  <url>
+    <loc>https://nanotracker.pro/faq-database-condiviso.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/faq-database-condiviso.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/en/shared-database-faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/en/shared-database-faq.html"/>
+  </url>
+  <url>
+    <loc>https://nanotracker.pro/guida-nas.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/guida-nas.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/en/nas-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/en/nas-guide.html"/>
+  </url>
+  <url>
+    <loc>https://nanotracker.pro/refund.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/refund.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/refund.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/refund.html"/>
+  </url>
+  <url>
+    <loc>https://nanotracker.pro/terms.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/terms.html"/>
+  </url>
+  <url>
+    <loc>https://nanotracker.pro/en/nas-guide.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/guida-nas.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/en/nas-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/en/nas-guide.html"/>
+  </url>
+  <url>
+    <loc>https://nanotracker.pro/en/shared-database-faq.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/faq-database-condiviso.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/en/shared-database-faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/en/shared-database-faq.html"/>
+  </url>
+  <url>
+    <loc>https://nanotracker.pro/it/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/"/>
+  </url>
+  <url>
+    <loc>https://nanotracker.pro/it/changelog.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/changelog.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/changelog.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/changelog.html"/>
+  </url>
+  <url>
+    <loc>https://nanotracker.pro/it/refund.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/refund.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/refund.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/refund.html"/>
+  </url>
+  <url>
+    <loc>https://nanotracker.pro/it/terms.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/terms.html"/>
+  </url>
+</urlset>

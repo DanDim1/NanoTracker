@@ -447,6 +447,21 @@ h2 { font-size: var(--step-3); line-height: 1.15; letter-spacing: -.025em; margi
 .nt-lingua button:hover{color:var(--text)}
 @media(max-width:560px){.nt-lingua{padding:9px 16px;font-size:12.5px;gap:10px}}
 </style>
+
+<style>
+.altro{margin-top:30px}
+.altro h3{font-size:1rem;margin:0 0 12px;letter-spacing:-.01em}
+.altro-griglia{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.altro-carta{display:block;background:var(--panel);border:1px solid var(--line);
+  border-radius:12px;padding:16px 18px;text-decoration:none;color:inherit;
+  transition:border-color .15s,transform .15s}
+.altro-carta:hover{border-color:var(--green-deep);transform:translateY(-1px)}
+.altro-carta b{display:block;font-size:.94rem;margin-bottom:4px}
+.altro-carta span{color:var(--text-mid);font-size:.84rem}
+.site-foot .foot-guide{margin-bottom:10px}
+.site-foot .foot-guide a{color:var(--text-mid);font-size:.82rem}
+@media(max-width:640px){.altro-griglia{grid-template-columns:1fr}}
+</style>
 </head>
 
 <body>
@@ -756,6 +771,14 @@ h2 { font-size: var(--step-3); line-height: 1.15; letter-spacing: -.025em; margi
         <p>Carte di credito/debito (Visa, Mastercard, Amex), PayPal, Apple Pay e Google Pay. I pagamenti sono gestiti da Lemon Squeezy in modo sicuro.</p>
       </details>
     </div>
+
+    <div class="altro">
+      <h3>Vuoi andare più a fondo?</h3>
+      <div class="altro-griglia">
+        <a class="altro-carta" href="/guida-nas.html"><b>Collegare più computer allo stesso catalogo</b><span>Passo per passo, dal NAS al computer di casa. Anche se è la prima volta.</span></a>
+        <a class="altro-carta" href="/faq-database-condiviso.html"><b>Il catalogo condiviso, in venti domande</b><span>Cos’è, se serve un NAS, e se i tuoi file finiscono da qualche parte. (No.)</span></a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -792,6 +815,10 @@ h2 { font-size: var(--step-3); line-height: 1.15; letter-spacing: -.025em; margi
 <footer class="site-foot">
   <div class="wrap">
     <p>© 2026 NanoTracker by Sixpeaks Solutions. Tutti i diritti riservati.</p>
+    <nav class="foot-guide" aria-label="Guide">
+      <a href="/guida-nas.html">Catalogo su più computer</a>
+      <a href="/faq-database-condiviso.html">Domande sul catalogo condiviso</a>
+    </nav>
     <nav aria-label="Link legali">
       <a href="/it/terms.html">Termini di servizio</a>
       <a href="/it/refund.html">Politica di rimborso</a>
