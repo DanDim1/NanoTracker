@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://nanotracker.pro/shared-database-faq.html">
+<link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/faq-database-condiviso.html">
+<link rel="alternate" hreflang="en" href="https://nanotracker.pro/shared-database-faq.html">
+<link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/shared-database-faq.html">
+<title>Nano Tracker — shared catalogue FAQ</title>
+<meta name="description" content="Short answers to the most common questions about the shared database: what it is, whether you need a NAS, and how to bring across the catalogue you already have.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2334D399'/><text x='32' y='44' font-family='monospace' font-size='30' font-weight='bold' text-anchor='middle' fill='%230B0D10'>NT</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+:root{
+  --ground:#111316; --panel:#1A1D21; --raised:#22262C; --line:#2C3138;
+  --green:#34D399; --green-dim:#1F7A5A; --amber:#F0B429; --red:#F87171; --blue:#60A5FA;
+  --text:#E7EAEE; --text-soft:#AAB2BD; --text-dim:#7C8794;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--text);
+     font-family:'IBM Plex Sans',system-ui,-apple-system,Segoe UI,sans-serif;
+     line-height:1.62;font-size:16.5px}
+.wrap{max-width:760px;margin:0 auto;padding:44px 22px 90px}
+h1{font-size:30px;line-height:1.22;margin:0 0 10px;letter-spacing:-.02em}
+h2{font-size:15px;margin:40px 0 12px;letter-spacing:.08em;text-transform:uppercase;
+   color:var(--text-dim);font-weight:600}
+p{margin:0 0 14px;color:var(--text-soft)}
+p:last-child{margin-bottom:0}
+strong{color:var(--text);font-weight:600}
+code{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.86em;
+     background:var(--raised);padding:1.5px 6px;border-radius:4px;color:#CFE8DC}
+a{color:var(--green)}
+.badge{display:inline-block;font-size:12px;letter-spacing:.09em;text-transform:uppercase;
+       color:var(--green);border:1px solid var(--green-dim);border-radius:100px;
+       padding:3px 12px;margin-bottom:18px}
+.lede{font-size:18px;color:var(--text-soft)}
+
+.q{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+   padding:15px 18px;margin-bottom:10px}
+.q summary{cursor:pointer;color:var(--text);font-weight:600;font-size:16px;
+           line-height:1.45;list-style:none}
+.q summary::-webkit-details-marker{display:none}
+.q summary::before{content:'+';color:var(--green);font-weight:700;
+                   display:inline-block;width:20px;font-family:'JetBrains Mono',monospace}
+.q[open] summary::before{content:'\2212'}
+.q[open] summary{margin-bottom:11px}
+.q .a{padding-left:20px}
+.q .a ol,.q .a ul{margin:0 0 12px;padding-left:20px}
+.q .a li{color:var(--text-soft);margin-bottom:7px}
+
+.chiave{border-left:3px solid var(--amber);background:rgba(240,180,41,.08);
+        padding:13px 16px;border-radius:0 8px 8px 0;margin:12px 0}
+.nota{border-left:3px solid var(--blue);background:rgba(96,165,250,.07);
+      padding:13px 16px;border-radius:0 8px 8px 0;margin:12px 0}
+.chiave p,.nota p{margin:0;color:var(--text-soft)}
+.via{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.84em;
+     background:var(--raised);border:1px solid var(--line);border-radius:6px;
+     padding:3px 9px;color:#CFE8DC;margin:2px 0}
+.esempio{font-family:'JetBrains Mono',monospace;font-size:.86em;color:var(--green)}
+.cta{background:var(--panel);border:1px solid var(--green-dim);border-radius:12px;
+     padding:18px 20px;margin:34px 0 0}
+.cta p{margin:0}
+footer{margin-top:52px;border-top:1px solid var(--line);padding-top:20px;
+       color:var(--text-dim);font-size:14px}
+@media(max-width:600px){.wrap{padding:30px 16px 60px}h1{font-size:24px}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "en",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the \"shared catalogue\", and why would I want one?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nano Tracker keeps a list of what is on your disks. By default that list lives on the computer it is installed on : if there are two of you, each of you only sees the disks they catalogued themselves. With a shared catalogue the list is one single list for the whole studio . Anyone can search for a job and find out which disk it is on — and if that disk is plugged into a colleague's computer, it says so, with the machine's name. If you work on a single computer you do not need this: what you have is fine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is MariaDB? Do I have to install another program?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MariaDB is the program that acts as the warehouse for the shared list. It sits on something that stays switched on — a NAS or a computer — and everyone else asks it for information over the network. It is free, very widely used, and has no interface: once it is running you never open it again. On your computer you install nothing: Nano Tracker simply talks to it. It only goes on the machine acting as the warehouse, once. On a NAS it is a ready-made package, installed with two clicks from the NAS's own store. On Windows it is an ordinary program to download."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I really need a NAS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. What you need is something that stays switched on while the others are working, and a Windows computer in the studio will do perfectly well. If that computer is off, the others cannot see the shared catalogue (but they carry on working — see below). A NAS is the most common choice because it uses little power and is always on, not because it is required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do my files and photos end up on the NAS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Nano Tracker copies no files at all. The catalogue holds only the names : what the folders are called, where they are, how big they are and when they were last changed. Your material stays where it is, on your disks. That is why a catalogue covering dozens of disks takes only a few megabytes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need an internet connection?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The shared catalogue works over your studio network : the computers and the NAS need to see each other, they do not need to reach the internet. From outside the studio, on a laptop, the shared catalogue is not reachable (unless you already have a company VPN set up)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A colleague is on a Mac and I am on Windows. Does it still work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The same catalogue is used from both sides. Windows and macOS identify disks differently, so the same physical disk can end up catalogued by both: Nano Tracker notices and shows it as a single entry , noting underneath which computers have seen it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I create a shared catalogue?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends where you want it, and those are three different routes. The step-by-step guide opens with exactly that question and then shows you only the steps for your situation: on a NAS, on a computer, or connecting to one that already exists. In short: you install MariaDB on whatever will act as the warehouse (that part is manual — it is its own package), and then Nano Tracker does all the rest — it creates the database, the user and the permissions by itself. Settings → Database → Shared → +"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I find out my NAS's address and port?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The address is a number like 192.168.1.101 . You will find it in the NAS's own program on your computer, or in your router under connected devices: the guide has a dedicated box with four ways to find it, and the same for everything else it asks you for. The port is almost always 3306 and you can leave it alone. Nano Tracker has a \"Check NAS\" button that tries it for you and tells you whether the NAS answers, before it even asks you for a password."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I have to open anything in the firewall?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If the warehouse is on a NAS : no — you just switch on the network connection in the MariaDB package's settings (one tick box, it is in the guide). If it is on a Windows computer : yes, port 3306 has to be allowed. Nano Tracker offers to do it for you during the setup."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I connect the other computers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You need four things: address, database name, user and password — the same ones chosen when it was created. On every other computer: Settings → Database → Shared → + → Connect to an existing one The \"Test the connection\" button tells you straight away whether it works, so you do not find out about a typo two days later."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I have used Nano Tracker on my own for months. Do I lose everything?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The catalogue on your computer stays where it is, and Nano Tracker can copy it into the shared one. You do not have to plug in or rescan a single disk. Settings → Database → Copying the catalogue"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I copy my catalogue into the shared one?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Open Settings → Database and scroll down to \"Copying the catalogue\" . Choose the direction: From my computer to the shared database . Press \"Work out what would change\" . Nothing is copied yet: it tells you how many folders would be added, how many updated, and how many are already identical. A list of disks appears with tick boxes. Leave them all ticked, or untick the ones you do not want to bring across. Press \"Copy the selected disks\" and wait for the confirmation. Step 3 is there on purpose: with a studio catalogue nobody should press a button without first knowing how many rows will move. It costs one second."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the copy delete anything?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Never. The copy only knows how to add and update. If a folder exists at the destination but not at the source, it stays exactly where it is. That is deliberate: if something is missing from one side, it almost always means that computer never catalogued that disk — not that the folder is gone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I go the other way, from the shared one to my computer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — same command, direction reversed. It is useful if you are about to take a laptop out and want the studio's full list with you even with no network."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if the same disk is already catalogued on both sides?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That is the normal case, and it is handled: the two catalogues merge , they do not duplicate. Nano Tracker recognises the same physical disk even if it has been renamed or reformatted. For folders present on both sides, the more recent version wins : an older one never overwrites a newer one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "If I run it twice by mistake, does everything double up?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The second time it finds nothing left to add, and says so. You can run it again without worrying — it is built precisely for people who are not sure the first attempt worked."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I know which catalogue I am using right now?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The name of the database in use is always shown at the bottom left of the Nano Tracker window. In Settings → Database the green dot marks the active one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "The NAS is off, or the network dropped. Do I lose work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. If the shared catalogue stops answering, Nano Tracker switches by itself to the one on your computer and carries on. When the shared one becomes reachable again it goes back to it on its own and brings the disks touched in the meantime up to date. There is nothing to do, and nothing to remember."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "\"Check NAS\" says the NAS does not answer. What do I look at?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Is the MariaDB package on the NAS installed and started ? Inside its settings, is the network connection (TCP/IP) enabled? It is often off by default, and this is reason number one. Is the address right? Try opening it in a browser: if the NAS's own page does not come up either, the problem is the network, not Nano Tracker. If the NAS also has an older MariaDB on it, the newer one may be on port 3307 rather than 3306 ."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "It says the server is there but will not accept this computer.",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That is a different answer from \"no reply\", and it is good news: the warehouse is running, it just has to be allowed to accept other computers. On a NAS that is the network-connection tick box; on Windows it is the \"enable access from remote machines\" tick box shown while MariaDB is being installed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I go back to the catalogue on my own computer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, at any time, from Settings → Database → Local . Your computer's catalogue is never deleted when you move to the shared one: it is always there."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+
+<span class="badge">Nano Tracker</span>
+<h1>Shared catalogue — frequently asked questions</h1>
+<p class="lede">Short answers. For the actual steps there is the
+<a href="/en/nas-guide.html">step-by-step guide</a>, which walks you through whichever
+situation you are in.</p>
+
+<!-- ══════════ THE BASICS ══════════ -->
+<h2>The basics</h2>
+
+<details class="q">
+  <summary>What is the "shared catalogue", and why would I want one?</summary>
+  <div class="a">
+    <p>Nano Tracker keeps a list of what is on your disks. By default that list lives
+    <strong>on the computer it is installed on</strong>: if there are two of you, each of you
+    only sees the disks they catalogued themselves.</p>
+    <p>With a shared catalogue the list is <strong>one single list for the whole studio</strong>.
+    Anyone can search for a job and find out which disk it is on — and if that disk is
+    plugged into a colleague's computer, it says so, with the machine's name.</p>
+    <p>If you work on a single computer you do not need this: what you have is fine.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>What is MariaDB? Do I have to install another program?</summary>
+  <div class="a">
+    <p>MariaDB is the <strong>program that acts as the warehouse</strong> for the shared list.
+    It sits on something that stays switched on — a NAS or a computer — and everyone else
+    asks it for information over the network. It is free, very widely used, and has no
+    interface: once it is running you never open it again.</p>
+    <p>On <strong>your</strong> computer you install nothing: Nano Tracker simply talks to it.
+    It only goes on the machine acting as the warehouse, once.</p>
+    <div class="nota"><p>On a NAS it is a ready-made package, installed with two clicks
+    from the NAS's own store. On Windows it is an ordinary program to download.</p></div>
+  </div>
+</details>
+
+<details class="q">
+  <summary>Do I really need a NAS?</summary>
+  <div class="a">
+    <p>No. What you need is something that <strong>stays switched on</strong> while the others
+    are working, and a Windows computer in the studio will do perfectly well. If that
+    computer is off, the others cannot see the shared catalogue (but they carry on
+    working — see below).</p>
+    <p>A NAS is the most common choice because it uses little power and is always on, not
+    because it is required.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>Do my files and photos end up on the NAS?</summary>
+  <div class="a">
+    <p><strong>No.</strong> Nano Tracker copies no files at all. The catalogue holds only the
+    <strong>names</strong>: what the folders are called, where they are, how big they are and
+    when they were last changed. Your material stays where it is, on your disks.</p>
+    <p>That is why a catalogue covering dozens of disks takes only a few megabytes.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>Do I need an internet connection?</summary>
+  <div class="a">
+    <p>No. The shared catalogue works over your <strong>studio network</strong>: the computers
+    and the NAS need to see each other, they do not need to reach the internet. From
+    outside the studio, on a laptop, the shared catalogue is not reachable (unless you
+    already have a company VPN set up).</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>A colleague is on a Mac and I am on Windows. Does it still work?</summary>
+  <div class="a">
+    <p>Yes. The same catalogue is used from both sides.</p>
+    <p>Windows and macOS identify disks differently, so the same physical disk can end up
+    catalogued by both: Nano Tracker notices and shows it as <strong>a single entry</strong>,
+    noting underneath which computers have seen it.</p>
+  </div>
+</details>
+
+<!-- ══════════ CREATING AND CONNECTING ══════════ -->
+<h2>Creating the shared catalogue and connecting to it</h2>
+
+<details class="q">
+  <summary>How do I create a shared catalogue?</summary>
+  <div class="a">
+    <p>It depends where you want it, and those are three different routes. The
+    <a href="/en/nas-guide.html">step-by-step guide</a> opens with exactly that question and
+    then shows you <strong>only</strong> the steps for your situation: on a NAS, on a computer,
+    or connecting to one that already exists.</p>
+    <p>In short: you install MariaDB on whatever will act as the warehouse (that part is
+    manual — it is its own package), and then <strong>Nano Tracker does all the rest</strong> —
+    it creates the database, the user and the permissions by itself.</p>
+    <p class="via">Settings → Database → Shared → +</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>How do I find out my NAS's address and port?</summary>
+  <div class="a">
+    <p>The address is a number like <span class="esempio">192.168.1.101</span>. You will
+    find it in the NAS's own program on your computer, or in your router under connected
+    devices: the <a href="/en/nas-guide.html">guide</a> has a dedicated box with four ways to
+    find it, and the same for everything else it asks you for.</p>
+    <p>The port is almost always <code>3306</code> and you can leave it alone. Nano Tracker
+    has a <strong>"Check NAS"</strong> button that tries it for you and tells you whether the
+    NAS answers, before it even asks you for a password.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>Do I have to open anything in the firewall?</summary>
+  <div class="a">
+    <p>If the warehouse is on a <strong>NAS</strong>: no — you just switch on the network
+    connection in the MariaDB package's settings (one tick box, it is in the guide).</p>
+    <p>If it is on a <strong>Windows computer</strong>: yes, port <code>3306</code> has to be
+    allowed. Nano Tracker offers to do it for you during the setup.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>How do I connect the other computers?</summary>
+  <div class="a">
+    <p>You need four things: address, database name, user and password — the same ones
+    chosen when it was created. On every other computer:</p>
+    <p class="via">Settings → Database → Shared → + → Connect to an existing one</p>
+    <p>The <strong>"Test the connection"</strong> button tells you straight away whether it
+    works, so you do not find out about a typo two days later.</p>
+  </div>
+</details>
+
+<!-- ══════════ THE CATALOGUE YOU ALREADY HAVE ══════════ -->
+<h2>The catalogue you already have</h2>
+
+<details class="q">
+  <summary>I have used Nano Tracker on my own for months. Do I lose everything?</summary>
+  <div class="a">
+    <p><strong>No.</strong> The catalogue on your computer stays where it is, and Nano Tracker
+    can <strong>copy it</strong> into the shared one. You do not have to plug in or rescan a
+    single disk.</p>
+    <p class="via">Settings → Database → Copying the catalogue</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>How do I copy my catalogue into the shared one?</summary>
+  <div class="a">
+    <ol>
+      <li>Open <strong>Settings → Database</strong> and scroll down to
+      <strong>"Copying the catalogue"</strong>.</li>
+      <li>Choose the direction: <em>From my computer to the shared database</em>.</li>
+      <li>Press <strong>"Work out what would change"</strong>. Nothing is copied yet: it tells
+      you how many folders would be added, how many updated, and how many are already
+      identical.</li>
+      <li>A list of disks appears with tick boxes. Leave them all ticked, or untick the
+      ones you do not want to bring across.</li>
+      <li>Press <strong>"Copy the selected disks"</strong> and wait for the confirmation.</li>
+    </ol>
+    <div class="chiave"><p>Step 3 is there on purpose: with a studio catalogue nobody
+    should press a button without first knowing how many rows will move. It costs one
+    second.</p></div>
+  </div>
+</details>
+
+<details class="q">
+  <summary>Does the copy delete anything?</summary>
+  <div class="a">
+    <p><strong>Never.</strong> The copy only knows how to add and update. If a folder exists at
+    the destination but not at the source, it stays exactly where it is.</p>
+    <p>That is deliberate: if something is missing from one side, it almost always means
+    <em>that</em> computer never catalogued <em>that</em> disk — not that the folder is gone.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>Can I go the other way, from the shared one to my computer?</summary>
+  <div class="a">
+    <p>Yes — same command, direction reversed. It is useful if you are about to take a
+    laptop out and want the studio's full list with you even with no network.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>What if the same disk is already catalogued on both sides?</summary>
+  <div class="a">
+    <p>That is the normal case, and it is handled: the two catalogues <strong>merge</strong>,
+    they do not duplicate. Nano Tracker recognises the same physical disk even if it has
+    been renamed or reformatted.</p>
+    <p>For folders present on both sides, the <strong>more recent version wins</strong>: an older
+    one never overwrites a newer one.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>If I run it twice by mistake, does everything double up?</summary>
+  <div class="a">
+    <p>No. The second time it finds nothing left to add, and says so. You can run it again
+    without worrying — it is built precisely for people who are not sure the first attempt
+    worked.</p>
+  </div>
+</details>
+
+<!-- ══════════ WHEN SOMETHING GOES WRONG ══════════ -->
+<h2>When something goes wrong</h2>
+
+<details class="q">
+  <summary>How do I know which catalogue I am using right now?</summary>
+  <div class="a">
+    <p>The name of the database in use is always shown at the bottom left of the Nano
+    Tracker window. In <strong>Settings → Database</strong> the green dot marks the active
+    one.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>The NAS is off, or the network dropped. Do I lose work?</summary>
+  <div class="a">
+    <p>No. If the shared catalogue stops answering, Nano Tracker <strong>switches by
+    itself</strong> to the one on your computer and carries on. When the shared one becomes
+    reachable again it goes back to it on its own and brings the disks touched in the
+    meantime up to date.</p>
+    <p>There is nothing to do, and nothing to remember.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>"Check NAS" says the NAS does not answer. What do I look at?</summary>
+  <div class="a">
+    <ul>
+      <li>Is the MariaDB package on the NAS <strong>installed and started</strong>?</li>
+      <li>Inside its settings, is the <strong>network connection</strong> (TCP/IP) enabled? It
+      is often off by default, and this is reason number one.</li>
+      <li>Is the address right? Try opening it in a browser: if the NAS's own page does
+      not come up either, the problem is the network, not Nano Tracker.</li>
+      <li>If the NAS also has an older MariaDB on it, the newer one may be on port
+      <code>3307</code> rather than <code>3306</code>.</li>
+    </ul>
+  </div>
+</details>
+
+<details class="q">
+  <summary>It says the server is there but will not accept this computer.</summary>
+  <div class="a">
+    <p>That is a different answer from "no reply", and it is good news: the warehouse is
+    running, it just has to be allowed to accept other computers. On a NAS that is the
+    network-connection tick box; on Windows it is the
+    <em>"enable access from remote machines"</em> tick box shown while MariaDB is being
+    installed.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>Can I go back to the catalogue on my own computer?</summary>
+  <div class="a">
+    <p>Yes, at any time, from <strong>Settings → Database → Local</strong>. Your computer's
+    catalogue is never deleted when you move to the shared one: it is always there.</p>
+  </div>
+</details>
+
+<div class="cta">
+  <p>Did not find your answer? Write to
+  <a href="mailto:support@nanotracker.pro">support@nanotracker.pro</a>. If the problem is
+  in the program, <strong>Settings</strong> has <em>"Having problems?"</em>: it prepares a
+  technical report and <strong>shows you what is in it before sending</strong>.</p>
+</div>
+
+<footer>
+  Nano Tracker — <a href="/en/nas-guide.html">step-by-step guide</a> ·
+  <a href="index.html">nanotracker.pro</a>
+</footer>
+
+</div>
+</body>
+</html>

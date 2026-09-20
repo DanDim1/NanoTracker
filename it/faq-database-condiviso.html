@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://nanotracker.pro/it/faq-database-condiviso.html">
+<link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/faq-database-condiviso.html">
+<link rel="alternate" hreflang="en" href="https://nanotracker.pro/shared-database-faq.html">
+<link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/shared-database-faq.html">
+<title>Nano Tracker — domande frequenti sul catalogo condiviso</title>
+<meta name="description" content="Risposte brevi alle domande piu' comuni sul database condiviso: cos'e', se serve un NAS, e come portare nel condiviso il catalogo che avete gia'.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2334D399'/><text x='32' y='44' font-family='monospace' font-size='30' font-weight='bold' text-anchor='middle' fill='%230B0D10'>NT</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+:root{
+  --ground:#111316; --panel:#1A1D21; --raised:#22262C; --line:#2C3138;
+  --green:#34D399; --green-dim:#1F7A5A; --amber:#F0B429; --red:#F87171; --blue:#60A5FA;
+  --text:#E7EAEE; --text-soft:#AAB2BD; --text-dim:#7C8794;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--text);
+     font-family:'IBM Plex Sans',system-ui,-apple-system,Segoe UI,sans-serif;
+     line-height:1.62;font-size:16.5px}
+.wrap{max-width:760px;margin:0 auto;padding:44px 22px 90px}
+h1{font-size:30px;line-height:1.22;margin:0 0 10px;letter-spacing:-.02em}
+h2{font-size:15px;margin:40px 0 12px;letter-spacing:.08em;text-transform:uppercase;
+   color:var(--text-dim);font-weight:600}
+p{margin:0 0 14px;color:var(--text-soft)}
+p:last-child{margin-bottom:0}
+strong{color:var(--text);font-weight:600}
+code{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.86em;
+     background:var(--raised);padding:1.5px 6px;border-radius:4px;color:#CFE8DC}
+a{color:var(--green)}
+.badge{display:inline-block;font-size:12px;letter-spacing:.09em;text-transform:uppercase;
+       color:var(--green);border:1px solid var(--green-dim);border-radius:100px;
+       padding:3px 12px;margin-bottom:18px}
+.lede{font-size:18px;color:var(--text-soft)}
+
+.q{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+   padding:15px 18px;margin-bottom:10px}
+.q summary{cursor:pointer;color:var(--text);font-weight:600;font-size:16px;
+           line-height:1.45;list-style:none}
+.q summary::-webkit-details-marker{display:none}
+.q summary::before{content:'+';color:var(--green);font-weight:700;
+                   display:inline-block;width:20px;font-family:'JetBrains Mono',monospace}
+.q[open] summary::before{content:'\2212'}
+.q[open] summary{margin-bottom:11px}
+.q .a{padding-left:20px}
+.q .a ol,.q .a ul{margin:0 0 12px;padding-left:20px}
+.q .a li{color:var(--text-soft);margin-bottom:7px}
+
+.chiave{border-left:3px solid var(--amber);background:rgba(240,180,41,.08);
+        padding:13px 16px;border-radius:0 8px 8px 0;margin:12px 0}
+.nota{border-left:3px solid var(--blue);background:rgba(96,165,250,.07);
+      padding:13px 16px;border-radius:0 8px 8px 0;margin:12px 0}
+.chiave p,.nota p{margin:0;color:var(--text-soft)}
+.via{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.84em;
+     background:var(--raised);border:1px solid var(--line);border-radius:6px;
+     padding:3px 9px;color:#CFE8DC;margin:2px 0}
+.esempio{font-family:'JetBrains Mono',monospace;font-size:.86em;color:var(--green)}
+.cta{background:var(--panel);border:1px solid var(--green-dim);border-radius:12px;
+     padding:18px 20px;margin:34px 0 0}
+.cta p{margin:0}
+footer{margin-top:52px;border-top:1px solid var(--line);padding-top:20px;
+       color:var(--text-dim);font-size:14px}
+@media(max-width:600px){.wrap{padding:30px 16px 60px}h1{font-size:24px}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "it",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Cos'è il \"catalogo condiviso\" e perché dovrebbe interessarmi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nano Tracker tiene l'elenco di cosa c'è sui vostri dischi. Di serie quell'elenco vive sul computer dove è installato : se siete in due, ognuno vede solo i dischi che ha catalogato lui. Col catalogo condiviso l'elenco è uno solo per tutto lo studio . Chiunque può cercare un lavoro e scoprire su quale disco sta, e se quel disco è collegato al computer di un collega lo vede scritto — con il nome della macchina. Se lavorate su un computer solo non vi serve: va già bene così com'è."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Cos'è MariaDB? Devo installare un altro programma?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MariaDB è il programma che fa da magazzino per l'elenco condiviso. Sta su un apparecchio che resta acceso — un NAS o un computer — e tutti gli altri gli chiedono le informazioni via rete. È gratuito, molto diffuso, e non ha un'interfaccia: una volta acceso non lo aprite mai più. Sul vostro computer non installate niente: Nano Tracker gli parla e basta. Va installato solo sull'apparecchio che fa da magazzino, una volta sola. Sui NAS è un pacchetto già pronto, si installa con due clic dal negozio del NAS stesso. Su Windows è un normale programma da scaricare."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Devo per forza avere un NAS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Serve un apparecchio che resti acceso quando gli altri lavorano, e può benissimo essere un computer Windows dello studio. Se quel computer è spento, gli altri non vedono il catalogo condiviso (ma continuano a lavorare, vedi più avanti). Il NAS è la scelta più comune perché consuma poco e sta acceso sempre, non perché sia obbligatorio."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I miei file e le mie foto finiscono sul NAS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Nano Tracker non copia nessun file. Nel catalogo ci sono solo i nomi : come si chiamano le cartelle, dove si trovano, quanto sono grandi e quando sono state modificate. Il materiale resta dov'è, sui vostri dischi. È il motivo per cui il catalogo di decine di dischi occupa pochi megabyte."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Serve internet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Il catalogo condiviso funziona sulla rete dello studio : i computer e il NAS devono vedersi fra loro, non devono uscire su internet. Da fuori studio, con il portatile, il catalogo condiviso non si raggiunge (a meno che non abbiate una VPN aziendale già configurata)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Un collega ha il Mac e io Windows: funziona lo stesso?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sì. Lo stesso catalogo si usa dalle due parti. Windows e macOS riconoscono i dischi in modo diverso, quindi può capitare che uno stesso disco fisico risulti catalogato da entrambi: Nano Tracker se ne accorge e lo mostra come una voce sola , con scritto sotto da quali computer è stato visto."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Come creo un catalogo condiviso?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dipende da dove volete metterlo, e sono tre strade diverse. La guida passo passo parte proprio da questa domanda e vi mostra solo i passi della vostra situazione: su un NAS, su un computer, oppure collegarsi a uno che esiste già. In breve: si installa MariaDB sull'apparecchio che farà da magazzino (questo va fatto a mano, è un pacchetto suo), poi tutto il resto lo fa Nano Tracker — crea il database, l'utente e i permessi da solo. Impostazioni → Database → Condiviso → +"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Come faccio a sapere l'indirizzo e la porta del NAS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "L'indirizzo è un numero tipo 192.168.1.101 . Lo trovate nel programma del NAS sul computer, oppure dal router alla voce dispositivi collegati: la guida ha un riquadro apposito con quattro modi per scoprirlo, e altrettanti per tutto il resto. La porta quasi sempre è 3306 e potete lasciarla com'è. Nano Tracker ha un pulsante \"Verifica NAS\" che la prova da solo e vi dice se il NAS risponde, prima ancora di chiedervi una password."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Devo aprire qualcosa nel firewall?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Se il magazzino è su un NAS : no, basta attivare il collegamento di rete nelle impostazioni del pacchetto MariaDB (un segno di spunta, è nella guida). Se è su un computer Windows : sì, va permessa la porta 3306 . Nano Tracker lo propone durante la procedura guidata e lo fa al posto vostro."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Come collego gli altri computer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Servono quattro informazioni: indirizzo, nome del database, utente e password — le stesse scelte quando l'avete creato. Su ogni altro computer: Impostazioni → Database → Condiviso → + → Mi collego a uno che esiste già Il pulsante \"Prova il collegamento\" vi dice subito se funziona, così non scoprite l'errore due giorni dopo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Uso Nano Tracker da mesi da solo. Se passo al condiviso perdo tutto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Il catalogo che avete sul vostro computer resta dov'è, e Nano Tracker sa copiarlo nel catalogo condiviso. Non dovete ricollegare né riscansionare i dischi. Impostazioni → Database → Copia del catalogo"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Come copio il catalogo dal mio computer a quello condiviso?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Aprite Impostazioni → Database e scendete fino a \"Copia del catalogo\" . Scegliete il verso: Dal mio computer al database condiviso . Premete \"Calcola cosa cambierebbe\" . Non copia ancora niente: vi dice quante cartelle verrebbero aggiunte, quante aggiornate e quante sono già uguali. Compare l'elenco dei dischi con le caselle di spunta. Lasciateli tutti, oppure togliete quelli che non volete portare. Premete \"Copia i dischi selezionati\" e aspettate la conferma. Il passo 3 esiste apposta: su un catalogo di studio nessuno dovrebbe premere un pulsante senza sapere prima quante righe si muovono. Costa un secondo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "La copia cancella qualcosa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mai. La copia sa solo aggiungere e aggiornare. Se una cartella c'è nella destinazione ma non nella partenza, resta dov'è e non viene toccata. È una scelta voluta: se manca da una parte, quasi sempre vuol dire che quel computer non ha mai catalogato quel disco — non che la cartella sia sparita."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Posso fare il contrario, dal condiviso al mio computer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sì, è lo stesso comando con il verso invertito. Serve per esempio se state per portare fuori il portatile e volete avere con voi l'elenco completo dello studio anche senza rete."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "E se lo stesso disco è già catalogato da tutti e due?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Succede quasi sempre, ed è previsto: i due cataloghi si fondono , non si duplicano. Nano Tracker riconosce che è lo stesso disco fisico anche se ha cambiato nome o è stato riformattato. Per le cartelle presenti da entrambe le parti vince la versione più recente : quella vecchia non sovrascrive mai quella nuova."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Se la lancio due volte per sbaglio, si raddoppia tutto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. La seconda volta non trova più niente da aggiungere e ve lo dice. Potete rilanciarla senza pensarci — è fatta apposta per chi non è sicuro che la prima volta sia andata a buon fine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Come faccio a sapere quale catalogo sto usando adesso?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In basso a sinistra nella finestra di Nano Tracker c'è sempre scritto il nome del database in uso. In Impostazioni → Database il pallino verde è sulla voce attiva."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Il NAS è spento o la rete è caduta. Perdo il lavoro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Se il catalogo condiviso non risponde, Nano Tracker passa da solo a quello del vostro computer e continua a lavorare. Quando il condiviso torna raggiungibile ci rientra da solo e rimette in pari i dischi toccati nel frattempo. Non dovete fare niente, e non dovete ricordarvi niente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "\"Verifica NAS\" dice che il NAS non risponde. Cosa guardo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Il pacchetto MariaDB sul NAS è installato e avviato ? Dentro le sue impostazioni è attivo il collegamento di rete (TCP/IP)? Di serie spesso è spento, ed è il motivo numero uno. L'indirizzo è quello giusto? Provate ad aprirlo nel browser: se non si apre nemmeno la pagina del NAS, il problema è di rete, non di Nano Tracker. Se sul NAS c'è anche una versione vecchia di MariaDB, quella nuova può stare sulla porta 3307 invece che 3306 ."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Dice che il server c'è ma non accetta collegamenti da questo computer.",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "È una risposta diversa da \"non risponde\", ed è una buona notizia: il magazzino funziona, deve solo essere autorizzato ad accettare gli altri computer. Sui NAS è il segno di spunta del collegamento di rete; su Windows è la spunta \"consenti l'accesso da altri computer\" che compare durante l'installazione di MariaDB."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Posso tornare indietro al catalogo sul mio computer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sì, in qualunque momento, da Impostazioni → Database → Locale . Il catalogo del vostro computer non viene mai cancellato quando passate al condiviso: è sempre lì."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+
+<span class="badge">Nano Tracker</span>
+<h1>Domande frequenti sul catalogo condiviso</h1>
+<p class="lede">Risposte brevi. Per i passi da fare c'è la
+<a href="/guida-nas.html">guida passo passo</a>, che vi accompagna in base a cosa dovete fare.</p>
+
+<!-- ══════════ LE BASI ══════════ -->
+<h2>Le basi</h2>
+
+<details class="q">
+  <summary>Cos'è il "catalogo condiviso" e perché dovrebbe interessarmi?</summary>
+  <div class="a">
+    <p>Nano Tracker tiene l'elenco di cosa c'è sui vostri dischi. Di serie quell'elenco
+    vive <strong>sul computer dove è installato</strong>: se siete in due, ognuno vede solo i
+    dischi che ha catalogato lui.</p>
+    <p>Col catalogo condiviso l'elenco è <strong>uno solo per tutto lo studio</strong>. Chiunque
+    può cercare un lavoro e scoprire su quale disco sta, e se quel disco è collegato al
+    computer di un collega lo vede scritto — con il nome della macchina.</p>
+    <p>Se lavorate su un computer solo non vi serve: va già bene così com'è.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>Cos'è MariaDB? Devo installare un altro programma?</summary>
+  <div class="a">
+    <p>MariaDB è il <strong>programma che fa da magazzino</strong> per l'elenco condiviso. Sta
+    su un apparecchio che resta acceso — un NAS o un computer — e tutti gli altri gli
+    chiedono le informazioni via rete. È gratuito, molto diffuso, e non ha un'interfaccia:
+    una volta acceso non lo aprite mai più.</p>
+    <p>Sul <strong>vostro</strong> computer non installate niente: Nano Tracker gli parla e basta.
+    Va installato solo sull'apparecchio che fa da magazzino, una volta sola.</p>
+    <div class="nota"><p>Sui NAS è un pacchetto già pronto, si installa con due clic dal
+    negozio del NAS stesso. Su Windows è un normale programma da scaricare.</p></div>
+  </div>
+</details>
+
+<details class="q">
+  <summary>Devo per forza avere un NAS?</summary>
+  <div class="a">
+    <p>No. Serve un apparecchio che <strong>resti acceso</strong> quando gli altri lavorano, e
+    può benissimo essere un computer Windows dello studio. Se quel computer è spento, gli
+    altri non vedono il catalogo condiviso (ma continuano a lavorare, vedi più avanti).</p>
+    <p>Il NAS è la scelta più comune perché consuma poco e sta acceso sempre, non perché
+    sia obbligatorio.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>I miei file e le mie foto finiscono sul NAS?</summary>
+  <div class="a">
+    <p><strong>No.</strong> Nano Tracker non copia nessun file. Nel catalogo ci sono solo i
+    <strong>nomi</strong>: come si chiamano le cartelle, dove si trovano, quanto sono grandi
+    e quando sono state modificate. Il materiale resta dov'è, sui vostri dischi.</p>
+    <p>È il motivo per cui il catalogo di decine di dischi occupa pochi megabyte.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>Serve internet?</summary>
+  <div class="a">
+    <p>No. Il catalogo condiviso funziona sulla <strong>rete dello studio</strong>: i computer
+    e il NAS devono vedersi fra loro, non devono uscire su internet. Da fuori studio, con
+    il portatile, il catalogo condiviso non si raggiunge (a meno che non abbiate una VPN
+    aziendale già configurata).</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>Un collega ha il Mac e io Windows: funziona lo stesso?</summary>
+  <div class="a">
+    <p>Sì. Lo stesso catalogo si usa dalle due parti.</p>
+    <p>Windows e macOS riconoscono i dischi in modo diverso, quindi può capitare che uno
+    stesso disco fisico risulti catalogato da entrambi: Nano Tracker se ne accorge e lo
+    mostra come <strong>una voce sola</strong>, con scritto sotto da quali computer è stato
+    visto.</p>
+  </div>
+</details>
+
+<!-- ══════════ CREARE E COLLEGARSI ══════════ -->
+<h2>Creare il catalogo condiviso e collegarsi</h2>
+
+<details class="q">
+  <summary>Come creo un catalogo condiviso?</summary>
+  <div class="a">
+    <p>Dipende da dove volete metterlo, e sono tre strade diverse. La
+    <a href="/guida-nas.html">guida passo passo</a> parte proprio da questa domanda e vi
+    mostra <strong>solo</strong> i passi della vostra situazione: su un NAS, su un computer,
+    oppure collegarsi a uno che esiste già.</p>
+    <p>In breve: si installa MariaDB sull'apparecchio che farà da magazzino (questo va
+    fatto a mano, è un pacchetto suo), poi <strong>tutto il resto lo fa Nano Tracker</strong> —
+    crea il database, l'utente e i permessi da solo.</p>
+    <p class="via">Impostazioni → Database → Condiviso → +</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>Come faccio a sapere l'indirizzo e la porta del NAS?</summary>
+  <div class="a">
+    <p>L'indirizzo è un numero tipo <span class="esempio">192.168.1.101</span>. Lo trovate
+    nel programma del NAS sul computer, oppure dal router alla voce dispositivi collegati:
+    la <a href="/guida-nas.html">guida</a> ha un riquadro apposito con quattro modi per
+    scoprirlo, e altrettanti per tutto il resto.</p>
+    <p>La porta quasi sempre è <code>3306</code> e potete lasciarla com'è. Nano Tracker ha un
+    pulsante <strong>"Verifica NAS"</strong> che la prova da solo e vi dice se il NAS risponde,
+    prima ancora di chiedervi una password.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>Devo aprire qualcosa nel firewall?</summary>
+  <div class="a">
+    <p>Se il magazzino è su un <strong>NAS</strong>: no, basta attivare il collegamento di rete
+    nelle impostazioni del pacchetto MariaDB (un segno di spunta, è nella guida).</p>
+    <p>Se è su un <strong>computer Windows</strong>: sì, va permessa la porta <code>3306</code>.
+    Nano Tracker lo propone durante la procedura guidata e lo fa al posto vostro.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>Come collego gli altri computer?</summary>
+  <div class="a">
+    <p>Servono quattro informazioni: indirizzo, nome del database, utente e password —
+    le stesse scelte quando l'avete creato. Su ogni altro computer:</p>
+    <p class="via">Impostazioni → Database → Condiviso → + → Mi collego a uno che esiste già</p>
+    <p>Il pulsante <strong>"Prova il collegamento"</strong> vi dice subito se funziona, così non
+    scoprite l'errore due giorni dopo.</p>
+  </div>
+</details>
+
+<!-- ══════════ IL CATALOGO CHE AVETE GIA' ══════════ -->
+<h2>Il catalogo che avete già</h2>
+
+<details class="q">
+  <summary>Uso Nano Tracker da mesi da solo. Se passo al condiviso perdo tutto?</summary>
+  <div class="a">
+    <p><strong>No.</strong> Il catalogo che avete sul vostro computer resta dov'è, e Nano Tracker
+    sa <strong>copiarlo</strong> nel catalogo condiviso. Non dovete ricollegare né riscansionare
+    i dischi.</p>
+    <p class="via">Impostazioni → Database → Copia del catalogo</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>Come copio il catalogo dal mio computer a quello condiviso?</summary>
+  <div class="a">
+    <ol>
+      <li>Aprite <strong>Impostazioni → Database</strong> e scendete fino a
+      <strong>"Copia del catalogo"</strong>.</li>
+      <li>Scegliete il verso: <em>Dal mio computer al database condiviso</em>.</li>
+      <li>Premete <strong>"Calcola cosa cambierebbe"</strong>. Non copia ancora niente: vi dice
+      quante cartelle verrebbero aggiunte, quante aggiornate e quante sono già uguali.</li>
+      <li>Compare l'elenco dei dischi con le caselle di spunta. Lasciateli tutti, oppure
+      togliete quelli che non volete portare.</li>
+      <li>Premete <strong>"Copia i dischi selezionati"</strong> e aspettate la conferma.</li>
+    </ol>
+    <div class="chiave"><p>Il passo 3 esiste apposta: su un catalogo di studio nessuno
+    dovrebbe premere un pulsante senza sapere prima quante righe si muovono. Costa un
+    secondo.</p></div>
+  </div>
+</details>
+
+<details class="q">
+  <summary>La copia cancella qualcosa?</summary>
+  <div class="a">
+    <p><strong>Mai.</strong> La copia sa solo aggiungere e aggiornare. Se una cartella c'è nella
+    destinazione ma non nella partenza, resta dov'è e non viene toccata.</p>
+    <p>È una scelta voluta: se manca da una parte, quasi sempre vuol dire che
+    <em>quel</em> computer non ha mai catalogato <em>quel</em> disco — non che la cartella
+    sia sparita.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>Posso fare il contrario, dal condiviso al mio computer?</summary>
+  <div class="a">
+    <p>Sì, è lo stesso comando con il verso invertito. Serve per esempio se state per
+    portare fuori il portatile e volete avere con voi l'elenco completo dello studio anche
+    senza rete.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>E se lo stesso disco è già catalogato da tutti e due?</summary>
+  <div class="a">
+    <p>Succede quasi sempre, ed è previsto: i due cataloghi <strong>si fondono</strong>, non si
+    duplicano. Nano Tracker riconosce che è lo stesso disco fisico anche se ha cambiato
+    nome o è stato riformattato.</p>
+    <p>Per le cartelle presenti da entrambe le parti vince <strong>la versione più
+    recente</strong>: quella vecchia non sovrascrive mai quella nuova.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>Se la lancio due volte per sbaglio, si raddoppia tutto?</summary>
+  <div class="a">
+    <p>No. La seconda volta non trova più niente da aggiungere e ve lo dice. Potete
+    rilanciarla senza pensarci — è fatta apposta per chi non è sicuro che la prima volta
+    sia andata a buon fine.</p>
+  </div>
+</details>
+
+<!-- ══════════ QUANDO QUALCOSA NON VA ══════════ -->
+<h2>Quando qualcosa non va</h2>
+
+<details class="q">
+  <summary>Come faccio a sapere quale catalogo sto usando adesso?</summary>
+  <div class="a">
+    <p>In basso a sinistra nella finestra di Nano Tracker c'è sempre scritto il nome del
+    database in uso. In <strong>Impostazioni → Database</strong> il pallino verde è sulla voce
+    attiva.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>Il NAS è spento o la rete è caduta. Perdo il lavoro?</summary>
+  <div class="a">
+    <p>No. Se il catalogo condiviso non risponde, Nano Tracker <strong>passa da solo</strong> a
+    quello del vostro computer e continua a lavorare. Quando il condiviso torna
+    raggiungibile ci rientra da solo e rimette in pari i dischi toccati nel frattempo.</p>
+    <p>Non dovete fare niente, e non dovete ricordarvi niente.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>"Verifica NAS" dice che il NAS non risponde. Cosa guardo?</summary>
+  <div class="a">
+    <ul>
+      <li>Il pacchetto MariaDB sul NAS è <strong>installato e avviato</strong>?</li>
+      <li>Dentro le sue impostazioni è attivo il <strong>collegamento di rete</strong> (TCP/IP)?
+      Di serie spesso è spento, ed è il motivo numero uno.</li>
+      <li>L'indirizzo è quello giusto? Provate ad aprirlo nel browser: se non si apre
+      nemmeno la pagina del NAS, il problema è di rete, non di Nano Tracker.</li>
+      <li>Se sul NAS c'è anche una versione vecchia di MariaDB, quella nuova può stare
+      sulla porta <code>3307</code> invece che <code>3306</code>.</li>
+    </ul>
+  </div>
+</details>
+
+<details class="q">
+  <summary>Dice che il server c'è ma non accetta collegamenti da questo computer.</summary>
+  <div class="a">
+    <p>È una risposta diversa da "non risponde", ed è una buona notizia: il magazzino
+    funziona, deve solo essere autorizzato ad accettare gli altri computer. Sui NAS è il
+    segno di spunta del collegamento di rete; su Windows è la spunta
+    <em>"consenti l'accesso da altri computer"</em> che compare durante l'installazione di
+    MariaDB.</p>
+  </div>
+</details>
+
+<details class="q">
+  <summary>Posso tornare indietro al catalogo sul mio computer?</summary>
+  <div class="a">
+    <p>Sì, in qualunque momento, da <strong>Impostazioni → Database → Locale</strong>. Il catalogo
+    del vostro computer non viene mai cancellato quando passate al condiviso: è sempre lì.</p>
+  </div>
+</details>
+
+<div class="cta">
+  <p>Non avete trovato la risposta? Scrivete a
+  <a href="mailto:support@nanotracker.pro">support@nanotracker.pro</a>. Se il problema è
+  nel programma, in <strong>Impostazioni</strong> c'è <em>"Stai riscontrando problemi?"</em>:
+  prepara un rapporto tecnico e <strong>vi mostra cosa contiene prima di inviarlo</strong>.</p>
+</div>
+
+<footer>
+  Nano Tracker — <a href="/guida-nas.html">guida passo passo</a> ·
+  <a href="index.html">nanotracker.pro</a>
+</footer>
+
+</div>
+</body>
+</html>
