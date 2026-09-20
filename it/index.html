@@ -555,7 +555,8 @@ h2 { font-size: var(--step-3); line-height: 1.15; letter-spacing: -.025em; margi
 <script>
 (function(){
   try{
-    if(localStorage.getItem('nt_lang_override'))return;
+    /* tace solo se aveva scelto l'italiano, cioe' la lingua di questa pagina */
+    if(localStorage.getItem('nt_lang_override')==='it')return;
     if(localStorage.getItem('nt_lingua_chiusa'))return;
   }catch(e){}
   var lingua=(navigator.language||'').toLowerCase();

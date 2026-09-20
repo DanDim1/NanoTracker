@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+/* La radice e' l'unico indirizzo che non dichiara una lingua: qui, e solo
+   qui, si guarda se l'utente ne aveva gia' scelta una cliccando IT. Un
+   crawler arriva sempre senza memoria, quindi non viene mai spostato. */
+(function(){
+  try{
+    if(location.pathname==='/'&&localStorage.getItem('nt_lang_override')==='it'){
+      location.replace('/it/');
+    }
+  }catch(e){}
+})();
+</script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -554,7 +567,8 @@ h2 { font-size: var(--step-3); line-height: 1.15; letter-spacing: -.025em; margi
 <script>
 (function(){
   try{
-    if(localStorage.getItem('nt_lang_override'))return;
+    /* tace solo se aveva scelto l'inglese, cioe' la lingua di questa pagina */
+    if(localStorage.getItem('nt_lang_override')==='en')return;
     if(localStorage.getItem('nt_lingua_chiusa'))return;
   }catch(e){}
   var lingua=(navigator.language||'').toLowerCase();
