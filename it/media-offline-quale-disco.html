@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://nanotracker.pro/it/media-offline-quale-disco.html">
+<link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/media-offline-quale-disco.html">
+<link rel="alternate" hreflang="en" href="https://nanotracker.pro/offline-media-which-drive.html">
+<link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/offline-media-which-drive.html">
+<title>Media offline in DaVinci Resolve o Premiere: su quale disco sono?</title>
+<meta name="description" content="Il programma di montaggio ti dice cosa manca. Non ti dice quale disco andare a prendere. Come rispondere a quella domanda in pochi secondi, senza aprire il progetto e senza collegare niente.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2334D399'/><text x='32' y='44' font-family='monospace' font-size='30' font-weight='bold' text-anchor='middle' fill='%230B0D10'>NT</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="NanoTracker">
+<meta property="og:locale" content="it_IT">
+<meta property="og:url" content="https://nanotracker.pro/it/media-offline-quale-disco.html">
+<meta property="og:title" content="Media offline in DaVinci Resolve o Premiere: su quale disco sono?">
+<meta property="og:description" content="Il programma di montaggio ti dice cosa manca. Non ti dice quale disco andare a prendere.">
+
+<style>
+:root{
+  --ground:#111316; --panel:#1A1D21; --panel-soft:#16191D; --raised:#22262C;
+  --line:#2C3138; --line-soft:#23272D;
+  --text:#F2F5F7; --text-mid:#9CA3AF; --text-dim:#828A94;
+  --green:#34D399; --green-deep:#10B981; --on-green:#0B0D10;
+  --amber:#F0883E; --blue:#60A5FA; --slate:#94A3B8;
+  --sans:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--text);font-family:var(--sans);
+  line-height:1.65;-webkit-font-smoothing:antialiased;font-size:16px}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+a{color:var(--green)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:var(--panel);padding:8px 12px;border-radius:8px;z-index:9}
+
+header.top{border-bottom:1px solid var(--line-soft);padding:16px 0}
+header.top .wrap{display:flex;align-items:center;gap:12px}
+.chip{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;
+  border-radius:8px;background:var(--green);color:var(--on-green);font-family:var(--mono);
+  font-weight:700;font-size:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:600}
+.brand span span{color:var(--green)}
+header.top nav{margin-left:auto;display:flex;gap:18px}
+header.top nav a{color:var(--text-mid);text-decoration:none;font-size:.86rem}
+header.top nav a:hover{color:var(--text)}
+
+.hero{padding:56px 0 40px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--green);margin:0 0 14px}
+h1{font-size:2.35rem;line-height:1.15;letter-spacing:-.025em;margin:0 0 18px}
+h1 em{font-style:normal;color:var(--green)}
+.lead{color:var(--text-mid);font-size:1.06rem;margin:0}
+
+section{padding:44px 0;border-top:1px solid var(--line-soft)}
+h2{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 10px}
+h3{font-size:1.02rem;margin:0 0 6px;letter-spacing:-.01em}
+.intro{color:var(--text-mid);margin:0 0 26px}
+p{margin:0 0 14px}
+strong{color:var(--text)}
+
+table{width:100%;border-collapse:collapse;margin:8px 0 0}
+th{text-align:left;font-size:.74rem;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-dim);font-weight:500;padding:0 0 10px;border-bottom:1px solid var(--line)}
+td{padding:14px 0;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--text-mid);font-size:.94rem}
+td:first-child{width:38%;padding-right:22px;color:var(--text);font-weight:500}
+
+.esempio{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-top:8px}
+.esempio .titolo{font-family:var(--mono);font-size:.86rem;color:var(--text-dim);
+  border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:14px}
+.esempio .titolo b{color:var(--text);font-weight:500}
+.riga{display:flex;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px solid var(--line-soft);font-size:.9rem}
+.riga:last-child{border-bottom:0}
+.riga .p{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.riga .d{font-family:var(--mono);font-size:.76rem;white-space:nowrap}
+.riga .d.qui{color:var(--green)}
+.riga .d.rete{color:var(--blue)}
+.riga .d.cassetto{color:var(--slate)}
+.didascalia{color:var(--text-dim);font-size:.82rem;margin:10px 0 0;text-align:center}
+
+.misura{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-soft);
+  border:1px solid var(--line-soft);border-radius:12px;overflow:hidden;margin-top:8px}
+.misura div{background:var(--panel-soft);padding:16px 18px}
+.misura dt{font-size:.8rem;color:var(--text-dim);margin:0 0 4px}
+.misura dd{margin:0;font-size:1.05rem;font-weight:600}
+.misura dd small{display:block;font-weight:400;font-size:.82rem;color:var(--text-mid);margin-top:3px}
+
+.nota{border-left:2px solid var(--green-deep);padding:2px 0 2px 16px;margin:22px 0 0;color:var(--text-mid)}
+
+details.q{border:1px solid var(--line);border-radius:11px;padding:14px 17px;margin-bottom:9px;background:var(--panel)}
+details.q summary{cursor:pointer;font-weight:600;font-size:.98rem}
+details.q .a{color:var(--text-mid);font-size:.94rem;margin-top:10px}
+details.q .a p{margin:0 0 10px}
+details.q .a p:last-child{margin:0}
+
+.chiusura{text-align:center;padding:52px 0}
+.chiusura h2{font-size:1.75rem;margin-bottom:8px}
+.chiusura p{color:var(--text-mid)}
+.btn{display:inline-block;background:var(--green);color:var(--on-green);text-decoration:none;
+  font-weight:600;border-radius:10px;padding:13px 26px;margin-top:10px}
+.btn:hover{background:var(--green-deep)}
+
+footer.site{border-top:1px solid var(--line);padding:32px 0 44px;text-align:center;background:var(--panel-soft)}
+footer.site p{color:var(--text-dim);font-size:.84rem;margin:0 0 12px}
+footer.site nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 22px;margin-bottom:8px}
+footer.site nav a{color:var(--text-mid);font-size:.82rem;text-decoration:none}
+footer.site nav.legale a{color:var(--text-dim);font-size:.8rem}
+footer.site nav a:hover{color:var(--green)}
+
+@media(max-width:600px){
+  h1{font-size:1.85rem}
+  .misura{grid-template-columns:1fr}
+  table,thead,tbody,tr,td{display:block;width:100%}
+  thead{display:none}
+  td{border-bottom:0;padding:0}
+  td:first-child{width:auto;padding:0 0 4px}
+  tr{display:block;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+  .riga{flex-wrap:wrap;gap:4px 10px}
+  .riga .p{flex:1 0 100%;white-space:normal}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "it",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quali programmi legge?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "DaVinci Resolve, Adobe Premiere Pro e Adobe Lightroom Classic. Trova da solo i loro progetti e cataloghi sul tuo computer, e li legge dove stanno."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Deve aprire il progetto per farlo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, ed è tutto il punto. Legge direttamente il file del progetto, quindi il tuo programma di montaggio non deve essere aperto e niente viene bloccato o modificato. Chiederlo a Resolve richiede qualche secondo per progetto e Resolve aperto; leggere il file richiede un centesimo di secondo e non richiede niente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ricollega la media al posto mio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, di proposito. Ricollegare vuol dire scrivere dentro il tuo catalogo o progetto di lavoro, e un errore lì costa caro in un modo difficile da annullare. NanoTracker ti dice quale disco collegare e il percorso esatto a cui puntare; il ricollegamento lo fai nel tuo programma, dove vedi cosa succede."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "E se ho spostato la cartella dopo aver creato il catalogo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Allora il catalogo punta ancora al vecchio percorso, e quasi tutti gli strumenti dicono solo «sconosciuto». NanoTracker dice una cosa più utile: questo percorso non esiste più, ed è questo. Poi puoi chiedergli di cercare in tutto il catalogo dove sono finite quelle cartelle, e ti dà il percorso nuovo da copiare."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Funziona con progetti che stanno su dischi non collegati?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Il file del progetto deve essere leggibile, quindi sta su un disco che hai. La media no: la risposta su dove sta la media viene dal catalogo, che si ricorda anche i dischi spenti in un cassetto."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Cambia qualcosa nei miei progetti?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Legge. Non scrive mai in un progetto, in un catalogo o su un disco di media."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#contenuto">Vai al contenuto</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/it/"><span class="chip">NT</span><span>Nano<span>Tracker</span></span></a>
+    <nav>
+      <a href="/it/#prezzi">Prezzi</a>
+      <a href="/it/#download">Scarica</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenuto">
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Progetti e media</p>
+    <h1>Media offline.<br><em>Su quale disco sono?</em></h1>
+    <p class="lead">Apri un lavoro della primavera scorsa e metà timeline è rossa. Il programma è chiarissimo su <strong>cosa</strong> manca, e non dice assolutamente niente su <strong>dove sia</strong>. È la seconda domanda quella che costa il pomeriggio.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>Quello che il programma sa, e quello che non sa</h2>
+    <p class="intro">DaVinci Resolve, Premiere Pro e Lightroom si segnano tutti il percorso completo di ogni file che usano. Quando un disco non è collegato sanno esattamente quale percorso è irraggiungibile — e lì la loro conoscenza finisce.</p>
+    <p>Non possono dirti a quale disco fisico apparteneva quel percorso, perché non l’hanno mai saputo. Per loro una clip sta in <code style="font-family:var(--mono);font-size:.84rem">E:\FOOTAGE\Antonini\…</code>, e <strong>E:</strong> è qualunque cosa fosse collegata a quella porta il giorno in cui hai importato. Oggi potrebbe essere tutt’altro disco.</p>
+    <p>Così il programma ti chiede di ritrovare la media, e sei di nuovo davanti al cassetto.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>La stessa domanda, con la risposta già pronta</h2>
+    <p class="intro">NanoTracker legge il progetto — senza aprirlo — prende i percorsi che contiene e li confronta con il catalogo dei tuoi dischi. La risposta è un elenco di dischi, ognuno con dov’è in questo momento.</p>
+
+    <div class="esempio">
+      <p class="titolo">progetto &nbsp;<b>Antonini - Color</b> &nbsp;&middot;&nbsp; DaVinci Resolve</p>
+      <div class="riga">
+        <span class="p">Media su <strong>SSD LAVORO</strong></span>
+        <span class="d qui">collegato</span>
+      </div>
+      <div class="riga">
+        <span class="p">Media su <strong>ASMT 4TB #2</strong></span>
+        <span class="d cassetto">nel cassetto</span>
+      </div>
+      <div class="riga">
+        <span class="p">Media su <strong>ARCHIVIO FOTO</strong></span>
+        <span class="d rete">sul Mac di Giovanna</span>
+      </div>
+    </div>
+    <p class="didascalia">Tre dischi, e uno stavi per cercarlo sullo scaffale.</p>
+
+    <p style="margin-top:26px">Sai cosa prendere prima di cominciare a cercare. E se uno è nel computer di un collega, lo chiedi invece di rovistare.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Perché è veloce</h2>
+    <p class="intro">Perché non lo chiede al programma di montaggio. Legge direttamente il file del progetto, che è un database appoggiato sul tuo disco.</p>
+
+    <dl class="misura">
+      <div>
+        <dt>Chiedendolo a DaVinci Resolve</dt>
+        <dd>qualche secondo per progetto<small>e Resolve deve essere aperto</small></dd>
+      </div>
+      <div>
+        <dt>Leggendo il file del progetto</dt>
+        <dd>circa un centesimo di secondo<small>e non serve che sia aperto niente</small></dd>
+      </div>
+    </dl>
+
+    <p class="nota">La differenza non è un dettaglio tecnico: è quello che rende la cosa usabile. Elencare tutti i progetti che hai diventa qualche secondo invece di un pomeriggio, quindi la domanda te la puoi fare con leggerezza — prima di cominciare un lavoro, non dopo aver scoperto che è rotto.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Cosa <em style="font-style:normal;color:var(--green)">non</em> fa, di proposito</h2>
+    <p class="intro">Non ricollega la media al posto tuo. È una scelta, non una funzione che manca, e vale la pena dirlo.</p>
+    <p>Ricollegare vuol dire scrivere dentro un catalogo di lavoro — un <code style="font-family:var(--mono);font-size:.84rem">.lrcat</code> di Lightroom è la storia intera di un fotografo, e un progetto Resolve è il lavoro per cui ti stanno pagando. Tecnicamente si può fare. È anche il genere di operazione in cui un errore si scopre settimane dopo, sul computer di qualcun altro, senza una via di ritorno.</p>
+    <p><strong>Quindi NanoTracker si ferma un passo prima, e ti dà le due cose che servono davvero:</strong> quale disco collegare, e il percorso esatto a cui puntare il programma. Il ricollegamento lo fai tu, nel tuo programma, guardandolo succedere.</p>
+    <p class="nota">Uno strumento che si offre di fare tutto è facile da vendere e difficile da fidarsene. Preferiamo dirti dov’è la media e lasciare a te la parte che tocca il tuo lavoro.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Il caso scomodo: la cartella è stata spostata</h2>
+    <p class="intro">Prima o poi si riordina. Il catalogo continua a puntare al vecchio percorso, e la media sta da un’altra parte sullo stesso disco — o su un altro disco del tutto.</p>
+
+    <table>
+      <thead><tr><th>Quello che dicono quasi tutti</th><th>Quello che dice NanoTracker</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>«Sconosciuto»</td>
+          <td><strong>«Questo percorso non esiste più»</strong> — e dice quale. Sapere che le cartelle sono state spostate, e non perse, è già buona parte della risposta.</td>
+        </tr>
+        <tr>
+          <td>Niente altro</td>
+          <td>Puoi chiedergli di andare a vedere: cerca in tutto il catalogo le cartelle con quel nome e ti dà <strong>il percorso nuovo</strong>, pronto da copiare nella finestra di ricollegamento.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top:22px">Quella ricerca legge il catalogo intero, quindi ci mette qualche secondo invece di essere istantanea — ed è esattamente il motivo per cui sta dietro un pulsante invece di partire su ogni progetto, e per cui mentre lavora dice cosa sta facendo.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Domande frequenti</h2>
+
+    <details class="q">
+      <summary>Quali programmi legge?</summary>
+      <div class="a"><p>DaVinci Resolve, Adobe Premiere Pro e Adobe Lightroom Classic. Trova da solo i loro progetti e cataloghi sul tuo computer, e li legge dove stanno.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Deve aprire il progetto per farlo?</summary>
+      <div class="a"><p>No, ed è tutto il punto. Legge direttamente il file del progetto, quindi il tuo programma di montaggio non deve essere aperto e niente viene bloccato o modificato. Chiederlo a Resolve richiede qualche secondo per progetto e Resolve aperto; leggere il file richiede un centesimo di secondo e non richiede niente.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Ricollega la media al posto mio?</summary>
+      <div class="a"><p>No, di proposito. Ricollegare vuol dire scrivere dentro il tuo catalogo o progetto di lavoro, e un errore lì costa caro in un modo difficile da annullare. NanoTracker ti dice quale disco collegare e il percorso esatto a cui puntare; il ricollegamento lo fai nel tuo programma, dove vedi cosa succede.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>E se ho spostato la cartella dopo aver creato il catalogo?</summary>
+      <div class="a"><p>Allora il catalogo punta ancora al vecchio percorso, e quasi tutti gli strumenti dicono solo «sconosciuto». NanoTracker dice una cosa più utile: questo percorso non esiste più, ed è questo. Poi puoi chiedergli di cercare in tutto il catalogo dove sono finite quelle cartelle, e ti dà il percorso nuovo da copiare.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Funziona con progetti che stanno su dischi non collegati?</summary>
+      <div class="a"><p>Il file del progetto deve essere leggibile, quindi sta su un disco che hai. La media no: la risposta su dove sta la media viene dal catalogo, che si ricorda anche i dischi spenti in un cassetto.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Cambia qualcosa nei miei progetti?</summary>
+      <div class="a"><p>No. Legge. Non scrive mai in un progetto, in un catalogo o su un disco di media.</p></div>
+    </details>
+  </div>
+</section>
+
+<div class="chiusura">
+  <div class="wrap">
+    <h2>Sapere quale disco prima di cominciare a cercare.</h2>
+    <p>Prova gratuita — pagamento una volta sola, nessun abbonamento.</p>
+    <a class="btn" href="/it/#download">Scarica NanoTracker</a>
+  </div>
+</div>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>&copy; 2026 NanoTracker by Sixpeaks Solutions. Tutti i diritti riservati.</p>
+    <nav aria-label="Guide">
+      <a href="/it/trovare-file-dischi-spenti.html">Ritrovare il lavoro su dischi spenti</a>
+      <a href="/guida-nas.html">Catalogo su più computer</a>
+      <a href="/it/faq-database-condiviso.html">Domande sul catalogo condiviso</a>
+    </nav>
+    <nav class="legale" aria-label="Link legali">
+      <a href="/it/terms.html">Termini di servizio</a>
+      <a href="/it/refund.html">Politica di rimborso</a>
+      <a href="/it/changelog.html">Version</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
