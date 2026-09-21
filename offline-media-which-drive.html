@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://nanotracker.pro/offline-media-which-drive.html">
+<link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/media-offline-quale-disco.html">
+<link rel="alternate" hreflang="en" href="https://nanotracker.pro/offline-media-which-drive.html">
+<link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/offline-media-which-drive.html">
+<title>Media offline in DaVinci Resolve or Premiere: which drive is it on?</title>
+<meta name="description" content="Your editing program tells you what is missing. It does not tell you which drive to fetch. How to answer that question in seconds, without opening the project and without plugging anything in.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2334D399'/><text x='32' y='44' font-family='monospace' font-size='30' font-weight='bold' text-anchor='middle' fill='%230B0D10'>NT</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="NanoTracker">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://nanotracker.pro/offline-media-which-drive.html">
+<meta property="og:title" content="Media offline in DaVinci Resolve or Premiere: which drive is it on?">
+<meta property="og:description" content="Your editing program tells you what is missing. It does not tell you which drive to fetch.">
+
+<style>
+:root{
+  --ground:#111316; --panel:#1A1D21; --panel-soft:#16191D; --raised:#22262C;
+  --line:#2C3138; --line-soft:#23272D;
+  --text:#F2F5F7; --text-mid:#9CA3AF; --text-dim:#828A94;
+  --green:#34D399; --green-deep:#10B981; --on-green:#0B0D10;
+  --amber:#F0883E; --blue:#60A5FA; --slate:#94A3B8;
+  --sans:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--text);font-family:var(--sans);
+  line-height:1.65;-webkit-font-smoothing:antialiased;font-size:16px}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+a{color:var(--green)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:var(--panel);padding:8px 12px;border-radius:8px;z-index:9}
+
+header.top{border-bottom:1px solid var(--line-soft);padding:16px 0}
+header.top .wrap{display:flex;align-items:center;gap:12px}
+.chip{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;
+  border-radius:8px;background:var(--green);color:var(--on-green);font-family:var(--mono);
+  font-weight:700;font-size:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:600}
+.brand span span{color:var(--green)}
+header.top nav{margin-left:auto;display:flex;gap:18px}
+header.top nav a{color:var(--text-mid);text-decoration:none;font-size:.86rem}
+header.top nav a:hover{color:var(--text)}
+
+.hero{padding:56px 0 40px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--green);margin:0 0 14px}
+h1{font-size:2.35rem;line-height:1.15;letter-spacing:-.025em;margin:0 0 18px}
+h1 em{font-style:normal;color:var(--green)}
+.lead{color:var(--text-mid);font-size:1.06rem;margin:0}
+
+section{padding:44px 0;border-top:1px solid var(--line-soft)}
+h2{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 10px}
+h3{font-size:1.02rem;margin:0 0 6px;letter-spacing:-.01em}
+.intro{color:var(--text-mid);margin:0 0 26px}
+p{margin:0 0 14px}
+strong{color:var(--text)}
+
+table{width:100%;border-collapse:collapse;margin:8px 0 0}
+th{text-align:left;font-size:.74rem;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-dim);font-weight:500;padding:0 0 10px;border-bottom:1px solid var(--line)}
+td{padding:14px 0;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--text-mid);font-size:.94rem}
+td:first-child{width:38%;padding-right:22px;color:var(--text);font-weight:500}
+
+.esempio{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-top:8px}
+.esempio .titolo{font-family:var(--mono);font-size:.86rem;color:var(--text-dim);
+  border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:14px}
+.esempio .titolo b{color:var(--text);font-weight:500}
+.riga{display:flex;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px solid var(--line-soft);font-size:.9rem}
+.riga:last-child{border-bottom:0}
+.riga .p{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.riga .d{font-family:var(--mono);font-size:.76rem;white-space:nowrap}
+.riga .d.qui{color:var(--green)}
+.riga .d.rete{color:var(--blue)}
+.riga .d.cassetto{color:var(--slate)}
+.didascalia{color:var(--text-dim);font-size:.82rem;margin:10px 0 0;text-align:center}
+
+.misura{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-soft);
+  border:1px solid var(--line-soft);border-radius:12px;overflow:hidden;margin-top:8px}
+.misura div{background:var(--panel-soft);padding:16px 18px}
+.misura dt{font-size:.8rem;color:var(--text-dim);margin:0 0 4px}
+.misura dd{margin:0;font-size:1.05rem;font-weight:600}
+.misura dd small{display:block;font-weight:400;font-size:.82rem;color:var(--text-mid);margin-top:3px}
+
+.nota{border-left:2px solid var(--green-deep);padding:2px 0 2px 16px;margin:22px 0 0;color:var(--text-mid)}
+
+details.q{border:1px solid var(--line);border-radius:11px;padding:14px 17px;margin-bottom:9px;background:var(--panel)}
+details.q summary{cursor:pointer;font-weight:600;font-size:.98rem}
+details.q .a{color:var(--text-mid);font-size:.94rem;margin-top:10px}
+details.q .a p{margin:0 0 10px}
+details.q .a p:last-child{margin:0}
+
+.chiusura{text-align:center;padding:52px 0}
+.chiusura h2{font-size:1.75rem;margin-bottom:8px}
+.chiusura p{color:var(--text-mid)}
+.btn{display:inline-block;background:var(--green);color:var(--on-green);text-decoration:none;
+  font-weight:600;border-radius:10px;padding:13px 26px;margin-top:10px}
+.btn:hover{background:var(--green-deep)}
+
+footer.site{border-top:1px solid var(--line);padding:32px 0 44px;text-align:center;background:var(--panel-soft)}
+footer.site p{color:var(--text-dim);font-size:.84rem;margin:0 0 12px}
+footer.site nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 22px;margin-bottom:8px}
+footer.site nav a{color:var(--text-mid);font-size:.82rem;text-decoration:none}
+footer.site nav.legale a{color:var(--text-dim);font-size:.8rem}
+footer.site nav a:hover{color:var(--green)}
+
+@media(max-width:600px){
+  h1{font-size:1.85rem}
+  .misura{grid-template-columns:1fr}
+  table,thead,tbody,tr,td{display:block;width:100%}
+  thead{display:none}
+  td{border-bottom:0;padding:0}
+  td:first-child{width:auto;padding:0 0 4px}
+  tr{display:block;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+  .riga{flex-wrap:wrap;gap:4px 10px}
+  .riga .p{flex:1 0 100%;white-space:normal}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "en",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which programs does it read?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "DaVinci Resolve, Adobe Premiere Pro and Adobe Lightroom Classic. It finds their projects and catalogues on your machine by itself, and reads them where they sit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it have to open the project to do this?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, and that is the whole point. It reads the project file directly, so your editing program does not need to be running and nothing is locked or modified. Asking Resolve itself takes several seconds per project and needs Resolve open; reading the file takes a hundredth of a second and needs nothing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it relink the media for me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, deliberately. Relinking means writing inside your working catalogue or project, and a mistake there is expensive in a way that is hard to undo. NanoTracker tells you which drive to plug in and the exact path to point at; the relink you do in your own program, where you can see what is happening."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I moved the folder after creating the catalogue?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Then the catalogue still points at the old path, and most tools just say unknown. NanoTracker says something more useful: this path no longer exists, and names it. You can then ask it to search the whole catalogue for where those folders went, and it gives you the new path to copy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work with projects on drives that are not plugged in?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The project file itself has to be readable, so it lives on a drive you have. The media does not: the answer about where the media lives comes from the catalogue, which remembers drives that are switched off in a drawer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it change anything in my projects?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It reads. It never writes to a project, a catalogue or a media drive."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#contenuto">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="chip">NT</span><span>Nano<span>Tracker</span></span></a>
+    <nav>
+      <a href="/#prezzi">Pricing</a>
+      <a href="/#download">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenuto">
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Projects and media</p>
+    <h1>Media offline.<br><em>Which drive is it on?</em></h1>
+    <p class="lead">You open a job from last spring and half the timeline is red. Your editing program is very clear about <strong>what</strong> is missing, and says nothing at all about <strong>where it is</strong>. That second question is the one that costs the afternoon.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>What the program knows, and what it does not</h2>
+    <p class="intro">DaVinci Resolve, Premiere Pro and Lightroom all store the full path of every file they use. When a drive is not connected, they know exactly which path is unreachable &mdash; and that is where their knowledge ends.</p>
+    <p>They cannot tell you which physical drive that path belonged to, because they never knew. To them a clip lives at <code style="font-family:var(--mono);font-size:.84rem">E:\FOOTAGE\Antonini\…</code>, and <strong>E:</strong> is whatever was plugged into that port the day you imported it. Today it might be a different drive entirely.</p>
+    <p>So the program asks you to find the media, and you are back at the drawer.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The same question, answered in advance</h2>
+    <p class="intro">NanoTracker reads the project &mdash; without opening it &mdash; takes the paths it contains, and matches them against the catalogue of your drives. The answer is a list of drives, each with where it is right now.</p>
+
+    <div class="esempio">
+      <p class="titolo">project &nbsp;<b>Antonini - Colour</b> &nbsp;&middot;&nbsp; DaVinci Resolve</p>
+      <div class="riga">
+        <span class="p">Media on <strong>WORK SSD</strong></span>
+        <span class="d qui">plugged in</span>
+      </div>
+      <div class="riga">
+        <span class="p">Media on <strong>ASMT 4TB #2</strong></span>
+        <span class="d cassetto">in the drawer</span>
+      </div>
+      <div class="riga">
+        <span class="p">Media on <strong>PHOTO ARCHIVE</strong></span>
+        <span class="d rete">on Giovanna's Mac</span>
+      </div>
+    </div>
+    <p class="didascalia">Three drives, one of which you were about to look for on the shelf.</p>
+
+    <p style="margin-top:26px">You know what to fetch before you start looking. And if one of them is in a colleague's machine, you ask instead of hunting.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Why it is fast</h2>
+    <p class="intro">Because it does not ask the editing program. It reads the project file itself, which is a database sitting on your disk.</p>
+
+    <dl class="misura">
+      <div>
+        <dt>Asking DaVinci Resolve</dt>
+        <dd>several seconds per project<small>and Resolve has to be open</small></dd>
+      </div>
+      <div>
+        <dt>Reading the project file</dt>
+        <dd>about a hundredth of a second<small>and nothing has to be running</small></dd>
+      </div>
+    </dl>
+
+    <p class="nota">The difference is not a detail of engineering: it is what makes it usable at all. Listing every project you own becomes a few seconds instead of an afternoon, so you can ask the question casually &mdash; before starting a job, not after discovering it is broken.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What it deliberately does <em style="font-style:normal;color:var(--green)">not</em> do</h2>
+    <p class="intro">It does not relink the media for you. That is a choice, not a missing feature, and it is worth saying out loud.</p>
+    <p>Relinking means writing inside a working catalogue &mdash; a Lightroom <code style="font-family:var(--mono);font-size:.84rem">.lrcat</code> is a photographer's entire history, and a Resolve project is the job you are being paid for. It is technically possible. It is also the kind of operation where a mistake is discovered weeks later, on somebody else's machine, with no way back.</p>
+    <p><strong>So NanoTracker stops one step earlier, and gives you the two things you actually need:</strong> which drive to plug in, and the exact path to point the program at. The relink you do yourself, in your own program, watching it happen.</p>
+    <p class="nota">A tool that offers to do everything is easy to sell and hard to trust. We would rather tell you where the media is and let you do the part that touches your work.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The awkward case: the folder moved</h2>
+    <p class="intro">Sooner or later you reorganise. The catalogue keeps pointing at the old path, and the media is somewhere else on the same drive &mdash; or on another one entirely.</p>
+
+    <table>
+      <thead><tr><th>What most tools say</th><th>What NanoTracker says</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>&ldquo;Unknown&rdquo;</td>
+          <td><strong>&ldquo;This path no longer exists&rdquo;</strong> &mdash; and it names the path. Knowing that the folders were moved, rather than lost, is most of the answer.</td>
+        </tr>
+        <tr>
+          <td>Nothing more</td>
+          <td>You can ask it to go and look: it searches the whole catalogue for folders with that name and gives you <strong>the new path</strong>, ready to copy into the relink dialog.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top:22px">That search reads the entire catalogue, so it takes several seconds rather than being instant &mdash; which is exactly why it sits behind a button instead of running on every project, and why it tells you what it is doing while it works.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Common questions</h2>
+
+    <details class="q">
+      <summary>Which programs does it read?</summary>
+      <div class="a"><p>DaVinci Resolve, Adobe Premiere Pro and Adobe Lightroom Classic. It finds their projects and catalogues on your machine by itself, and reads them where they sit.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Does it have to open the project to do this?</summary>
+      <div class="a"><p>No, and that is the whole point. It reads the project file directly, so your editing program does not need to be running and nothing is locked or modified. Asking Resolve itself takes several seconds per project and needs Resolve open; reading the file takes a hundredth of a second and needs nothing.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Does it relink the media for me?</summary>
+      <div class="a"><p>No, deliberately. Relinking means writing inside your working catalogue or project, and a mistake there is expensive in a way that is hard to undo. NanoTracker tells you which drive to plug in and the exact path to point at; the relink you do in your own program, where you can see what is happening.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>What if I moved the folder after creating the catalogue?</summary>
+      <div class="a"><p>Then the catalogue still points at the old path, and most tools just say unknown. NanoTracker says something more useful: this path no longer exists, and names it. You can then ask it to search the whole catalogue for where those folders went, and it gives you the new path to copy.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Does it work with projects on drives that are not plugged in?</summary>
+      <div class="a"><p>The project file itself has to be readable, so it lives on a drive you have. The media does not: the answer about where the media lives comes from the catalogue, which remembers drives that are switched off in a drawer.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Does it change anything in my projects?</summary>
+      <div class="a"><p>No. It reads. It never writes to a project, a catalogue or a media drive.</p></div>
+    </details>
+  </div>
+</section>
+
+<div class="chiusura">
+  <div class="wrap">
+    <h2>Know which drive before you start looking.</h2>
+    <p>Free trial &mdash; pay once, no subscription.</p>
+    <a class="btn" href="/#download">Download NanoTracker</a>
+  </div>
+</div>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>&copy; 2026 NanoTracker by Sixpeaks Solutions. All rights reserved.</p>
+    <nav aria-label="Guides">
+      <a href="/find-files-offline-drives.html">Finding work on drives that are off</a>
+      <a href="/en/nas-guide.html">Catalogue across computers</a>
+      <a href="/shared-database-faq.html">Shared catalogue FAQ</a>
+    </nav>
+    <nav class="legale" aria-label="Legal links">
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/refund.html">Refund Policy</a>
+      <a href="/changelog.html">Version</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
