@@ -10,9 +10,14 @@
 <title>Where is that file? Finding work on drives that are switched off</title>
 <meta name="description" content="Forty drives in a drawer and one client asking for a file from 2019. Why spreadsheets and naming conventions stop working, and what a catalogue of your drives actually does instead.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2334D399'/><text x='32' y='44' font-family='monospace' font-size='30' font-weight='bold' text-anchor='middle' fill='%230B0D10'>NT</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<!-- I font stanno su questo sito: nessun indirizzo IP dei visitatori
+     viene mandato a terzi per disegnare il testo. Sono font variabili,
+     un file per famiglia copre tutti i pesi. -->
+<link rel="preload" href="/fonts/IBMPlexSans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:100 700;font-display:swap;src:url(/fonts/IBMPlexSans-var-latin.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:swap;src:url(/fonts/JetBrainsMono-var-latin.woff2) format('woff2')}
+</style>
 
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="NanoTracker">
@@ -368,6 +373,7 @@ footer.site nav a:hover{color:var(--green)}
     </nav>
     <nav class="legale" aria-label="Legal links">
       <a href="/terms.html">Terms of Service</a>
+      <a href="/privacy.html">Privacy</a>
       <a href="/refund.html">Refund Policy</a>
       <a href="/changelog.html">Version</a>
     </nav>

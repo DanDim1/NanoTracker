@@ -10,9 +10,14 @@
 <title>Nano Tracker — shared catalogue FAQ</title>
 <meta name="description" content="Short answers to the most common questions about the shared database: what it is, whether you need a NAS, and how to bring across the catalogue you already have.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2334D399'/><text x='32' y='44' font-family='monospace' font-size='30' font-weight='bold' text-anchor='middle' fill='%230B0D10'>NT</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<!-- I font stanno su questo sito: nessun indirizzo IP dei visitatori
+     viene mandato a terzi per disegnare il testo. Sono font variabili,
+     un file per famiglia copre tutti i pesi. -->
+<link rel="preload" href="/fonts/IBMPlexSans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:100 700;font-display:swap;src:url(/fonts/IBMPlexSans-var-latin.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:swap;src:url(/fonts/JetBrainsMono-var-latin.woff2) format('woff2')}
+</style>
 <style>
 :root{
   --ground:#111316; --panel:#1A1D21; --raised:#22262C; --line:#2C3138;
@@ -514,7 +519,7 @@ situation you are in.</p>
 
 <footer>
   Nano Tracker — <a href="/en/nas-guide.html">step-by-step guide</a> ·
-  <a href="index.html">nanotracker.pro</a>
+  <a href="index.html">nanotracker.pro</a> &middot; <a href="/privacy.html">Privacy</a>
 </footer>
 
 </div>
