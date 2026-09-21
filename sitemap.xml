@@ -32,6 +32,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/offline-media-which-drive.html"/>
   </url>
   <url>
+    <loc>https://nanotracker.pro/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/privacy.html"/>
+  </url>
+  <url>
     <loc>https://nanotracker.pro/refund.html</loc>
     <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/refund.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/refund.html"/>
@@ -78,6 +84,12 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/media-offline-quale-disco.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/offline-media-which-drive.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/offline-media-which-drive.html"/>
+  </url>
+  <url>
+    <loc>https://nanotracker.pro/it/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/privacy.html"/>
   </url>
   <url>
     <loc>https://nanotracker.pro/it/refund.html</loc>

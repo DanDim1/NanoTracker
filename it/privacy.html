@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://nanotracker.pro/it/privacy.html">
+<link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/privacy.html">
+<link rel="alternate" hreflang="en" href="https://nanotracker.pro/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/privacy.html">
+<title>Privacy — cosa raccogliamo, e cosa no</title>
+<meta name="description" content="I nomi dei tuoi file non escono mai dal tuo computer. Questa pagina dice esattamente quali dati raccogliamo, chi li tratta per noi, per quanto li teniamo e come farli cancellare.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2334D399'/><text x='32' y='44' font-family='monospace' font-size='30' font-weight='bold' text-anchor='middle' fill='%230B0D10'>NT</text></svg>">
+<!-- I font stanno su questo sito: nessun indirizzo IP dei visitatori
+     viene mandato a terzi per disegnare il testo. Sono font variabili,
+     un file per famiglia copre tutti i pesi. -->
+<link rel="preload" href="/fonts/IBMPlexSans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:100 700;font-display:swap;src:url(/fonts/IBMPlexSans-var-latin.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:swap;src:url(/fonts/JetBrainsMono-var-latin.woff2) format('woff2')}
+</style>
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="NanoTracker">
+<meta property="og:locale" content="it_IT">
+<meta property="og:url" content="https://nanotracker.pro/it/privacy.html">
+<meta property="og:title" content="Privacy — cosa raccogliamo, e cosa no">
+<meta property="og:description" content="I nomi dei tuoi file non escono mai dal tuo computer. Questa pagina dice quali dati raccogliamo e come farli cancellare.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#111316">
+
+<style>
+:root{
+  --ground:#111316; --panel:#1A1D21; --panel-soft:#16191D; --raised:#22262C;
+  --line:#2C3138; --line-soft:#23272D;
+  --text:#F2F5F7; --text-mid:#9CA3AF; --text-dim:#828A94;
+  --green:#34D399; --green-deep:#10B981; --on-green:#0B0D10;
+  --amber:#F0883E; --blue:#60A5FA; --slate:#94A3B8;
+  --sans:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--text);font-family:var(--sans);
+  line-height:1.65;-webkit-font-smoothing:antialiased;font-size:16px}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+a{color:var(--green)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:var(--panel);padding:8px 12px;border-radius:8px;z-index:9}
+
+header.top{border-bottom:1px solid var(--line-soft);padding:16px 0}
+header.top .wrap{display:flex;align-items:center;gap:12px}
+.chip{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;
+  border-radius:8px;background:var(--green);color:var(--on-green);font-family:var(--mono);
+  font-weight:700;font-size:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:600}
+.brand span span{color:var(--green)}
+header.top nav{margin-left:auto;display:flex;gap:18px}
+header.top nav a{color:var(--text-mid);text-decoration:none;font-size:.86rem}
+header.top nav a:hover{color:var(--text)}
+
+.hero{padding:56px 0 40px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--green);margin:0 0 14px}
+h1{font-size:2.35rem;line-height:1.15;letter-spacing:-.025em;margin:0 0 18px}
+h1 em{font-style:normal;color:var(--green)}
+.lead{color:var(--text-mid);font-size:1.06rem;margin:0}
+.data{font-family:var(--mono);font-size:.78rem;color:var(--text-dim);margin:18px 0 0}
+
+section{padding:44px 0;border-top:1px solid var(--line-soft)}
+h2{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 10px}
+h3{font-size:1.02rem;margin:22px 0 6px;letter-spacing:-.01em}
+.intro{color:var(--text-mid);margin:0 0 26px}
+p{margin:0 0 14px}
+strong{color:var(--text)}
+ul{color:var(--text-mid);margin:0 0 14px;padding-left:20px}
+li{margin-bottom:7px}
+
+table{width:100%;border-collapse:collapse;margin:8px 0 0}
+th{text-align:left;font-size:.74rem;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-dim);font-weight:500;padding:0 0 10px;border-bottom:1px solid var(--line)}
+td{padding:14px 0;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--text-mid);font-size:.94rem}
+td:first-child{width:34%;padding-right:22px;color:var(--text);font-weight:500}
+
+.rilievo{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 8px}
+.rilievo.verde{border-color:var(--green-deep)}
+.rilievo p:last-child{margin:0}
+.rilievo .titolo{font-weight:600;margin:0 0 8px;color:var(--text)}
+
+.nota{border-left:2px solid var(--amber);padding:2px 0 2px 16px;margin:18px 0;color:var(--text-mid);font-size:.94rem}
+.nota strong{color:var(--amber)}
+
+footer.site{border-top:1px solid var(--line);padding:32px 0 44px;text-align:center;background:var(--panel-soft)}
+footer.site p{color:var(--text-dim);font-size:.84rem;margin:0 0 12px}
+footer.site nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 22px;margin-bottom:8px}
+footer.site nav a{color:var(--text-mid);font-size:.82rem;text-decoration:none}
+footer.site nav.legale a{color:var(--text-dim);font-size:.8rem}
+footer.site nav a:hover{color:var(--green)}
+
+@media(max-width:600px){
+  h1{font-size:1.85rem}
+  table,thead,tbody,tr,td{display:block;width:100%}
+  thead{display:none}
+  td{border-bottom:0;padding:0}
+  td:first-child{width:auto;padding:0 0 4px}
+  tr{display:block;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#contenuto">Vai al contenuto</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/it/"><span class="chip">NT</span><span>Nano<span>Tracker</span></span></a>
+    <nav>
+      <a href="/it/#prezzi">Prezzi</a>
+      <a href="/it/#download">Scarica</a>
+      <a href="/privacy.html">EN</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenuto">
+
+<div class="wrap hero">
+  <p class="eyebrow">Informativa privacy</p>
+  <h1>Cosa raccogliamo, <em>e cosa no</em></h1>
+  <p class="lead">Questa pagina è scritta per essere letta, non per essere archiviata. Dice quali dati
+  raccogliamo davvero, chi li tratta per noi, per quanto tempo li teniamo e come chiederne la
+  cancellazione.</p>
+  <p class="data">Ultimo aggiornamento: 21 settembre 2026</p>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>La cosa più importante, per prima</h2>
+
+    <div class="rilievo verde">
+      <p class="titolo">I nomi dei tuoi file non escono mai dal tuo computer.</p>
+      <p>NanoTracker cataloga i tuoi dischi, ma quel catalogo resta dove stai lavorando: sul tuo
+      computer, o sul dispositivo di rete che hai scelto tu. Non passa da noi, non lo vediamo, non
+      abbiamo nessun modo di leggerlo. Non esiste un nostro server che riceva l'elenco delle tue
+      cartelle, perché non esiste affatto: il programma quei dati non li manda da nessuna parte.</p>
+    </div>
+
+    <p class="intro">Quello che segue riguarda quindi molto poco: il tuo indirizzo email, e i dati
+    tecnici minimi che qualunque sito vede quando lo apri.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Chi tratta i tuoi dati</h2>
+    <p>Il titolare del trattamento è <strong>Sixpeaks Solutions</strong>, che sviluppa e vende
+    NanoTracker. Per qualunque domanda su questa pagina, o per esercitare i diritti elencati più
+    avanti, si scrive a <a href="mailto:support@nanotracker.pro">support@nanotracker.pro</a>.</p>
+    <p>Risponde una persona, non un sistema automatico.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Quali dati raccogliamo, e perché</h2>
+    <p class="intro">Sono quattro, e tre li decidi tu.</p>
+
+    <h3>1. Il tuo indirizzo email</h3>
+    <p>Lo chiediamo in tre momenti diversi, e ognuno è una tua scelta:</p>
+    <ul>
+      <li><strong>quando scarichi</strong> il programma da questo sito — per poterti avvisare degli
+      aggiornamenti e delle correzioni importanti;</li>
+      <li><strong>quando avvii la prova gratuita</strong> dentro il programma — per accompagnarti nei
+      giorni di prova e avvisarti quando sta per finire;</li>
+      <li><strong>quando acquisti</strong> — per mandarti la licenza e la ricevuta.</li>
+    </ul>
+    <p>Non vendiamo, non cediamo e non scambiamo indirizzi email con nessuno. Da ogni messaggio che ti
+    mandiamo si esce con un clic, e da quel momento non ricevi più niente.</p>
+
+    <h3>2. I dati di pagamento</h3>
+    <p><strong>Non li vediamo mai.</strong> L'acquisto avviene interamente sulle pagine di Lemon
+    Squeezy, che è il venditore di riferimento e si occupa anche dell'IVA. Numero della carta, scadenza
+    e codice di sicurezza non passano dai nostri sistemi in nessun momento. A noi arriva soltanto la
+    conferma che l'ordine è andato a buon fine, con l'indirizzo a cui intestare la licenza.</p>
+
+    <h3>3. L'indirizzo IP</h3>
+    <p>È il numero che identifica la tua connessione, e lo vede per forza qualunque sito apri: senza,
+    le pagine non saprebbero dove arrivare. Lo trattano i fornitori elencati più avanti per
+    consegnarti le pagine, proteggere il sito da attacchi e contare le visite. Non lo usiamo per
+    riconoscerti né per costruire profili.</p>
+
+    <h3>4. Le segnalazioni di assistenza</h3>
+    <p>Dentro il programma c'è un pulsante per mandarci i file diagnostici quando qualcosa non va.
+    Parte solo se lo premi tu.</p>
+
+    <div class="nota">
+      <p><strong>Una cosa da sapere prima di premerlo.</strong> Quei file contengono i
+      <strong>percorsi delle cartelle</strong> che il programma ha esaminato: se le tue cartelle
+      portano i nomi dei tuoi clienti, quei nomi sono lì dentro. Per questo il programma ti mostra
+      <strong>esattamente ciò che sta per partire</strong> e chiede conferma: leggilo prima di
+      confermare. Le password e la chiave di licenza vengono tolte automaticamente, alla fonte.</p>
+    </div>
+
+    <p>Usiamo quei file solo per capire il tuo problema, e li cancelliamo quando il caso è chiuso.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Cookie: non ne usiamo</h2>
+    <p>Questo sito <strong>non installa cookie</strong>, né suoi né di terze parti, ed è il motivo per
+    cui non trovi nessuna finestra che ti chiede il permesso: non c'è niente da autorizzare.</p>
+    <p>Il browser memorizza soltanto due cose tecniche, sul tuo computer e per comodità tua: la lingua
+    che hai scelto, e un elenco temporaneo delle versioni scaricabili che sparisce chiudendo la
+    scheda. Non arrivano a noi e non identificano nessuno.</p>
+
+    <h3>Le statistiche del sito</h3>
+    <p>Usiamo Cloudflare Web Analytics per sapere quante persone visitano le pagine e da quali paesi.
+    L'abbiamo scelto proprio perché <strong>funziona senza cookie e senza impronta digitale del
+    browser</strong>: non ti segue da un sito all'altro, non crea un profilo e non permette né a noi
+    né a Cloudflare di risalire a una persona. Per questo non è necessario chiederti il consenso.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Chi ci aiuta a far funzionare tutto</h2>
+    <p class="intro">Non facciamo tutto da soli. Queste sono le aziende che trattano dati per nostro
+    conto, e che cosa tocca ognuna.</p>
+
+    <table>
+      <thead><tr><th>Fornitore</th><th>Che cosa fa, e che cosa vede</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>GitHub Pages</td>
+          <td>Ospita le pagine che stai leggendo. Vede l'indirizzo IP di chi apre il sito.</td>
+        </tr>
+        <tr>
+          <td>Cloudflare</td>
+          <td>Protegge il sito, lo rende veloce, conta le visite senza cookie e riceve l'indirizzo
+          email che lasci nel modulo per passarlo a Brevo.</td>
+        </tr>
+        <tr>
+          <td>Brevo</td>
+          <td>Manda le email di cui sopra e tiene gli elenchi degli iscritti. Ha sede nell'Unione
+          Europea.</td>
+        </tr>
+        <tr>
+          <td>Lemon Squeezy</td>
+          <td>Gestisce l'acquisto per intero: pagamento, IVA, ricevuta. I dati della carta restano
+          suoi, noi non li vediamo.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Per quanto teniamo i dati</h2>
+    <ul>
+      <li><strong>Indirizzo di chi ha scaricato o avviato la prova</strong>: finché resti iscritto. Ti
+      cancelli con un clic da qualunque messaggio, e l'indirizzo sparisce.</li>
+      <li><strong>Indirizzo di chi ha acquistato</strong>: finché la licenza è attiva, perché serve a
+      riattivarla se cambi computer, più il tempo che la legge impone per i documenti fiscali.</li>
+      <li><strong>File diagnostici</strong>: solo per il tempo necessario a risolvere il caso.</li>
+      <li><strong>Statistiche del sito</strong>: aggregate e anonime, senza nessun collegamento a te.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Dati fuori dall'Unione Europea</h2>
+    <p>Alcuni dei fornitori qui sopra hanno sede negli Stati Uniti. Quando un dato li raggiunge, il
+    trasferimento avviene sulla base delle garanzie previste dal Regolamento europeo — clausole
+    contrattuali standard e, dove applicabile, l'adesione del fornitore al quadro di protezione
+    concordato fra Unione Europea e Stati Uniti.</p>
+    <p>I font e le immagini di questo sito sono ospitati <strong>qui</strong>, non su servizi esterni:
+    aprire una pagina non manda il tuo indirizzo IP a nessuno che non sia nell'elenco qui sopra.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>I tuoi diritti</h2>
+    <p class="intro">Il Regolamento europeo ti riconosce dei diritti che puoi esercitare in qualunque
+    momento, gratuitamente, scrivendo a
+    <a href="mailto:support@nanotracker.pro">support@nanotracker.pro</a>.</p>
+    <ul>
+      <li><strong>Sapere</strong> quali tuoi dati abbiamo, e riceverne una copia.</li>
+      <li><strong>Correggerli</strong>, se sono sbagliati.</li>
+      <li><strong>Farli cancellare.</strong></li>
+      <li><strong>Portarli altrove</strong>, in un formato leggibile da un altro programma.</li>
+      <li><strong>Opporti</strong> al loro utilizzo, o chiederne la limitazione.</li>
+      <li><strong>Revocare il consenso</strong> che avevi dato, senza che questo renda illegittimo
+      quello che è stato fatto prima.</li>
+    </ul>
+    <p>Rispondiamo entro un mese. Se pensi che qualcosa non vada e preferisci rivolgerti a
+    un'autorità, puoi presentare reclamo al Garante per la protezione dei dati personali
+    (<a href="https://www.garanteprivacy.it" rel="noopener">garanteprivacy.it</a>).</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Se questa pagina cambia</h2>
+    <p>Se cambiamo qualcosa di sostanziale — un fornitore nuovo, un dato in più — aggiorniamo questa
+    pagina e cambiamo la data in cima. Se il cambiamento riguarda dati per cui ci avevi dato il
+    consenso, te lo chiediamo di nuovo invece di darlo per scontato.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>&copy; 2026 NanoTracker di Sixpeaks Solutions. Tutti i diritti riservati.</p>
+    <nav aria-label="Guide">
+      <a href="/it/trovare-file-dischi-spenti.html">Trovare file su dischi spenti</a>
+      <a href="/it/media-offline-quale-disco.html">Media offline: quale disco?</a>
+      <a href="/guida-nas.html">Catalogo fra più computer</a>
+      <a href="/it/faq-database-condiviso.html">FAQ catalogo condiviso</a>
+    </nav>
+    <nav class="legale" aria-label="Link legali">
+      <a href="/it/terms.html">Termini di servizio</a>
+      <a href="/it/privacy.html">Privacy</a>
+      <a href="/it/refund.html">Politica di rimborso</a>
+      <a href="/it/changelog.html">Versioni</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
