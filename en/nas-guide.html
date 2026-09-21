@@ -7,7 +7,7 @@
 <link rel="alternate" hreflang="it" href="https://nanotracker.pro/guida-nas.html">
 <link rel="alternate" hreflang="en" href="https://nanotracker.pro/en/nas-guide.html">
 <link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/en/nas-guide.html">
-<title>Nano Tracker — sharing one catalogue across computers</title>
+<title>NanoTracker — sharing one catalogue across computers</title>
 <meta name="description" content="Step-by-step guide to letting several computers see the same catalogue: on a NAS, on a PC, or by connecting to one that already exists.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2334D399'/><text x='32' y='44' font-family='monospace' font-size='30' font-weight='bold' text-anchor='middle' fill='%230B0D10'>NT</text></svg>">
 <!-- I font stanno su questo sito: nessun indirizzo IP dei visitatori
@@ -103,9 +103,9 @@ footer{margin-top:52px;border-top:1px solid var(--line);padding-top:20px;
 <script>const LANG = 'en';</script>
 <div class="wrap">
 
-<span class="badge">Nano Tracker</span>
+<span class="badge">NanoTracker</span>
 <h1 id="cima">Sharing one catalogue across computers</h1>
-<p class="lede">You only need this if several of you work together. If you use Nano Tracker on
+<p class="lede">You only need this if several of you work together. If you use NanoTracker on
 a single computer, everything is already fine and this page is not for you.</p>
 
 <!-- ══════════ THE QUESTION ══════════ -->
@@ -136,7 +136,7 @@ a single computer, everything is already fine and this page is not for you.</p>
 <div class="percorso" id="p-nas">
   <button class="torna" onclick="chiudi()">← That is not my situation</button>
   <h2>Creating the database on a NAS</h2>
-  <p>Seven steps. The first four on the NAS, the last three in Nano Tracker.</p>
+  <p>Seven steps. The first four on the NAS, the last three in NanoTracker.</p>
 
   <div class="passo"><div class="n">1</div><div class="passo-c">
     <p>Open the NAS in your browser, as if it were a website. The address is the NAS number
@@ -201,15 +201,15 @@ a single computer, everything is already fine and this page is not for you.</p>
     usually <code>3306</code>. Note it down.</p>
     <details class="come"><summary>Hold on: earlier it was 5000, now 3306. Why?</summary>
       <p>They are two different ports with nothing to do with each other. <code>5000</code> is
-      only for <em>you</em>, to open the NAS in a browser. <code>3306</code> is the one Nano
-      Tracker will use to talk to the database. It is the second one you need.</p>
+      only for <em>you</em>, to open the NAS in a browser. <code>3306</code> is the one 
+      NanoTracker will use to talk to the database. It is the second one you need.</p>
       <p>If you see <code>3307</code> next to the tick box instead of 3306, that is fine: write
       that one down. It happens when an older MariaDB is also installed on the NAS.</p>
     </details>
   </div></div>
 
   <div class="passo"><div class="n">5</div><div class="passo-c">
-    <p>Go back to Nano Tracker. At the bottom of the left-hand menu there is the
+    <p>Go back to NanoTracker. At the bottom of the left-hand menu there is the
     <strong>Settings</strong> gear: open it and scroll to the <strong>Database</strong> box.
     Press the <strong>+</strong> next to «Connection» and choose
     <strong>«Create a new shared database»</strong>.</p>
@@ -282,7 +282,7 @@ a single computer, everything is already fine and this page is not for you.</p>
   </div></div>
 
   <div class="passo"><div class="n">6</div><div class="passo-c">
-    <p>In Nano Tracker open the <strong>Settings</strong> gear at the bottom of the left-hand
+    <p>In NanoTracker open the <strong>Settings</strong> gear at the bottom of the left-hand
     menu and scroll to the <strong>Database</strong> box. Press the <strong>+</strong>, choose
     <strong>«Create a new shared database»</strong> and press
     <strong>«Search for MariaDB on the network»</strong>.</p>
@@ -363,7 +363,7 @@ a single computer, everything is already fine and this page is not for you.</p>
   computer and the app copies it across to the shared one: nobody starts from scratch.</p>
 
   <p><strong>Does the NAS have to stay on?</strong> Only while you work. If it does not answer,
-  Nano Tracker falls back to the catalogue on your computer and never blocks you.</p>
+  NanoTracker falls back to the catalogue on your computer and never blocks you.</p>
 
   <p><strong>Is it safe?</strong> The database stays inside your own network. Do not forward
   that port on your router — there is no need.</p>
