@@ -8,22 +8,10 @@
     <link rel="alternate" hreflang="en" href="https://nanotracker.pro/terms.html">
     <link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/terms.html">
     <title>Termini di Servizio - Nano Tracker</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        nanoBg: '#111316',
-                        nanoPanel: '#1A1D21',
-                        nanoGreen: '#34D399',
-                        nanoGreenHover: '#10B981',
-                        nanoText: '#9CA3AF'
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Il CSS sta su questo sito: prima lo generava nel browser uno script
+         esterno, che vedeva l'indirizzo IP di ogni visitatore.
+         Si rigenera con strumenti_sito/genera_tailwind.py. -->
+    <link rel="stylesheet" href="/tailwind.css">
 </head>
 <body class="bg-nanoBg text-gray-300 font-sans">
 
