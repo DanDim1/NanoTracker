@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://nanotracker.pro/find-files-offline-drives.html">
+<link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/trovare-file-dischi-spenti.html">
+<link rel="alternate" hreflang="en" href="https://nanotracker.pro/find-files-offline-drives.html">
+<link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/find-files-offline-drives.html">
+<title>Where is that file? Finding work on drives that are switched off</title>
+<meta name="description" content="Forty drives in a drawer and one client asking for a file from 2019. Why spreadsheets and naming conventions stop working, and what a catalogue of your drives actually does instead.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2334D399'/><text x='32' y='44' font-family='monospace' font-size='30' font-weight='bold' text-anchor='middle' fill='%230B0D10'>NT</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="NanoTracker">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://nanotracker.pro/find-files-offline-drives.html">
+<meta property="og:title" content="Where is that file? Finding work on drives that are switched off">
+<meta property="og:description" content="Why spreadsheets and naming conventions stop working, and what a catalogue of your drives does instead.">
+
+<style>
+:root{
+  --ground:#111316; --panel:#1A1D21; --panel-soft:#16191D; --raised:#22262C;
+  --line:#2C3138; --line-soft:#23272D;
+  --text:#F2F5F7; --text-mid:#9CA3AF; --text-dim:#828A94;
+  --green:#34D399; --green-deep:#10B981; --on-green:#0B0D10;
+  --amber:#F0883E; --blue:#60A5FA; --slate:#94A3B8;
+  --sans:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--text);font-family:var(--sans);
+  line-height:1.65;-webkit-font-smoothing:antialiased;font-size:16px}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+a{color:var(--green)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:var(--panel);padding:8px 12px;border-radius:8px;z-index:9}
+
+header.top{border-bottom:1px solid var(--line-soft);padding:16px 0}
+header.top .wrap{display:flex;align-items:center;gap:12px}
+.chip{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;
+  border-radius:8px;background:var(--green);color:var(--on-green);font-family:var(--mono);
+  font-weight:700;font-size:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:600}
+.brand span span{color:var(--green)}
+header.top nav{margin-left:auto;display:flex;gap:18px}
+header.top nav a{color:var(--text-mid);text-decoration:none;font-size:.86rem}
+header.top nav a:hover{color:var(--text)}
+
+.hero{padding:56px 0 40px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--green);margin:0 0 14px}
+h1{font-size:2.35rem;line-height:1.15;letter-spacing:-.025em;margin:0 0 18px}
+h1 em{font-style:normal;color:var(--green)}
+.lead{color:var(--text-mid);font-size:1.06rem;margin:0}
+
+section{padding:44px 0;border-top:1px solid var(--line-soft)}
+h2{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 10px}
+h3{font-size:1.02rem;margin:0 0 6px;letter-spacing:-.01em}
+.intro{color:var(--text-mid);margin:0 0 26px}
+p{margin:0 0 14px}
+strong{color:var(--text)}
+
+table{width:100%;border-collapse:collapse;margin:8px 0 0}
+th{text-align:left;font-size:.74rem;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-dim);font-weight:500;padding:0 0 10px;border-bottom:1px solid var(--line)}
+td{padding:14px 0;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--text-mid);font-size:.94rem}
+td:first-child{width:38%;padding-right:22px;color:var(--text);font-weight:500}
+
+.risposte{display:grid;gap:10px;margin-top:8px}
+.risposta{display:flex;gap:14px;align-items:flex-start;background:var(--panel);
+  border:1px solid var(--line);border-radius:12px;padding:15px 17px}
+.pallino{flex:0 0 9px;height:9px;border-radius:50%;margin-top:8px}
+.pallino.qui{background:var(--green)}
+.pallino.rete{background:var(--blue)}
+.pallino.cassetto{background:var(--slate)}
+.risposta b{display:block;font-size:.95rem;margin-bottom:2px}
+.risposta span{color:var(--text-mid);font-size:.88rem}
+
+.esempio{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-top:8px}
+.esempio .cerca{font-family:var(--mono);font-size:.86rem;color:var(--text-dim);
+  border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:14px}
+.esempio .cerca b{color:var(--text);font-weight:500}
+.riga{display:flex;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px solid var(--line-soft);font-size:.9rem}
+.riga:last-child{border-bottom:0}
+.riga .p{font-family:var(--mono);font-size:.78rem;color:var(--text-dim);flex:1;min-width:0;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.riga .d{font-family:var(--mono);font-size:.76rem;white-space:nowrap}
+.riga .d.qui{color:var(--green)}
+.riga .d.rete{color:var(--blue)}
+.riga .d.cassetto{color:var(--slate)}
+.didascalia{color:var(--text-dim);font-size:.82rem;margin:10px 0 0;text-align:center}
+
+details.q{border:1px solid var(--line);border-radius:11px;padding:14px 17px;margin-bottom:9px;background:var(--panel)}
+details.q summary{cursor:pointer;font-weight:600;font-size:.98rem}
+details.q .a{color:var(--text-mid);font-size:.94rem;margin-top:10px}
+details.q .a p{margin:0 0 10px}
+details.q .a p:last-child{margin:0}
+
+.chiusura{text-align:center;padding:52px 0}
+.chiusura h2{font-size:1.75rem;margin-bottom:8px}
+.chiusura p{color:var(--text-mid)}
+.btn{display:inline-block;background:var(--green);color:var(--on-green);text-decoration:none;
+  font-weight:600;border-radius:10px;padding:13px 26px;margin-top:10px}
+.btn:hover{background:var(--green-deep)}
+
+footer.site{border-top:1px solid var(--line);padding:32px 0 44px;text-align:center;background:var(--panel-soft)}
+footer.site p{color:var(--text-dim);font-size:.84rem;margin:0 0 12px}
+footer.site nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 22px;margin-bottom:8px}
+footer.site nav a{color:var(--text-mid);font-size:.82rem;text-decoration:none}
+footer.site nav.legale a{color:var(--text-dim);font-size:.8rem}
+footer.site nav a:hover{color:var(--green)}
+
+@media(max-width:600px){
+  h1{font-size:1.85rem}
+  table,thead,tbody,tr,td{display:block;width:100%}
+  thead{display:none}
+  td{border-bottom:0;padding:0}
+  td:first-child{width:auto;padding:0 0 4px}
+  tr{display:block;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+  .riga{flex-wrap:wrap;gap:4px 10px}
+  .riga .p{flex:1 0 100%;white-space:normal}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "en",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can it really find files on a drive that is not plugged in?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, because it is not searching the drive: it is searching the list it made when the drive was last connected. You get the file name, the folder path and the name of the drive it lives on. To open the file you still have to plug that drive in — nothing can conjure the bytes back."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it copy or move my files?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It reads names and folder structure, and writes them into its own catalogue. It never writes to your drives and it is not a backup tool. If a drive fails, NanoTracker can tell you what was on it — it cannot give it back."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do my files or file names go to the cloud?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The catalogue lives on your computer, or on your own NAS if your studio shares one. Nothing is sent to us or to anyone else."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens when a drive comes back with a different letter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nothing. A drive is recognised by what is written on the drive itself, not by the letter Windows happens to give it that day. Rename it, move it to another port, plug it into another machine: it stays the same drive in the catalogue."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the whole studio see the same catalogue?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, with the Studio licence: the catalogue lives on a NAS or on one of your computers, and everyone sees the same drives. A search then also tells you when a drive is plugged into a colleague's machine right now, and whose."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does the first scan take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on how many folders a drive holds, not on how many terabytes. A drive with tens of thousands of folders takes a couple of minutes, and you watch it happen. After that it only looks at what changed."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#contenuto">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="chip">NT</span><span>Nano<span>Tracker</span></span></a>
+    <nav>
+      <a href="/#prezzi">Pricing</a>
+      <a href="/#download">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenuto">
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Finding your work</p>
+    <h1>Where is that file?<br><em>Finding work on drives that are switched off.</em></h1>
+    <p class="lead">A client rings about a job from 2019. The footage is on one of forty drives in a drawer, and the only way you know which one is to start plugging them in. There is a better answer, and it has nothing to do with buying more storage.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>The problem is not storage. It is memory.</h2>
+    <p class="intro">Nobody who shoots for a living runs out of drives. What runs out is the ability to remember what is on them.</p>
+    <p>It creeps up. Ten drives, and you know them by sight. Thirty, and you rely on the label. Sixty, and the label says <strong>BACKUP 2021</strong>, which was true when you wrote it and stopped being true four jobs later.</p>
+    <p>And the cost is never the drive. It is the forty minutes of plugging things in while someone waits for an answer, and the quiet worry that the file might not be anywhere at all.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Why the usual answers stop working</h2>
+    <p class="intro">Everyone arrives at the same four, in roughly the same order. They are not silly &mdash; they work, up to a size. Knowing <em>where</em> each one breaks saves you from discovering it during a phone call.</p>
+
+    <table>
+      <thead><tr><th>What everyone tries</th><th>Where it breaks</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>A spreadsheet of drives and contents</td>
+          <td>It is a copy of reality kept by hand, so it is only true on the day you write it. The drive you filled last Tuesday in a hurry is exactly the one missing from it &mdash; and that is the one you will look for.</td>
+        </tr>
+        <tr>
+          <td>A strict naming convention</td>
+          <td>It works beautifully until a second person joins, or until you accept a job that does not fit the scheme. Conventions do not survive contact with a deadline.</td>
+        </tr>
+        <tr>
+          <td>Labels on the drives</td>
+          <td>They describe the drive when it was filled, not now. And they answer the wrong question: you do not want to know what is on <em>this</em> drive, you want to know which drive has <em>that</em> file.</td>
+        </tr>
+        <tr>
+          <td>&ldquo;I will just plug them all in&rdquo;</td>
+          <td>Forty drives is an afternoon, and it wears the drives and the enclosures for nothing. It also fails silently: you can plug in all forty and still miss the file, because you were looking for a folder name you half remember.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top:22px">What they have in common is that they all ask <strong>you</strong> to remember. The catalogue exists in your head, and the drives are just boxes.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The other way round: let the drives remember</h2>
+    <p class="intro">Plug a drive in once. NanoTracker writes down what is on it &mdash; the folders, and the files if you want them &mdash; and keeps that list after you unplug it. From then on you search the list, not the drives.</p>
+    <p>So the question stops being <em>&ldquo;which drive do I try first?&rdquo;</em> and becomes <em>&ldquo;Antonini&rdquo;</em>. And the answer comes in one of three shapes:</p>
+
+    <div class="risposte">
+      <div class="risposta">
+        <span class="pallino qui"></span>
+        <div><b>It is here, plugged in</b><span>Open the folder straight away.</span></div>
+      </div>
+      <div class="risposta">
+        <span class="pallino cassetto"></span>
+        <div><b>It is in the drawer, on a drive called <em>BACKUP 2025</em></b><span>You know which one to fetch before you stand up.</span></div>
+      </div>
+      <div class="risposta">
+        <span class="pallino rete"></span>
+        <div><b>It is plugged into Giovanna's Mac, right now</b><span>Only if your studio shares one catalogue. You ask her instead of hunting.</span></div>
+      </div>
+    </div>
+
+    <p style="margin-top:22px">The third one is the one people do not expect, and in a studio it is the one that saves the most time: the drive you are about to search the whole shelf for is often in somebody else's machine.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What it looks like</h2>
+    <p class="intro">One search box. No drive needs to be connected for this to answer.</p>
+
+    <div class="esempio">
+      <p class="cerca">search &nbsp;<b>antonini</b></p>
+      <div class="riga">
+        <span class="p">VIDEO \ 2025 \ Antonini Wedding 2025</span>
+        <span class="d cassetto">BACKUP 2025 &middot; in the drawer</span>
+      </div>
+      <div class="riga">
+        <span class="p">FOOTAGE \ Antonini \ Antonini_RAW_ProRes</span>
+        <span class="d cassetto">ASMT 4TB #2 &middot; in the drawer</span>
+      </div>
+      <div class="riga">
+        <span class="p">PROJECTS \ Resolve \ Antonini - Colour</span>
+        <span class="d qui">WORK SSD &middot; plugged in</span>
+      </div>
+      <div class="riga">
+        <span class="p">PHOTOS \ Selects \ Antonini stills selection</span>
+        <span class="d rete">PHOTO ARCHIVE &middot; on Giovanna's Mac</span>
+      </div>
+    </div>
+    <p class="didascalia">Four results, three different places, nothing plugged in.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>And the question a project asks</h2>
+    <p class="intro">There is a version of this problem that arrives from the other direction: you open a DaVinci Resolve, Premiere Pro or Lightroom project and half of it is offline. The programme tells you what is missing. It does not tell you <strong>which drive to go and get</strong>.</p>
+    <p>NanoTracker reads those projects &mdash; without opening them &mdash; and answers that question directly: this project needs these drives, and here is where each one is. It is the same search, asked by the project instead of by you.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Common questions</h2>
+
+    <details class="q">
+      <summary>Can it really find files on a drive that is not plugged in?</summary>
+      <div class="a"><p>Yes, because it is not searching the drive: it is searching the list it made when the drive was last connected. You get the file name, the folder path and the name of the drive it lives on. To open the file you still have to plug that drive in &mdash; nothing can conjure the bytes back.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Does it copy or move my files?</summary>
+      <div class="a"><p>No. It reads names and folder structure, and writes them into its own catalogue. It never writes to your drives and it is not a backup tool. If a drive fails, NanoTracker can tell you what was on it &mdash; it cannot give it back.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Do my files or file names go to the cloud?</summary>
+      <div class="a"><p>No. The catalogue lives on your computer, or on your own NAS if your studio shares one. Nothing is sent to us or to anyone else.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>What happens when a drive comes back with a different letter?</summary>
+      <div class="a"><p>Nothing. A drive is recognised by what is written on the drive itself, not by the letter Windows happens to give it that day. Rename it, move it to another port, plug it into another machine: it stays the same drive in the catalogue.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Can the whole studio see the same catalogue?</summary>
+      <div class="a"><p>Yes, with the Studio licence: the catalogue lives on a NAS or on one of your computers, and everyone sees the same drives. A search then also tells you when a drive is plugged into a colleague's machine right now, and whose.</p>
+      <p>There is a <a href="/en/nas-guide.html">step-by-step guide</a> for setting that up, written for people who have never touched a NAS.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>How long does the first scan take?</summary>
+      <div class="a"><p>It depends on how many folders a drive holds, not on how many terabytes. A drive with tens of thousands of folders takes a couple of minutes, and you watch it happen. After that it only looks at what changed.</p></div>
+    </details>
+  </div>
+</section>
+
+<div class="chiusura">
+  <div class="wrap">
+    <h2>Stop opening drawers.</h2>
+    <p>Free trial &mdash; pay once, no subscription.</p>
+    <a class="btn" href="/#download">Download NanoTracker</a>
+  </div>
+</div>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>&copy; 2026 NanoTracker by Sixpeaks Solutions. All rights reserved.</p>
+    <nav aria-label="Guides">
+      <a href="/en/nas-guide.html">Catalogue across computers</a>
+      <a href="/shared-database-faq.html">Shared catalogue FAQ</a>
+    </nav>
+    <nav class="legale" aria-label="Legal links">
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/refund.html">Refund Policy</a>
+      <a href="/changelog.html">Version</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
