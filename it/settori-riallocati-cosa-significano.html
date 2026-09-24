@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://nanotracker.pro/it/settori-riallocati-cosa-significano.html">
+<link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/settori-riallocati-cosa-significano.html">
+<link rel="alternate" hreflang="en" href="https://nanotracker.pro/reallocated-sectors-explained.html">
+<link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/reallocated-sectors-explained.html">
+<title>Settori riallocati: cosa significano, e quando preoccuparsi</title>
+<meta name="description" content="Il disco ha trovato un settore danneggiato e l'ha messo da parte. Cosa vuol dire, quando è normale, e il numero oltre il quale smette di esserlo.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2334D399'/><text x='32' y='44' font-family='monospace' font-size='30' font-weight='bold' text-anchor='middle' fill='%230B0D10'>NT</text></svg>">
+<link rel="preload" href="/fonts/IBMPlexSans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:100 700;font-display:swap;src:url(/fonts/IBMPlexSans-var-latin.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:swap;src:url(/fonts/JetBrainsMono-var-latin.woff2) format('woff2')}
+</style>
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="NanoTracker">
+<meta property="og:locale" content="it_IT">
+<meta property="og:url" content="https://nanotracker.pro/it/settori-riallocati-cosa-significano.html">
+<meta property="og:title" content="Settori riallocati: cosa significano, e quando preoccuparsi">
+<meta property="og:description" content="La risposta breve dipende da una cosa sola, e non è il numero: è se quel numero si sta muovendo.">
+
+<style>
+:root{
+  --ground:#111316; --panel:#1A1D21; --panel-soft:#16191D; --raised:#22262C;
+  --line:#2C3138; --line-soft:#23272D;
+  --text:#F2F5F7; --text-mid:#9CA3AF; --text-dim:#828A94;
+  --green:#34D399; --green-deep:#10B981; --on-green:#0B0D10;
+  --amber:#F0883E; --red:#F87171; --blue:#60A5FA; --slate:#94A3B8;
+  --sans:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--text);font-family:var(--sans);
+  line-height:1.65;-webkit-font-smoothing:antialiased;font-size:16px}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+a{color:var(--green)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:var(--panel);padding:8px 12px;border-radius:8px;z-index:9}
+
+header.top{border-bottom:1px solid var(--line-soft);padding:16px 0}
+header.top .wrap{display:flex;align-items:center;gap:12px}
+.chip{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;
+  border-radius:8px;background:var(--green);color:var(--on-green);font-family:var(--mono);
+  font-weight:700;font-size:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:600}
+.brand span span{color:var(--green)}
+header.top nav{margin-left:auto;display:flex;gap:18px}
+header.top nav a{color:var(--text-mid);text-decoration:none;font-size:.86rem}
+header.top nav a:hover{color:var(--text)}
+
+.hero{padding:56px 0 34px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--green);margin:0 0 14px}
+h1{font-size:2.35rem;line-height:1.15;letter-spacing:-.025em;margin:0 0 18px}
+h1 em{font-style:normal;color:var(--green)}
+.lead{color:var(--text-mid);font-size:1.06rem;margin:0}
+
+.corta{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--green);
+  border-radius:12px;padding:20px 22px;margin:26px 0 0}
+.corta h2{font-size:.78rem;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--green);margin:0 0 10px}
+.corta p{margin:0 0 10px}
+.corta p:last-child{margin:0}
+
+section{padding:44px 0;border-top:1px solid var(--line-soft)}
+h2{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 10px}
+h3{font-size:1.02rem;margin:0 0 6px;letter-spacing:-.01em}
+.intro{color:var(--text-mid);margin:0 0 26px}
+p{margin:0 0 14px}
+strong{color:var(--text)}
+code{font-family:var(--mono);font-size:.84rem;color:var(--text)}
+
+table{width:100%;border-collapse:collapse;margin:8px 0 0}
+th{text-align:left;font-size:.74rem;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-dim);font-weight:500;padding:0 0 10px;border-bottom:1px solid var(--line)}
+td{padding:14px 0;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--text-mid);font-size:.94rem}
+td:first-child{width:34%;padding-right:22px;color:var(--text);font-weight:500}
+
+.confronto{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-soft);
+  border:1px solid var(--line-soft);border-radius:12px;overflow:hidden;margin-top:8px}
+.confronto div{background:var(--panel-soft);padding:18px 20px}
+.confronto dt{font-family:var(--mono);font-size:.78rem;color:var(--text-dim);margin:0 0 8px}
+.confronto dd{margin:0}
+.confronto .n{font-size:1.4rem;font-weight:700;letter-spacing:-.02em;display:block;margin-bottom:6px}
+.confronto .n.ok{color:var(--green)}
+.confronto .n.ko{color:var(--red)}
+.confronto small{color:var(--text-mid);font-size:.88rem;display:block}
+
+.nota{border-left:2px solid var(--green-deep);padding:2px 0 2px 16px;margin:22px 0 0;color:var(--text-mid)}
+
+details.q{border:1px solid var(--line);border-radius:11px;padding:14px 17px;margin-bottom:9px;background:var(--panel)}
+details.q summary{cursor:pointer;font-weight:600;font-size:.98rem}
+details.q .a{color:var(--text-mid);font-size:.94rem;margin-top:10px}
+details.q .a p{margin:0 0 10px}
+details.q .a p:last-child{margin:0}
+
+.chiusura{text-align:center;padding:52px 0}
+.chiusura h2{font-size:1.75rem;margin-bottom:8px}
+.chiusura p{color:var(--text-mid)}
+.btn{display:inline-block;background:var(--green);color:var(--on-green);text-decoration:none;
+  font-weight:600;border-radius:10px;padding:13px 26px;margin-top:10px}
+.btn:hover{background:var(--green-deep)}
+
+footer.site{border-top:1px solid var(--line);padding:32px 0 44px;text-align:center;background:var(--panel-soft)}
+footer.site p{color:var(--text-dim);font-size:.84rem;margin:0 0 12px}
+footer.site nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 22px;margin-bottom:8px}
+footer.site nav a{color:var(--text-mid);font-size:.82rem;text-decoration:none}
+footer.site nav.legale a{color:var(--text-dim);font-size:.8rem}
+footer.site nav a:hover{color:var(--green)}
+
+@media(max-width:600px){
+  h1{font-size:1.85rem}
+  .confronto{grid-template-columns:1fr}
+  table,thead,tbody,tr,td{display:block;width:100%}
+  thead{display:none}
+  td{border-bottom:0;padding:0}
+  td:first-child{width:auto;padding:0 0 4px}
+  tr{display:block;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "it",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Un solo settore riallocato è grave?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Da solo no. I dischi sono costruiti con settori di scorta proprio perché qualcuno si guasterà; uno comparso una volta e mai più cresciuto è una cicatrice, non una ferita. Quello che conta è se resta uno. Segnati il numero e riguardalo fra un mese."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanti settori riallocati sono troppi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Non esiste un numero universale, e chi te ne dà uno sta tirando a indovinare. Quaranta settori fermi da tre anni preoccupano meno di due comparsi questo mese. La domanda non è quanti, è quanto in fretta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Si possono riparare o azzerare i settori riallocati?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Il conteggio vive nel firmware del disco e va solo in su. Formattare non lo azzera, e un programma che dice di farlo o mente o ti sta nascondendo il numero. Ed è un bene: vuol dire che la storia non si cancella per sbaglio."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Che differenza c’è fra settori riallocati, in attesa e non recuperabili?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Riallocato vuol dire che il disco ha già sostituito un settore guasto con uno di scorta e i tuoi dati sono sopravvissuti. In attesa vuol dire che ha trovato un settore che non riesce a leggere in modo affidabile e non ha ancora deciso. Non recuperabile vuol dire che ha provato e non c’è riuscito. I due urgenti sono questi ultimi, perché quei dati potrebbero essere già persi."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Perdo dei dati quando un settore viene riallocato?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Di solito no. Nel caso comune il disco riesce a leggere il settore, si accorge che ci ha messo troppi tentativi, copia il contenuto su uno di scorta e manda in pensione l’originale. Tu non lo vedi succedere. È il meccanismo che funziona come previsto — ed è per questo che un conteggio fermo non è un’emergenza."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#contenuto">Vai al contenuto</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/it/"><span class="chip">NT</span><span>Nano<span>Tracker</span></span></a>
+    <nav>
+      <a href="/it/#prezzi">Prezzi</a>
+      <a href="/it/#download">Scarica</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenuto">
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Salute dei dischi</p>
+    <h1>Settori riallocati.<br><em>Cosa significano, e quando preoccuparsi.</em></h1>
+    <p class="lead">Un programma ti ha mostrato un numero accanto a quelle due parole e adesso sei qui, a chiederti quanto sia grave. Ecco la risposta, prima della spiegazione.</p>
+
+    <div class="corta">
+      <h2>In breve</h2>
+      <p><strong>Il numero in sé dice pochissimo. Se si sta muovendo dice quasi tutto.</strong></p>
+      <p>Un conteggio fermo allo stesso valore da anni è una cicatrice: una volta è andato storto qualcosa, il disco se n’è occupato, e la vita è andata avanti. Un conteggio salito nelle ultime settimane è l’avviso più chiaro che un disco sia in grado di darti.</p>
+      <p>Quindi la domanda utile non è <em>«quaranta sono tanti?»</em> È <em>«quant’erano il mese scorso?»</em></p>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>Cosa sta succedendo davvero</h2>
+    <p class="intro">Un disco è diviso in milioni di piccoli blocchi chiamati settori. Qualcuno si guasta — è previsto, e ogni disco è costruito dandolo per scontato.</p>
+    <p>Per questo ogni disco esce di fabbrica con una riserva privata di settori di scorta che nessuno vede mai. Quando il disco si accorge che leggere un settore richiede troppi tentativi, ne copia il contenuto su uno di quelli di scorta, manda in pensione l’originale e si segna in silenzio di averlo fatto. <strong>Quel numero è il conteggio dei settori riallocati.</strong></p>
+    <p>La parte importante: nel caso normale <strong>i tuoi dati sono sopravvissuti</strong>. Non te l’hanno detto perché non c’era niente da fare per te. Il meccanismo ha funzionato.</p>
+    <p class="nota">È per questo che un conteggio fermo non è un’emergenza: è il registro dei problemi che il disco ha <em>risolto</em>. La preoccupazione comincia quando smette di riuscire a risolverli allo stesso ritmo.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Lo stesso numero, due situazioni del tutto diverse</h2>
+    <p class="intro">È tutto il punto di questa pagina, quindi vale la pena metterle accanto. Questi due dischi riportano lo stesso conteggio.</p>
+
+    <dl class="confronto">
+      <div>
+        <dt>Disco A — visti la prima volta nel 2021</dt>
+        <dd><span class="n ok">8</span><small>Otto settori, tutti riallocati anni fa. Il numero non è più cambiato. Qui non succede niente da parecchio tempo.</small></dd>
+      </div>
+      <div>
+        <dt>Disco B — il mese scorso erano 0</dt>
+        <dd><span class="n ko">8</span><small>Otto settori, tutti nelle ultime settimane. La riserva si sta consumando, e si sta consumando adesso.</small></dd>
+      </div>
+    </dl>
+
+    <p style="margin-top:22px">Qualunque programma che ti mostri un numero solo, in tutti e due i casi ti mostra <strong>8</strong>. È per questo che una fotografia singola non serve quasi a niente: il disco da sostituire oggi e quello che puoi dimenticare sembrano identici.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>I suoi due parenti più seri</h2>
+    <p class="intro">I settori riallocati viaggiano raramente da soli. Due contatori vicini contano di più, e quasi nessuno spiega la differenza.</p>
+
+    <table>
+      <thead><tr><th>Contatore</th><th>Cosa significa</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Reallocated <code>#05</code></td>
+          <td>Il disco ha trovato un settore guasto, ha spostato i tuoi dati su uno di scorta e ha mandato in pensione l’originale. <strong>Risolto.</strong> I dati sono sopravvissuti.</td>
+        </tr>
+        <tr>
+          <td>Pending <code>#197</code></td>
+          <td>Il disco ha trovato un settore che non riesce a leggere in modo affidabile e <strong>non ha ancora deciso</strong>. Sta aspettando di vedere se il prossimo tentativo riesce. Questo è peggio del primo, perché l’esito è ancora aperto.</td>
+        </tr>
+        <tr>
+          <td>Uncorrectable <code>#198</code></td>
+          <td>Ha provato e <strong>non c’è riuscito</strong>. Quello che stava in quel settore potrebbe essere già perso. È questo quello su cui agire subito.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="nota">Un disco con otto riallocati e zero degli altri due se l’è cavata. Un disco con due in attesa ha una domanda aperta in questo momento, e la risposta potrebbe essere un file che ti serviva.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Cosa fare, a seconda di cosa vedi</h2>
+
+    <table>
+      <thead><tr><th>Quello che vedi</th><th>Cosa conviene fare</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Zero, su un disco di qualunque età</td>
+          <td>Niente. L’età da sola non è un motivo per sostituire un disco con i contatori puliti.</td>
+        </tr>
+        <tr>
+          <td>Pochi, fermi da parecchio tempo</td>
+          <td>Niente di urgente. Segnati il numero, o usa qualcosa che se lo ricordi per te, e ricontrolla fra un mese.</td>
+        </tr>
+        <tr>
+          <td>Un numero che non avevi mai guardato</td>
+          <td>Prendi la lettura di oggi come punto di partenza. Da sola non dice molto; fra un mese dirà moltissimo.</td>
+        </tr>
+        <tr>
+          <td>In aumento</td>
+          <td>Copia via quello che non puoi perdere e sostituisci il disco. Un disco passato da zero a otto in un mese va sostituito, non sorvegliato.</td>
+        </tr>
+        <tr>
+          <td>In attesa o non recuperabili sopra lo zero</td>
+          <td>Uguale, ma prima — e controlla che quei file siano ancora leggibili da qualche altra parte.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Perché a mano è difficile</h2>
+    <p class="intro">Tutto quello che c’è sopra ha bisogno di una cosa che un programma aperto una volta non può darti: <strong>il numero di ieri.</strong></p>
+    <p>Il conteggio di oggi lo leggi con qualunque programma gratuito. Per sapere se si sta muovendo dovresti ricordarti di rileggerlo il mese prossimo, sul disco giusto, e ricordarti quanto diceva la volta prima — per ogni disco che hai.</p>
+    <p><strong>NanoTracker prende una lettura al giorno, da solo</strong>, perché è già acceso mentre lavori. Così la frase che può mostrarti non è «otto settori danneggiati» ma «otto, e ad agosto erano zero» — che è la versione che significa qualcosa.</p>
+    <p>E si rifiuta di indovinare: quando un contenitore non lascia passare la domanda al disco, scrive <em>non verificabile</em> invece di inventare un verdetto rassicurante. <a href="/it/salute-dischi.html">Come riporta la salute dei dischi &rarr;</a></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Domande frequenti</h2>
+
+    <details class="q">
+      <summary>Un solo settore riallocato è grave?</summary>
+      <div class="a"><p>Da solo no. I dischi sono costruiti con settori di scorta proprio perché qualcuno si guasterà; uno comparso una volta e mai più cresciuto è una cicatrice, non una ferita. Quello che conta è se resta uno. Segnati il numero e riguardalo fra un mese.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Quanti settori riallocati sono troppi?</summary>
+      <div class="a"><p>Non esiste un numero universale, e chi te ne dà uno sta tirando a indovinare. Quaranta settori fermi da tre anni preoccupano meno di due comparsi questo mese. La domanda non è quanti, è quanto in fretta.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Si possono riparare o azzerare i settori riallocati?</summary>
+      <div class="a"><p>No. Il conteggio vive nel firmware del disco e va solo in su. Formattare non lo azzera, e un programma che dice di farlo o mente o ti sta nascondendo il numero. Ed è un bene: vuol dire che la storia non si cancella per sbaglio.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Che differenza c’è fra settori riallocati, in attesa e non recuperabili?</summary>
+      <div class="a"><p>Riallocato vuol dire che il disco ha già sostituito un settore guasto con uno di scorta e i tuoi dati sono sopravvissuti. In attesa vuol dire che ha trovato un settore che non riesce a leggere in modo affidabile e non ha ancora deciso. Non recuperabile vuol dire che ha provato e non c’è riuscito. I due urgenti sono questi ultimi, perché quei dati potrebbero essere già persi.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Perdo dei dati quando un settore viene riallocato?</summary>
+      <div class="a"><p>Di solito no. Nel caso comune il disco riesce a leggere il settore, si accorge che ci ha messo troppi tentativi, copia il contenuto su uno di scorta e manda in pensione l’originale. Tu non lo vedi succedere. È il meccanismo che funziona come previsto — ed è per questo che un conteggio fermo non è un’emergenza.</p></div>
+    </details>
+  </div>
+</section>
+
+<div class="chiusura">
+  <div class="wrap">
+    <h2>Un numero è un dato. Due sono una storia.</h2>
+    <p>Prova gratuita — pagamento una volta sola, nessun abbonamento.</p>
+    <a class="btn" href="/it/#download">Scarica NanoTracker</a>
+  </div>
+</div>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>&copy; 2026 NanoTracker di Sixpeaks. Tutti i diritti riservati.</p>
+    <nav aria-label="Guide">
+      <a href="/it/trovare-file-dischi-spenti.html">Ritrovare il lavoro su dischi spenti</a>
+      <a href="/it/media-offline-quale-disco.html">Media offline: quale disco?</a>
+      <a href="/guida-nas.html">Catalogo su più computer</a>
+      <a href="/it/faq-database-condiviso.html">Domande sul catalogo condiviso</a>
+      <a href="/it/salute-dischi.html">Salute: quali valori contano</a>
+      <a href="/it/il-disco-sta-per-rompersi.html">Il disco sta per rompersi?</a>
+    </nav>
+    <nav class="legale" aria-label="Link legali">
+      <a href="/it/terms.html">Termini di servizio</a>
+      <a href="/it/privacy.html">Privacy</a>
+      <a href="/it/refund.html">Politica di rimborso</a>
+      <a href="/it/changelog.html">Versioni</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

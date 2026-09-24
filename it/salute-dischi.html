@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://nanotracker.pro/it/salute-dischi.html">
+<link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/salute-dischi.html">
+<link rel="alternate" hreflang="en" href="https://nanotracker.pro/disk-health.html">
+<link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/disk-health.html">
+<title>Salute hard disk: quali valori S.M.A.R.T. contano davvero</title>
+<meta name="description" content="Settori riallocati, ore di lavoro, temperatura: quali numeri avvisano davvero che un disco se ne sta andando, e quali sembrano soltanto allarmanti.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2334D399'/><text x='32' y='44' font-family='monospace' font-size='30' font-weight='bold' text-anchor='middle' fill='%230B0D10'>NT</text></svg>">
+<link rel="preload" href="/fonts/IBMPlexSans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:100 700;font-display:swap;src:url(/fonts/IBMPlexSans-var-latin.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:swap;src:url(/fonts/JetBrainsMono-var-latin.woff2) format('woff2')}
+</style>
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="NanoTracker">
+<meta property="og:locale" content="it_IT">
+<meta property="og:url" content="https://nanotracker.pro/it/salute-dischi.html">
+<meta property="og:title" content="Salute hard disk: quali valori S.M.A.R.T. contano davvero">
+<meta property="og:description" content="Quali tre contatori contano davvero, quali numeri spaventano senza motivo, e come NanoTracker li legge in italiano.">
+
+<style>
+:root{
+  --ground:#111316; --panel:#1A1D21; --panel-soft:#16191D; --raised:#22262C;
+  --line:#2C3138; --line-soft:#23272D;
+  --text:#F2F5F7; --text-mid:#9CA3AF; --text-dim:#828A94;
+  --green:#34D399; --green-deep:#10B981; --on-green:#0B0D10;
+  --amber:#F0883E; --slate:#94A3B8;
+  --sans:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--text);font-family:var(--sans);
+  line-height:1.65;-webkit-font-smoothing:antialiased;font-size:16px}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+a{color:var(--green)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:var(--panel);padding:8px 12px;border-radius:8px;z-index:9}
+
+header.top{border-bottom:1px solid var(--line-soft);padding:16px 0}
+header.top .wrap{display:flex;align-items:center;gap:12px}
+.chip{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;
+  border-radius:8px;background:var(--green);color:var(--on-green);font-family:var(--mono);
+  font-weight:700;font-size:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:600}
+.brand span span{color:var(--green)}
+header.top nav{margin-left:auto;display:flex;gap:18px}
+header.top nav a{color:var(--text-mid);text-decoration:none;font-size:.86rem}
+header.top nav a:hover{color:var(--text)}
+
+.hero{padding:56px 0 40px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--green);margin:0 0 14px}
+h1{font-size:2.35rem;line-height:1.15;letter-spacing:-.025em;margin:0 0 18px}
+h1 em{font-style:normal;color:var(--green)}
+.lead{color:var(--text-mid);font-size:1.06rem;margin:0}
+.piattaforma{display:inline-block;margin-top:22px;background:var(--panel);border:1px solid var(--line);
+  border-radius:999px;padding:7px 15px;font-size:.82rem;color:var(--text-mid)}
+.piattaforma b{color:var(--text);font-weight:600}
+
+section{padding:44px 0;border-top:1px solid var(--line-soft)}
+h2{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 10px}
+h3{font-size:1.02rem;margin:0 0 6px;letter-spacing:-.01em}
+.intro{color:var(--text-mid);margin:0 0 26px}
+p{margin:0 0 14px}
+
+.segnale{display:flex;gap:18px;padding:20px 0;border-top:1px solid var(--line-soft)}
+.segnale:first-of-type{border-top:0}
+.num{flex:0 0 32px;height:32px;border-radius:9px;background:var(--raised);color:var(--green);
+  font-family:var(--mono);font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center}
+.segnale p{color:var(--text-mid);margin:0 0 10px}
+.tecnico{font-family:var(--mono);font-size:.76rem;color:var(--text-dim);
+  background:var(--panel-soft);border:1px solid var(--line-soft);border-radius:8px;padding:8px 11px;margin:0}
+
+table{width:100%;border-collapse:collapse;margin:8px 0 0}
+th{text-align:left;font-size:.74rem;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-dim);font-weight:500;padding:0 0 10px;border-bottom:1px solid var(--line)}
+td{padding:14px 0;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--text-mid);font-size:.94rem}
+td:first-child{width:38%;padding-right:22px;color:var(--text);font-weight:500}
+
+.pannello{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:8px}
+.pannello .nome{font-weight:600;margin:0 0 10px}
+.pastiglia{display:inline-block;font-size:.76rem;font-family:var(--mono);letter-spacing:.06em;
+  text-transform:uppercase;border-radius:999px;padding:4px 11px;margin:0 0 14px}
+.pastiglia.giallo{background:rgba(240,136,62,.14);color:var(--amber);border:1px solid rgba(240,136,62,.35)}
+.pannello .frase{color:var(--text);margin:0 0 6px}
+.pannello .spiega{color:var(--text-mid);font-size:.94rem;margin:0 0 18px}
+.numeri{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-soft);
+  border:1px solid var(--line-soft);border-radius:10px;overflow:hidden}
+.numeri div{background:var(--panel-soft);padding:12px 14px}
+.numeri dt{font-size:.74rem;color:var(--text-dim);margin:0 0 3px}
+.numeri dd{margin:0;font-family:var(--mono);font-size:.92rem}
+.didascalia{color:var(--text-dim);font-size:.82rem;margin:10px 0 0;text-align:center}
+
+.stati{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}
+.stato{background:var(--panel-soft);border:1px solid var(--line-soft);border-radius:10px;padding:12px 14px}
+.stato b{display:block;font-size:.9rem;margin-bottom:2px}
+.stato span{color:var(--text-dim);font-size:.82rem}
+
+details.q{border:1px solid var(--line);border-radius:11px;padding:14px 17px;margin-bottom:9px;background:var(--panel)}
+details.q summary{cursor:pointer;font-weight:600;font-size:.98rem}
+details.q .a{color:var(--text-mid);font-size:.94rem;margin-top:10px}
+details.q .a p{margin:0 0 10px}
+details.q .a p:last-child{margin:0}
+
+.chiusura{text-align:center;padding:52px 0}
+.chiusura h2{font-size:1.75rem;margin-bottom:8px}
+.chiusura p{color:var(--text-mid)}
+.btn{display:inline-block;background:var(--green);color:var(--on-green);text-decoration:none;
+  font-weight:600;border-radius:10px;padding:13px 26px;margin-top:10px}
+.btn:hover{background:var(--green-deep)}
+
+footer.site{border-top:1px solid var(--line);padding:32px 0 44px;text-align:center;background:var(--panel-soft)}
+footer.site p{color:var(--text-dim);font-size:.84rem;margin:0 0 12px}
+footer.site nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 22px;margin-bottom:8px}
+footer.site nav a{color:var(--text-mid);font-size:.82rem;text-decoration:none}
+footer.site nav.legale a{color:var(--text-dim);font-size:.8rem}
+footer.site nav a:hover{color:var(--green)}
+
+@media(max-width:600px){
+  h1{font-size:1.85rem}
+  .numeri,.stati{grid-template-columns:1fr}
+  .segnale{flex-direction:column;gap:10px}
+  table,thead,tbody,tr,td{display:block;width:100%}
+  thead{display:none}
+  td{border-bottom:0;padding:0}
+  td:first-child{width:auto;padding:0 0 4px}
+  tr{display:block;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "it",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "NanoTracker manda i dati dei miei dischi da qualche parte?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Le letture restano su questo computer e non entrano nel catalogo condiviso, nemmeno se lo studio ne usa uno. Non esiste nessun invio verso l’esterno."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Funziona con i dischi esterni USB?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Spesso sì, non sempre. Alcuni contenitori non lasciano passare la domanda al disco che hanno dentro. In quel caso NanoTracker scrive non verificabile, invece di inventare un verdetto rassicurante."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Serve una password di amministratore?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Su Windows no. Leggere un disco a questo livello richiede privilegi, e NanoTracker se ne occupa durante l’installazione: a te non viene chiesto mai più. Quando la salute dei dischi arriverà su macOS, scriveremo qui che cosa serve lì."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Che differenza c’è con gli altri programmi che leggono lo S.M.A.R.T.?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Loro ti mostrano una tabella e ti lasciano interpretarla. NanoTracker ti dice cosa significa, e soprattutto quando non significa niente. E prende una lettura al giorno, quindi confronta i contatori di oggi con quelli di prima invece di mostrarti un istante solo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Se un disco non è collegato, cosa vedo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "L’ultima lettura fatta, con la data. Un dato vecchio dichiarato come vecchio è un’informazione; spacciato per attuale sarebbe un difetto."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mi avvisa prima che un disco si rompa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, e non può farlo nessun programma. NanoTracker legge i contatori che il disco stesso tiene. Un disco che ha cominciato a sostituire settori ti sta dicendo una cosa vera, e vale la pena agire, ma niente di tutto questo è una previsione."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#contenuto">Vai al contenuto</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/it/"><span class="chip">NT</span><span>Nano<span>Tracker</span></span></a>
+    <nav>
+      <a href="/it/#prezzi">Prezzi</a>
+      <a href="/it/#download">Scarica</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenuto">
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Salute dei dischi</p>
+    <h1>Il tuo disco sta bene?<br><em>Come accorgersene prima che sia tardi.</em></h1>
+    <p class="lead">Un disco non si rompe all’improvviso: lo dice, in una lingua che nessuno legge. NanoTracker la traduce — e ti avvisa solo quando c’è qualcosa da fare davvero.</p>
+    <p class="piattaforma"><b>Disponibile in NanoTracker per Windows.</b> In arrivo su macOS.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>I tre segnali che contano</h2>
+    <p class="intro">Un disco tiene decine di contatori. Tre di questi dicono quasi tutto; gli altri servono a chi ripara i dischi, non a chi ci lavora.</p>
+
+    <div class="segnale">
+      <div class="num">1</div>
+      <div>
+        <h3>Settori danneggiati</h3>
+        <p>Pezzi di disco che non si riescono più a leggere e che il disco ha sostituito con altri tenuti di scorta. Finché sono zero, va tutto bene. Quando cominciano a crescere, la scorta si sta consumando — ed è il segnale più affidabile che esista: un disco che passa da 0 a 8 in un mese va sostituito, non sorvegliato.</p>
+        <p class="tecnico">Per chi vuole i numeri: riallocati &middot; in attesa &middot; non recuperabili (S.M.A.R.T. #05, #197, #198)</p>
+      </div>
+    </div>
+
+    <div class="segnale">
+      <div class="num">2</div>
+      <div>
+        <h3>Da quanto tempo è acceso</h3>
+        <p>Un disco a piatti ha parti che girano, e si consumano. Sessantamila ore sono quasi sette anni di lavoro continuo: non vuol dire che stia per rompersi, vuol dire che ha fatto il suo e che è il momento di non tenerci sopra l’unica copia.</p>
+        <p class="tecnico">Per chi vuole i numeri: ore di accensione (#09). Su un disco a stato solido questo numero conta poco: lì si guarda la durata consumata, che è la percentuale di vita che il produttore stesso attribuisce al disco.</p>
+      </div>
+    </div>
+
+    <div class="segnale">
+      <div class="num">3</div>
+      <div>
+        <h3>Errori sul cavo</h3>
+        <p>Non è un difetto del disco: è il collegamento. Quando succede, il computer rilegge il dato e non si perde niente. Tre errori in sette anni non sono niente; tre questa settimana sono un cavo che sta cedendo — e si risolve con un cavo nuovo, non con un disco nuovo.</p>
+        <p class="tecnico">E quando il problema smette, l’avviso si spegne da solo. Il numero no: il disco se lo tiene per tutta la vita, quindi un cavo cambiato oggi mostra ancora gli errori di quello di prima. Sono due cose diverse, e non le confondiamo.</p>
+        <p class="tecnico">Per chi vuole i numeri: errori CRC UltraDMA (#199)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Cosa <em style="font-style:normal;color:var(--green)">non</em> è un allarme</h2>
+    <p class="intro">Metà dei programmi che leggono questi dati spaventano per cose innocue. Un avviso che scatta a sproposito è peggio di nessun avviso: dopo due volte non lo guardi più.</p>
+
+    <table>
+      <thead><tr><th>Quello che vedi</th><th>Perché non devi preoccuparti</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Un contatore di usura a 98 invece di 100</td>
+          <td>Misura il consumo previsto, non un guasto. Con zero settori danneggiati, un disco non si sta rompendo perché un numero è sceso di due.</td>
+        </tr>
+        <tr>
+          <td>Una temperatura alta registrata in passato</td>
+          <td>È il picco massimo mai raggiunto, non quella di adesso. Un pomeriggio d’estate di tre anni fa resta scritto per sempre.</td>
+        </tr>
+        <tr>
+          <td>Numeri enormi e senza senso (38.799.312)</td>
+          <td>Molti contatori tengono più informazioni dentro lo stesso numero. Letti così non significano niente, e noi non te li mostriamo mai.</td>
+        </tr>
+        <tr>
+          <td>Il disco dice «tutto a posto»</td>
+          <td>Quell’autodiagnosi passa fino all’ultimo momento utile. È un’informazione, non una garanzia — per questo guardiamo i contatori, non il suo verdetto.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Come lo vedi</h2>
+    <p class="intro">Una frase in italiano, e i numeri sotto per chi li vuole. Niente sigle in faccia.</p>
+
+    <div class="pannello">
+      <p class="nome">Archivio Matrimoni 2019</p>
+      <span class="pastiglia giallo">Da tenere d’occhio</span>
+      <p class="frase">Ha lavorato 60.847 ore, circa sette anni acceso.</p>
+      <p class="spiega">Nessun settore danneggiato: funziona bene. Ma è un disco anziano, e sui dischi anziani conviene non tenere l’unica copia di qualcosa.</p>
+      <dl class="numeri">
+        <div><dt>Settori danneggiati</dt><dd>0 &middot; 0 &middot; 0</dd></div>
+        <div><dt>Ore di lavoro</dt><dd>60.847</dd></div>
+        <div><dt>Errori sul cavo</dt><dd>3</dd></div>
+        <div><dt>Temperatura</dt><dd>38 &deg;C</dd></div>
+      </dl>
+    </div>
+    <p class="didascalia">Il pannello salute, con i dettagli tecnici aperti.</p>
+
+    <div class="stati">
+      <div class="stato"><b>Nessun problema</b><span>Nei contatori non c’è niente che richieda attenzione.</span></div>
+      <div class="stato"><b>Da tenere d’occhio</b><span>C’è una cosa da sapere, e di solito una da fare con calma.</span></div>
+      <div class="stato"><b>Problemi rilevati</b><span>I contatori dicono qualcosa che non va, o stanno peggiorando.</span></div>
+      <div class="stato"><b>Non verificabile</b><span>Il disco non ha risposto. Lo diciamo, invece di indovinare.</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Quando è giallo, cosa faccio?</h2>
+    <p class="intro">Giallo non vuol dire «corri». Vuol dire che c’è una cosa da sapere, e quasi sempre una da fare con calma.</p>
+
+    <table>
+      <thead><tr><th>Se dice</th><th>Fai questo</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Settori danneggiati che crescono</td>
+          <td>Copia adesso quello che ti serve e sostituisci il disco. È l’unico caso in cui la fretta è giustificata.</td>
+        </tr>
+        <tr>
+          <td>Disco anziano</td>
+          <td>Controlla di avere una seconda copia di ciò che sta là sopra. Il disco può durare ancora anni: il punto è non dipendere da lui solo.</td>
+        </tr>
+        <tr>
+          <td>Errori sul cavo che crescono</td>
+          <td>Cambia cavo o porta. Il disco non c’entra.</td>
+        </tr>
+        <tr>
+          <td>Metà della vita consumata</td>
+          <td>Niente, per ora. Mettilo in conto per il prossimo acquisto.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Un’ultima cosa: il modello vero</h2>
+    <p class="intro">Windows riporta quasi sempre il nome del <em>contenitore</em>, non del disco che sta dentro. Così il disco nel cassetto risulta chiamarsi qualcosa come <code style="font-family:var(--mono);font-size:.86rem">ASMT ASM1156-PM</code> — che è un chip, e non serve a niente il giorno in cui vuoi ricomprare lo stesso disco.</p>
+    <p>NanoTracker lo chiede al disco, e te li mostra tutti e due: il modello, la versione del firmware, e la scatola in cui sta. Quando cerchi un ricambio, è quella la riga che conta.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Domande frequenti</h2>
+
+    <details class="q">
+      <summary>NanoTracker manda i dati dei miei dischi da qualche parte?</summary>
+      <div class="a"><p>No. Le letture restano su questo computer e non entrano nel catalogo condiviso, nemmeno se lo studio ne usa uno. Non esiste nessun invio verso l’esterno.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Funziona con i dischi esterni USB?</summary>
+      <div class="a"><p>Spesso sì, non sempre. Alcuni contenitori non lasciano passare la domanda al disco che hanno dentro. In quel caso NanoTracker scrive <b>non verificabile</b>, invece di inventare un verdetto rassicurante.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Serve una password di amministratore?</summary>
+      <div class="a"><p>Su Windows no. Leggere un disco a questo livello richiede privilegi, e NanoTracker se ne occupa durante l’installazione: a te non viene chiesto mai più. Quando la salute dei dischi arriverà su macOS, scriveremo qui che cosa serve lì.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Che differenza c’è con gli altri programmi che leggono lo S.M.A.R.T.?</summary>
+      <div class="a">
+        <p>Loro ti mostrano una tabella e ti lasciano interpretarla. NanoTracker ti dice cosa significa, e soprattutto <b>quando non significa niente</b>.</p>
+        <p>E prende una lettura al giorno, quindi confronta i contatori di oggi con quelli di prima invece di mostrarti un istante solo — la differenza fra «tre errori» e «tre errori dalla settimana scorsa».</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>Se un disco non è collegato, cosa vedo?</summary>
+      <div class="a"><p>L’ultima lettura fatta, con la data. Un dato vecchio dichiarato come vecchio è un’informazione; spacciato per attuale sarebbe un difetto.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Mi avvisa prima che un disco si rompa?</summary>
+      <div class="a">
+        <p>No, e non può farlo nessun programma. NanoTracker legge i contatori che il disco stesso tiene, e te li spiega.</p>
+        <p>Un disco che ha cominciato a sostituire settori ti sta dicendo una cosa vera, e vale la pena agire. Ma niente di tutto questo è una previsione, e non facciamo finta del contrario.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<div class="chiusura">
+  <div class="wrap">
+    <h2>Il disco lo sapeva. Adesso lo sai anche tu.</h2>
+    <p>Prova gratuita — pagamento una volta sola, nessun abbonamento.</p>
+    <a class="btn" href="/it/#download">Scarica NanoTracker</a>
+  </div>
+</div>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>&copy; 2026 NanoTracker di Sixpeaks. Tutti i diritti riservati.</p>
+    <nav aria-label="Guide">
+      <a href="/it/trovare-file-dischi-spenti.html">Ritrovare il lavoro su dischi spenti</a>
+      <a href="/it/media-offline-quale-disco.html">Media offline: quale disco?</a>
+      <a href="/guida-nas.html">Catalogo su più computer</a>
+      <a href="/it/faq-database-condiviso.html">Domande sul catalogo condiviso</a>
+      <a href="/it/il-disco-sta-per-rompersi.html">Il disco sta per rompersi?</a>
+      <a href="/it/settori-riallocati-cosa-significano.html">Settori riallocati</a>
+    </nav>
+    <nav class="legale" aria-label="Link legali">
+      <a href="/it/terms.html">Termini di servizio</a>
+      <a href="/it/privacy.html">Privacy</a>
+      <a href="/it/refund.html">Politica di rimborso</a>
+      <a href="/it/changelog.html">Versioni</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

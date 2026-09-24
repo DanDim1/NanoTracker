@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://nanotracker.pro/reallocated-sectors-explained.html">
+<link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/settori-riallocati-cosa-significano.html">
+<link rel="alternate" hreflang="en" href="https://nanotracker.pro/reallocated-sectors-explained.html">
+<link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/reallocated-sectors-explained.html">
+<title>Reallocated sectors: what they mean, and when to worry</title>
+<meta name="description" content="Your drive found a bad sector and set it aside. What that means, when it is normal, and the number above which it stops being normal.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2334D399'/><text x='32' y='44' font-family='monospace' font-size='30' font-weight='bold' text-anchor='middle' fill='%230B0D10'>NT</text></svg>">
+<link rel="preload" href="/fonts/IBMPlexSans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:100 700;font-display:swap;src:url(/fonts/IBMPlexSans-var-latin.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:swap;src:url(/fonts/JetBrainsMono-var-latin.woff2) format('woff2')}
+</style>
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="NanoTracker">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://nanotracker.pro/reallocated-sectors-explained.html">
+<meta property="og:title" content="Reallocated sectors: what they mean, and when to worry">
+<meta property="og:description" content="The short answer depends on one thing, and it is not the number — it is whether the number is moving.">
+
+<style>
+:root{
+  --ground:#111316; --panel:#1A1D21; --panel-soft:#16191D; --raised:#22262C;
+  --line:#2C3138; --line-soft:#23272D;
+  --text:#F2F5F7; --text-mid:#9CA3AF; --text-dim:#828A94;
+  --green:#34D399; --green-deep:#10B981; --on-green:#0B0D10;
+  --amber:#F0883E; --red:#F87171; --blue:#60A5FA; --slate:#94A3B8;
+  --sans:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--text);font-family:var(--sans);
+  line-height:1.65;-webkit-font-smoothing:antialiased;font-size:16px}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+a{color:var(--green)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:var(--panel);padding:8px 12px;border-radius:8px;z-index:9}
+
+header.top{border-bottom:1px solid var(--line-soft);padding:16px 0}
+header.top .wrap{display:flex;align-items:center;gap:12px}
+.chip{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;
+  border-radius:8px;background:var(--green);color:var(--on-green);font-family:var(--mono);
+  font-weight:700;font-size:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:600}
+.brand span span{color:var(--green)}
+header.top nav{margin-left:auto;display:flex;gap:18px}
+header.top nav a{color:var(--text-mid);text-decoration:none;font-size:.86rem}
+header.top nav a:hover{color:var(--text)}
+
+.hero{padding:56px 0 34px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--green);margin:0 0 14px}
+h1{font-size:2.35rem;line-height:1.15;letter-spacing:-.025em;margin:0 0 18px}
+h1 em{font-style:normal;color:var(--green)}
+.lead{color:var(--text-mid);font-size:1.06rem;margin:0}
+
+.corta{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--green);
+  border-radius:12px;padding:20px 22px;margin:26px 0 0}
+.corta h2{font-size:.78rem;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--green);margin:0 0 10px}
+.corta p{margin:0 0 10px}
+.corta p:last-child{margin:0}
+
+section{padding:44px 0;border-top:1px solid var(--line-soft)}
+h2{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 10px}
+h3{font-size:1.02rem;margin:0 0 6px;letter-spacing:-.01em}
+.intro{color:var(--text-mid);margin:0 0 26px}
+p{margin:0 0 14px}
+strong{color:var(--text)}
+code{font-family:var(--mono);font-size:.84rem;color:var(--text)}
+
+table{width:100%;border-collapse:collapse;margin:8px 0 0}
+th{text-align:left;font-size:.74rem;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-dim);font-weight:500;padding:0 0 10px;border-bottom:1px solid var(--line)}
+td{padding:14px 0;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--text-mid);font-size:.94rem}
+td:first-child{width:34%;padding-right:22px;color:var(--text);font-weight:500}
+
+.confronto{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-soft);
+  border:1px solid var(--line-soft);border-radius:12px;overflow:hidden;margin-top:8px}
+.confronto div{background:var(--panel-soft);padding:18px 20px}
+.confronto dt{font-family:var(--mono);font-size:.78rem;color:var(--text-dim);margin:0 0 8px}
+.confronto dd{margin:0}
+.confronto .n{font-size:1.4rem;font-weight:700;letter-spacing:-.02em;display:block;margin-bottom:6px}
+.confronto .n.ok{color:var(--green)}
+.confronto .n.ko{color:var(--red)}
+.confronto small{color:var(--text-mid);font-size:.88rem;display:block}
+
+.nota{border-left:2px solid var(--green-deep);padding:2px 0 2px 16px;margin:22px 0 0;color:var(--text-mid)}
+
+details.q{border:1px solid var(--line);border-radius:11px;padding:14px 17px;margin-bottom:9px;background:var(--panel)}
+details.q summary{cursor:pointer;font-weight:600;font-size:.98rem}
+details.q .a{color:var(--text-mid);font-size:.94rem;margin-top:10px}
+details.q .a p{margin:0 0 10px}
+details.q .a p:last-child{margin:0}
+
+.chiusura{text-align:center;padding:52px 0}
+.chiusura h2{font-size:1.75rem;margin-bottom:8px}
+.chiusura p{color:var(--text-mid)}
+.btn{display:inline-block;background:var(--green);color:var(--on-green);text-decoration:none;
+  font-weight:600;border-radius:10px;padding:13px 26px;margin-top:10px}
+.btn:hover{background:var(--green-deep)}
+
+footer.site{border-top:1px solid var(--line);padding:32px 0 44px;text-align:center;background:var(--panel-soft)}
+footer.site p{color:var(--text-dim);font-size:.84rem;margin:0 0 12px}
+footer.site nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 22px;margin-bottom:8px}
+footer.site nav a{color:var(--text-mid);font-size:.82rem;text-decoration:none}
+footer.site nav.legale a{color:var(--text-dim);font-size:.8rem}
+footer.site nav a:hover{color:var(--green)}
+
+@media(max-width:600px){
+  h1{font-size:1.85rem}
+  .confronto{grid-template-columns:1fr}
+  table,thead,tbody,tr,td{display:block;width:100%}
+  thead{display:none}
+  td{border-bottom:0;padding:0}
+  td:first-child{width:auto;padding:0 0 4px}
+  tr{display:block;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "en",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is 1 reallocated sector bad?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On its own, no. Drives are built with spare sectors precisely because a few will go bad; one that appeared once and never moved again is a scar, not a wound. What matters is whether it stays at one. Write the number down and look again in a month."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many reallocated sectors are too many?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is no universal number, and anyone who gives you one is guessing. Forty sectors that have not moved in three years are less worrying than two that appeared this month. The question is not how many, it is how fast."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can reallocated sectors be repaired or reset to zero?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The count lives in the drive's own firmware and only goes up. Formatting does not clear it, and a tool that claims to is either lying or hiding the number from you. That is a good thing: it means the history cannot be erased by accident."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between reallocated, pending and uncorrectable sectors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reallocated means the drive already swapped a bad sector for a spare and your data survived. Pending means it found a sector it cannot read reliably and has not decided yet. Uncorrectable means it tried and failed. Pending and uncorrectable are the more urgent two, because that data may already be gone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does my data get lost when a sector is reallocated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usually not. In the common case the drive reads the sector successfully, notices it took too many attempts, copies the content to a spare and retires the original. You never see it happen. That is the mechanism working as designed — which is why a stable count is not an emergency."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#contenuto">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="chip">NT</span><span>Nano<span>Tracker</span></span></a>
+    <nav>
+      <a href="/#prezzi">Pricing</a>
+      <a href="/#download">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenuto">
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Drive health</p>
+    <h1>Reallocated sectors.<br><em>What they mean, and when to worry.</em></h1>
+    <p class="lead">Some tool showed you a number next to those two words and now you are here, wondering how bad it is. Here is the answer before the explanation.</p>
+
+    <div class="corta">
+      <h2>The short version</h2>
+      <p><strong>The number itself tells you very little. Whether it is moving tells you almost everything.</strong></p>
+      <p>A count that has sat at the same value for years is a scar: something went wrong once, the drive dealt with it, and life continued. A count that has gone up in the last few weeks is the clearest warning a drive is able to give you.</p>
+      <p>So the useful question is not <em>&ldquo;is forty a lot?&rdquo;</em> It is <em>&ldquo;what was it last month?&rdquo;</em></p>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>What is actually happening</h2>
+    <p class="intro">A drive is divided into millions of small blocks called sectors. Some of them go bad &mdash; that is expected, and every drive is built assuming it.</p>
+    <p>So each drive ships with a private reserve of spare sectors nobody ever sees. When the drive notices that reading a sector is taking too many attempts, it copies the contents to one of those spares, retires the original, and quietly writes down that it did so. <strong>That number is the reallocated sector count.</strong></p>
+    <p>The important part: in the ordinary case <strong>your data survived</strong>. You were not told because there was nothing for you to do. The mechanism did its job.</p>
+    <p class="nota">This is why a stable count is not an emergency. It is a record of problems the drive <em>solved</em>. The worry starts when it stops being able to solve them at the same rate.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The same number, two completely different situations</h2>
+    <p class="intro">This is the whole point of the page, so it is worth showing side by side. Both of these drives report the same count.</p>
+
+    <dl class="confronto">
+      <div>
+        <dt>Drive A &mdash; first seen 2021</dt>
+        <dd><span class="n ok">8</span><small>Eight sectors, all reallocated years ago. The number has not changed since. Nothing has happened here for a long time.</small></dd>
+      </div>
+      <div>
+        <dt>Drive B &mdash; was 0 last month</dt>
+        <dd><span class="n ko">8</span><small>Eight sectors, all in the last few weeks. The reserve is being spent, and it is being spent now.</small></dd>
+      </div>
+    </dl>
+
+    <p style="margin-top:22px">Any tool that shows you a single number shows you <strong>8</strong> in both cases. That is why a snapshot is close to useless: the drive that needs replacing today and the drive you can forget about look identical.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Its two more serious relatives</h2>
+    <p class="intro">Reallocated sectors rarely travel alone. Two neighbouring counters matter more, and almost nobody explains the difference.</p>
+
+    <table>
+      <thead><tr><th>Counter</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Reallocated <code>#05</code></td>
+          <td>The drive found a bad sector, moved your data to a spare and retired the original. <strong>Handled.</strong> The data survived.</td>
+        </tr>
+        <tr>
+          <td>Pending <code>#197</code></td>
+          <td>The drive found a sector it cannot read reliably and <strong>has not decided yet</strong>. It is waiting to see whether the next attempt works. This one is worse than the first, because the outcome is still open.</td>
+        </tr>
+        <tr>
+          <td>Uncorrectable <code>#198</code></td>
+          <td>It tried and <strong>failed</strong>. Whatever was in that sector may already be gone. This is the one to act on immediately.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="nota">A drive with eight reallocated and zero of the other two has been coping. A drive with two pending has a question open right now, and the answer might be a file you needed.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What to do, depending on what you see</h2>
+
+    <table>
+      <thead><tr><th>What you see</th><th>What it is worth doing</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Zero, on a drive of any age</td>
+          <td>Nothing. Age on its own is not a reason to replace a drive with clean counters.</td>
+        </tr>
+        <tr>
+          <td>A few, unchanged for a long time</td>
+          <td>Nothing urgent. Write down the number, or use something that remembers it for you, and check again in a month.</td>
+        </tr>
+        <tr>
+          <td>A number you have never checked before</td>
+          <td>Take today's reading as your starting point. On its own it does not tell you much; in a month it will tell you a great deal.</td>
+        </tr>
+        <tr>
+          <td>Going up</td>
+          <td>Copy off what you cannot lose and replace the drive. A drive that went from zero to eight in a month should be replaced, not watched.</td>
+        </tr>
+        <tr>
+          <td>Pending or uncorrectable above zero</td>
+          <td>Same, but sooner &mdash; and check that the files in question are still readable elsewhere.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Why this is hard to do by hand</h2>
+    <p class="intro">Everything above needs one thing that a tool you open once cannot give you: <strong>yesterday's number.</strong></p>
+    <p>You can read the count today with any free utility. To know whether it is moving, you would have to remember to read it again next month, on the right drive, and remember what it said last time &mdash; for every drive you own.</p>
+    <p><strong>NanoTracker takes a reading a day, by itself</strong>, because it is already running while you work. So the sentence it can show you is not &ldquo;eight damaged sectors&rdquo; but &ldquo;eight, and there were none in August&rdquo; &mdash; which is the version that means something.</p>
+    <p>It also refuses to guess: when a drive enclosure will not pass the question through, it says <em>not readable</em> rather than inventing a reassuring verdict. <a href="/disk-health.html">How it reports drive health &rarr;</a></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Common questions</h2>
+
+    <details class="q">
+      <summary>Is 1 reallocated sector bad?</summary>
+      <div class="a"><p>On its own, no. Drives are built with spare sectors precisely because a few will go bad; one that appeared once and never moved again is a scar, not a wound. What matters is whether it stays at one. Write the number down and look again in a month.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>How many reallocated sectors are too many?</summary>
+      <div class="a"><p>There is no universal number, and anyone who gives you one is guessing. Forty sectors that have not moved in three years are less worrying than two that appeared this month. The question is not how many, it is how fast.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Can reallocated sectors be repaired or reset to zero?</summary>
+      <div class="a"><p>No. The count lives in the drive's own firmware and only goes up. Formatting does not clear it, and a tool that claims to is either lying or hiding the number from you. That is a good thing: it means the history cannot be erased by accident.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>What is the difference between reallocated, pending and uncorrectable sectors?</summary>
+      <div class="a"><p>Reallocated means the drive already swapped a bad sector for a spare and your data survived. Pending means it found a sector it cannot read reliably and has not decided yet. Uncorrectable means it tried and failed. Pending and uncorrectable are the more urgent two, because that data may already be gone.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Does my data get lost when a sector is reallocated?</summary>
+      <div class="a"><p>Usually not. In the common case the drive reads the sector successfully, notices it took too many attempts, copies the content to a spare and retires the original. You never see it happen. That is the mechanism working as designed &mdash; which is why a stable count is not an emergency.</p></div>
+    </details>
+  </div>
+</section>
+
+<div class="chiusura">
+  <div class="wrap">
+    <h2>One number is a fact. Two are a story.</h2>
+    <p>Free trial &mdash; pay once, no subscription.</p>
+    <a class="btn" href="/#download">Download NanoTracker</a>
+  </div>
+</div>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>&copy; 2026 NanoTracker by Sixpeaks. All rights reserved.</p>
+    <nav aria-label="Guides">
+      <a href="/find-files-offline-drives.html">Finding work on drives that are off</a>
+      <a href="/offline-media-which-drive.html">Media offline: which drive?</a>
+      <a href="/en/nas-guide.html">Catalogue across computers</a>
+      <a href="/shared-database-faq.html">Shared catalogue FAQ</a>
+      <a href="/disk-health.html">Drive health: what matters</a>
+      <a href="/is-my-drive-failing.html">Is the drive failing?</a>
+    </nav>
+    <nav class="legale" aria-label="Legal links">
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/refund.html">Refund Policy</a>
+      <a href="/changelog.html">Version</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

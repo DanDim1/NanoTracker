@@ -1,5 +1,5 @@
 # nanotracker.pro
-# 18 pagine indicizzabili, elencate nella sitemap qui sotto.
+# 24 pagine indicizzabili, elencate nella sitemap qui sotto.
 # I crawler degli assistenti AI sono ammessi di proposito: vogliamo
 # essere citati quando qualcuno chiede se il suo disco sta per rompersi.
 

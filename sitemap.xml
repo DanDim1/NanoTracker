@@ -16,6 +16,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/changelog.html"/>
   </url>
   <url>
+    <loc>https://nanotracker.pro/disk-health.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/salute-dischi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/disk-health.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/disk-health.html"/>
+  </url>
+  <url>
     <loc>https://nanotracker.pro/find-files-offline-drives.html</loc>
     <lastmod>2026-09-23</lastmod>
     <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/trovare-file-dischi-spenti.html"/>
@@ -30,6 +36,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/en/nas-guide.html"/>
   </url>
   <url>
+    <loc>https://nanotracker.pro/is-my-drive-failing.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/il-disco-sta-per-rompersi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/is-my-drive-failing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/is-my-drive-failing.html"/>
+  </url>
+  <url>
     <loc>https://nanotracker.pro/offline-media-which-drive.html</loc>
     <lastmod>2026-09-23</lastmod>
     <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/media-offline-quale-disco.html"/>
@@ -42,6 +54,12 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://nanotracker.pro/reallocated-sectors-explained.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/settori-riallocati-cosa-significano.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/reallocated-sectors-explained.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/reallocated-sectors-explained.html"/>
   </url>
   <url>
     <loc>https://nanotracker.pro/refund.html</loc>
@@ -93,6 +111,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/shared-database-faq.html"/>
   </url>
   <url>
+    <loc>https://nanotracker.pro/it/il-disco-sta-per-rompersi.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/il-disco-sta-per-rompersi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/is-my-drive-failing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/is-my-drive-failing.html"/>
+  </url>
+  <url>
     <loc>https://nanotracker.pro/it/media-offline-quale-disco.html</loc>
     <lastmod>2026-09-23</lastmod>
     <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/media-offline-quale-disco.html"/>
@@ -112,6 +136,18 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/refund.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/refund.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/refund.html"/>
+  </url>
+  <url>
+    <loc>https://nanotracker.pro/it/salute-dischi.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/salute-dischi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/disk-health.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/disk-health.html"/>
+  </url>
+  <url>
+    <loc>https://nanotracker.pro/it/settori-riallocati-cosa-significano.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/settori-riallocati-cosa-significano.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nanotracker.pro/reallocated-sectors-explained.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/reallocated-sectors-explained.html"/>
   </url>
   <url>
     <loc>https://nanotracker.pro/it/terms.html</loc>

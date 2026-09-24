@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://nanotracker.pro/disk-health.html">
+<link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/salute-dischi.html">
+<link rel="alternate" hreflang="en" href="https://nanotracker.pro/disk-health.html">
+<link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/disk-health.html">
+<title>Hard drive health: which S.M.A.R.T. numbers actually matter</title>
+<meta name="description" content="Reallocated sectors, hours, temperature: which numbers actually warn you that a drive is going, and which ones only look alarming.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2334D399'/><text x='32' y='44' font-family='monospace' font-size='30' font-weight='bold' text-anchor='middle' fill='%230B0D10'>NT</text></svg>">
+<link rel="preload" href="/fonts/IBMPlexSans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:100 700;font-display:swap;src:url(/fonts/IBMPlexSans-var-latin.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:swap;src:url(/fonts/JetBrainsMono-var-latin.woff2) format('woff2')}
+</style>
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="NanoTracker">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://nanotracker.pro/disk-health.html">
+<meta property="og:title" content="Hard drive health: which S.M.A.R.T. numbers actually matter">
+<meta property="og:description" content="Which three counters actually matter, which frightening numbers mean nothing, and how NanoTracker reads them in plain English.">
+
+<style>
+:root{
+  --ground:#111316; --panel:#1A1D21; --panel-soft:#16191D; --raised:#22262C;
+  --line:#2C3138; --line-soft:#23272D;
+  --text:#F2F5F7; --text-mid:#9CA3AF; --text-dim:#828A94;
+  --green:#34D399; --green-deep:#10B981; --on-green:#0B0D10;
+  --amber:#F0883E; --slate:#94A3B8;
+  --sans:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--text);font-family:var(--sans);
+  line-height:1.65;-webkit-font-smoothing:antialiased;font-size:16px}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+a{color:var(--green)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:var(--panel);padding:8px 12px;border-radius:8px;z-index:9}
+
+header.top{border-bottom:1px solid var(--line-soft);padding:16px 0}
+header.top .wrap{display:flex;align-items:center;gap:12px}
+.chip{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;
+  border-radius:8px;background:var(--green);color:var(--on-green);font-family:var(--mono);
+  font-weight:700;font-size:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:600}
+.brand span span{color:var(--green)}
+header.top nav{margin-left:auto;display:flex;gap:18px}
+header.top nav a{color:var(--text-mid);text-decoration:none;font-size:.86rem}
+header.top nav a:hover{color:var(--text)}
+
+.hero{padding:56px 0 40px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--green);margin:0 0 14px}
+h1{font-size:2.35rem;line-height:1.15;letter-spacing:-.025em;margin:0 0 18px}
+h1 em{font-style:normal;color:var(--green)}
+.lead{color:var(--text-mid);font-size:1.06rem;margin:0}
+.piattaforma{display:inline-block;margin-top:22px;background:var(--panel);border:1px solid var(--line);
+  border-radius:999px;padding:7px 15px;font-size:.82rem;color:var(--text-mid)}
+.piattaforma b{color:var(--text);font-weight:600}
+
+section{padding:44px 0;border-top:1px solid var(--line-soft)}
+h2{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 10px}
+h3{font-size:1.02rem;margin:0 0 6px;letter-spacing:-.01em}
+.intro{color:var(--text-mid);margin:0 0 26px}
+p{margin:0 0 14px}
+
+.segnale{display:flex;gap:18px;padding:20px 0;border-top:1px solid var(--line-soft)}
+.segnale:first-of-type{border-top:0}
+.num{flex:0 0 32px;height:32px;border-radius:9px;background:var(--raised);color:var(--green);
+  font-family:var(--mono);font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center}
+.segnale p{color:var(--text-mid);margin:0 0 10px}
+.tecnico{font-family:var(--mono);font-size:.76rem;color:var(--text-dim);
+  background:var(--panel-soft);border:1px solid var(--line-soft);border-radius:8px;padding:8px 11px;margin:0}
+
+table{width:100%;border-collapse:collapse;margin:8px 0 0}
+th{text-align:left;font-size:.74rem;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-dim);font-weight:500;padding:0 0 10px;border-bottom:1px solid var(--line)}
+td{padding:14px 0;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--text-mid);font-size:.94rem}
+td:first-child{width:38%;padding-right:22px;color:var(--text);font-weight:500}
+
+.pannello{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:8px}
+.pannello .nome{font-weight:600;margin:0 0 10px}
+.pastiglia{display:inline-block;font-size:.76rem;font-family:var(--mono);letter-spacing:.06em;
+  text-transform:uppercase;border-radius:999px;padding:4px 11px;margin:0 0 14px}
+.pastiglia.giallo{background:rgba(240,136,62,.14);color:var(--amber);border:1px solid rgba(240,136,62,.35)}
+.pannello .frase{color:var(--text);margin:0 0 6px}
+.pannello .spiega{color:var(--text-mid);font-size:.94rem;margin:0 0 18px}
+.numeri{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-soft);
+  border:1px solid var(--line-soft);border-radius:10px;overflow:hidden}
+.numeri div{background:var(--panel-soft);padding:12px 14px}
+.numeri dt{font-size:.74rem;color:var(--text-dim);margin:0 0 3px}
+.numeri dd{margin:0;font-family:var(--mono);font-size:.92rem}
+.didascalia{color:var(--text-dim);font-size:.82rem;margin:10px 0 0;text-align:center}
+
+.stati{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}
+.stato{background:var(--panel-soft);border:1px solid var(--line-soft);border-radius:10px;padding:12px 14px}
+.stato b{display:block;font-size:.9rem;margin-bottom:2px}
+.stato span{color:var(--text-dim);font-size:.82rem}
+
+details.q{border:1px solid var(--line);border-radius:11px;padding:14px 17px;margin-bottom:9px;background:var(--panel)}
+details.q summary{cursor:pointer;font-weight:600;font-size:.98rem}
+details.q .a{color:var(--text-mid);font-size:.94rem;margin-top:10px}
+details.q .a p{margin:0 0 10px}
+details.q .a p:last-child{margin:0}
+
+.chiusura{text-align:center;padding:52px 0}
+.chiusura h2{font-size:1.75rem;margin-bottom:8px}
+.chiusura p{color:var(--text-mid)}
+.btn{display:inline-block;background:var(--green);color:var(--on-green);text-decoration:none;
+  font-weight:600;border-radius:10px;padding:13px 26px;margin-top:10px}
+.btn:hover{background:var(--green-deep)}
+
+footer.site{border-top:1px solid var(--line);padding:32px 0 44px;text-align:center;background:var(--panel-soft)}
+footer.site p{color:var(--text-dim);font-size:.84rem;margin:0 0 12px}
+footer.site nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 22px;margin-bottom:8px}
+footer.site nav a{color:var(--text-mid);font-size:.82rem;text-decoration:none}
+footer.site nav.legale a{color:var(--text-dim);font-size:.8rem}
+footer.site nav a:hover{color:var(--green)}
+
+@media(max-width:600px){
+  h1{font-size:1.85rem}
+  .numeri,.stati{grid-template-columns:1fr}
+  .segnale{flex-direction:column;gap:10px}
+  table,thead,tbody,tr,td{display:block;width:100%}
+  thead{display:none}
+  td{border-bottom:0;padding:0}
+  td:first-child{width:auto;padding:0 0 4px}
+  tr{display:block;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "en",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does NanoTracker send my drive data anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The readings stay on this computer, and they do not go into the shared catalogue — not even if your studio uses one. Nothing is sent anywhere."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work with external USB drives?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Often, but not always. Some enclosures do not pass the question through to the drive inside. When that happens NanoTracker says not readable, instead of inventing a reassuring verdict."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it need an administrator password?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not on Windows. Reading a drive at this level does need privileges, and NanoTracker arranges that during installation, so you are never asked again. When drive health reaches macOS, we will say here what it needs there."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from other S.M.A.R.T. tools?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They show you a table and leave you to interpret it. NanoTracker tells you what it means, and more importantly when it means nothing. It also takes a reading a day, so it can compare today's counters with the earlier ones rather than showing you a single instant."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do I see when a drive is not plugged in?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The last reading, with its date. An old figure declared as old is information; the same figure passed off as current would be a defect."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can it tell me before a drive fails?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, and no program can. NanoTracker reads counters the drive itself keeps. A drive that has started reallocating sectors is telling you something real, and that is worth acting on, but none of this is a prediction."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#contenuto">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="chip">NT</span><span>Nano<span>Tracker</span></span></a>
+    <nav>
+      <a href="/#prezzi">Pricing</a>
+      <a href="/#download">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenuto">
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Drive health</p>
+    <h1>Is your drive dying?<br><em>How to tell before it is too late.</em></h1>
+    <p class="lead">A drive rarely fails without warning. It keeps counters that say so first &mdash; in a language almost nobody reads. NanoTracker translates them, and speaks up only when there is something real to do.</p>
+    <p class="piattaforma"><b>Available in NanoTracker for Windows.</b> Coming to macOS.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>The three signals that matter</h2>
+    <p class="intro">A drive keeps dozens of counters. Three of them say almost everything; the rest are for people who repair drives, not for people who work on them.</p>
+
+    <div class="segnale">
+      <div class="num">1</div>
+      <div>
+        <h3>Reallocated sectors</h3>
+        <p>Pieces of the drive that can no longer be read, which the drive has swapped for spares it keeps in reserve. While this is zero, all is well. Once it starts climbing, that reserve is being used up &mdash; and it is the most reliable signal there is. A drive that goes from 0 to 8 in a month should be replaced, not watched.</p>
+        <p class="tecnico">For the numbers: reallocated &middot; pending &middot; uncorrectable (S.M.A.R.T. #05, #197, #198)</p>
+      </div>
+    </div>
+
+    <div class="segnale">
+      <div class="num">2</div>
+      <div>
+        <h3>How long it has been running</h3>
+        <p>A spinning drive has parts that turn, and they wear. Sixty thousand hours is nearly seven years of continuous work: it does not mean the drive is about to fail, it means it has done its job and this is no longer the place for your only copy of something.</p>
+        <p class="tecnico">For the numbers: power-on hours (#09). On a solid-state drive this counts for little &mdash; there we look at percentage used, the share of its life the manufacturer itself attributes to the drive.</p>
+      </div>
+    </div>
+
+    <div class="segnale">
+      <div class="num">3</div>
+      <div>
+        <h3>Errors on the cable</h3>
+        <p>Not a fault in the drive: a fault in the connection. When it happens the computer simply reads the data again and nothing is lost. Three errors in seven years are nothing; three this week are a cable giving up &mdash; and that is fixed with a new cable, not a new drive.</p>
+        <p class="tecnico">And once the problem stops, the warning clears itself. The number does not: the drive keeps that count for life, so a cable replaced today still shows the errors of the cable before it. Those are two different things, and we do not confuse them.</p>
+        <p class="tecnico">For the numbers: UltraDMA CRC errors (#199)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What is <em style="font-style:normal;color:var(--green)">not</em> an alarm</h2>
+    <p class="intro">Half the tools that read this data frighten people over harmless things. A warning that goes off for nothing is worse than no warning at all: after the second time, nobody looks.</p>
+
+    <table>
+      <thead><tr><th>What you see</th><th>Why it does not matter</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>A wear counter at 98 instead of 100</td>
+          <td>It measures expected consumption, not a fault. With zero reallocated sectors, a drive is not failing because a number dropped by two.</td>
+        </tr>
+        <tr>
+          <td>A high temperature recorded in the past</td>
+          <td>That is the highest ever reached, not the temperature now. One hot afternoon three years ago stays written down forever.</td>
+        </tr>
+        <tr>
+          <td>Enormous, meaningless numbers (38,799,312)</td>
+          <td>Many counters pack several pieces of information into one number. Read literally they mean nothing, so we never show them to you that way.</td>
+        </tr>
+        <tr>
+          <td>The drive says &ldquo;all good&rdquo;</td>
+          <td>That self-check keeps passing until the last useful moment. It is information, not a guarantee &mdash; which is why we look at the counters instead of at its verdict.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What you actually see</h2>
+    <p class="intro">One sentence in plain English, and the numbers underneath for whoever wants them. No acronyms in your face.</p>
+
+    <div class="pannello">
+      <p class="nome">Weddings Archive 2019</p>
+      <span class="pastiglia giallo">Worth keeping an eye on</span>
+      <p class="frase">It has been running for 60,847 hours &mdash; about seven years powered on.</p>
+      <p class="spiega">No reallocated sectors: it is working fine. But it is an old drive, and an old drive is not the place to keep the only copy of anything.</p>
+      <dl class="numeri">
+        <div><dt>Reallocated sectors</dt><dd>0 &middot; 0 &middot; 0</dd></div>
+        <div><dt>Power-on hours</dt><dd>60,847</dd></div>
+        <div><dt>Cable errors</dt><dd>3</dd></div>
+        <div><dt>Temperature</dt><dd>38 &deg;C</dd></div>
+      </dl>
+    </div>
+    <p class="didascalia">The health panel, with the technical detail opened.</p>
+
+    <div class="stati">
+      <div class="stato"><b>No problems</b><span>Nothing in the counters needs your attention.</span></div>
+      <div class="stato"><b>Worth keeping an eye on</b><span>Something to know, and usually something to do calmly.</span></div>
+      <div class="stato"><b>Problems found</b><span>The counters show something wrong, or are getting worse.</span></div>
+      <div class="stato"><b>Not readable</b><span>The drive would not answer. We say so, rather than guess.</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>It says amber. Now what?</h2>
+    <p class="intro">Amber does not mean run. It means there is something to know, and almost always something to do without hurrying.</p>
+
+    <table>
+      <thead><tr><th>If it says</th><th>Do this</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Reallocated sectors climbing</td>
+          <td>Copy off what you need now, and replace the drive. This is the one case where hurrying is justified.</td>
+        </tr>
+        <tr>
+          <td>Old drive</td>
+          <td>Check you have a second copy of what lives on it. The drive may last years more: the point is not to depend on it alone.</td>
+        </tr>
+        <tr>
+          <td>Cable errors climbing</td>
+          <td>Change the cable or the port. The drive has nothing to do with it.</td>
+        </tr>
+        <tr>
+          <td>Half its life used</td>
+          <td>Nothing, for now. Factor it into your next purchase.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>One more thing: the real model</h2>
+    <p class="intro">Windows usually reports the name of the <em>enclosure</em>, not of the drive inside it. So the drive in your drawer is listed as something like <code style="font-family:var(--mono);font-size:.86rem">ASMT ASM1156-PM</code> &mdash; which is a chip, and useless if you ever want to buy the same drive again.</p>
+    <p>NanoTracker asks the drive itself, and shows you both: the model, the firmware, and the box it is sitting in. When you go looking for a replacement, that is the line that matters.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Common questions</h2>
+
+    <details class="q">
+      <summary>Does NanoTracker send my drive data anywhere?</summary>
+      <div class="a"><p>No. The readings stay on this computer, and they do not go into the shared catalogue — not even if your studio uses one. Nothing is sent anywhere.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Does it work with external USB drives?</summary>
+      <div class="a"><p>Often, but not always. Some enclosures do not pass the question through to the drive inside. When that happens NanoTracker says <b>not readable</b>, instead of inventing a reassuring verdict.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Does it need an administrator password?</summary>
+      <div class="a"><p>Not on Windows. Reading a drive at this level does need privileges, and NanoTracker arranges that during installation, so you are never asked again. When drive health reaches macOS, we will say here what it needs there.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>How is this different from other S.M.A.R.T. tools?</summary>
+      <div class="a">
+        <p>They show you a table and leave you to interpret it. NanoTracker tells you what it means, and more importantly <b>when it means nothing</b>.</p>
+        <p>It also takes a reading a day, so it can compare today's counters with the earlier ones rather than showing you a single instant &mdash; the difference between &ldquo;three errors&rdquo; and &ldquo;three errors since last week&rdquo;.</p>
+      </div>
+    </details>
+
+    <details class="q">
+      <summary>What do I see when a drive is not plugged in?</summary>
+      <div class="a"><p>The last reading, with its date. An old figure declared as old is information; the same figure passed off as current would be a defect.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Can it tell me before a drive fails?</summary>
+      <div class="a">
+        <p>No, and no program can. NanoTracker reads counters the drive itself keeps, and explains them.</p>
+        <p>A drive that has started reallocating sectors is telling you something real, and that is worth acting on. But none of this is a prediction, and we will not pretend otherwise.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<div class="chiusura">
+  <div class="wrap">
+    <h2>The drive already knew. Now you know too.</h2>
+    <p>Free trial &mdash; pay once, no subscription.</p>
+    <a class="btn" href="/#download">Download NanoTracker</a>
+  </div>
+</div>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>&copy; 2026 NanoTracker by Sixpeaks. All rights reserved.</p>
+    <nav aria-label="Guides">
+      <a href="/find-files-offline-drives.html">Finding work on drives that are off</a>
+      <a href="/offline-media-which-drive.html">Media offline: which drive?</a>
+      <a href="/en/nas-guide.html">Catalogue across computers</a>
+      <a href="/shared-database-faq.html">Shared catalogue FAQ</a>
+      <a href="/is-my-drive-failing.html">Is the drive failing?</a>
+      <a href="/reallocated-sectors-explained.html">Reallocated sectors</a>
+    </nav>
+    <nav class="legale" aria-label="Legal links">
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/refund.html">Refund Policy</a>
+      <a href="/changelog.html">Version</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

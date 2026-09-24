@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://nanotracker.pro/it/il-disco-sta-per-rompersi.html">
+<link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/il-disco-sta-per-rompersi.html">
+<link rel="alternate" hreflang="en" href="https://nanotracker.pro/is-my-drive-failing.html">
+<link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/is-my-drive-failing.html">
+<title>Hard disk che fa rumore, rallenta o sparisce: sta per rompersi?</title>
+<meta name="description" content="Ticchettii, rallentamenti, un disco che sparisce: cosa avvisa davvero, cosa avvisa troppo tardi, e cosa non è affatto un avviso.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2334D399'/><text x='32' y='44' font-family='monospace' font-size='30' font-weight='bold' text-anchor='middle' fill='%230B0D10'>NT</text></svg>">
+<link rel="preload" href="/fonts/IBMPlexSans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:100 700;font-display:swap;src:url(/fonts/IBMPlexSans-var-latin.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:swap;src:url(/fonts/JetBrainsMono-var-latin.woff2) format('woff2')}
+</style>
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="NanoTracker">
+<meta property="og:locale" content="it_IT">
+<meta property="og:url" content="https://nanotracker.pro/it/il-disco-sta-per-rompersi.html">
+<meta property="og:title" content="Hard disk che fa rumore, rallenta o sparisce: sta per rompersi?">
+<meta property="og:description" content="Nessun programma può prevedere la rottura di un disco. Ma un disco in difficoltà di solito lo dice prima. Quali segnali sono veri e quali sono rumore.">
+
+<style>
+:root{
+  --ground:#111316; --panel:#1A1D21; --panel-soft:#16191D; --raised:#22262C;
+  --line:#2C3138; --line-soft:#23272D;
+  --text:#F2F5F7; --text-mid:#9CA3AF; --text-dim:#828A94;
+  --green:#34D399; --green-deep:#10B981; --on-green:#0B0D10;
+  --amber:#F0883E; --red:#F87171; --blue:#60A5FA; --slate:#94A3B8;
+  --sans:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--text);font-family:var(--sans);
+  line-height:1.65;-webkit-font-smoothing:antialiased;font-size:16px}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+a{color:var(--green)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:var(--panel);padding:8px 12px;border-radius:8px;z-index:9}
+
+header.top{border-bottom:1px solid var(--line-soft);padding:16px 0}
+header.top .wrap{display:flex;align-items:center;gap:12px}
+.chip{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;
+  border-radius:8px;background:var(--green);color:var(--on-green);font-family:var(--mono);
+  font-weight:700;font-size:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:600}
+.brand span span{color:var(--green)}
+header.top nav{margin-left:auto;display:flex;gap:18px}
+header.top nav a{color:var(--text-mid);text-decoration:none;font-size:.86rem}
+header.top nav a:hover{color:var(--text)}
+
+.hero{padding:56px 0 40px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--green);margin:0 0 14px}
+h1{font-size:2.35rem;line-height:1.15;letter-spacing:-.025em;margin:0 0 18px}
+h1 em{font-style:normal;color:var(--green)}
+.lead{color:var(--text-mid);font-size:1.06rem;margin:0}
+
+section{padding:44px 0;border-top:1px solid var(--line-soft)}
+h2{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 10px}
+h3{font-size:1.02rem;margin:0 0 6px;letter-spacing:-.01em}
+.intro{color:var(--text-mid);margin:0 0 26px}
+p{margin:0 0 14px}
+strong{color:var(--text)}
+
+.subito{background:var(--panel);border:1px solid rgba(248,113,113,.3);border-left:3px solid var(--red);
+  border-radius:12px;padding:18px 20px;margin-top:8px}
+.subito b{color:var(--red)}
+.subito p:last-child{margin:0}
+
+table{width:100%;border-collapse:collapse;margin:8px 0 0}
+th{text-align:left;font-size:.74rem;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-dim);font-weight:500;padding:0 0 10px;border-bottom:1px solid var(--line)}
+td{padding:14px 0;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--text-mid);font-size:.94rem}
+td:first-child{width:38%;padding-right:22px;color:var(--text);font-weight:500}
+
+.livelli{display:grid;gap:10px;margin-top:8px}
+.livello{display:flex;gap:14px;align-items:flex-start;background:var(--panel);
+  border:1px solid var(--line);border-radius:12px;padding:15px 17px}
+.pallino{flex:0 0 9px;height:9px;border-radius:50%;margin-top:8px}
+.pallino.verde{background:var(--green)}
+.pallino.giallo{background:var(--amber)}
+.pallino.rosso{background:var(--red)}
+.livello b{display:block;font-size:.95rem;margin-bottom:2px}
+.livello span{color:var(--text-mid);font-size:.88rem}
+
+.nota{border-left:2px solid var(--green-deep);padding:2px 0 2px 16px;margin:22px 0 0;color:var(--text-mid)}
+
+details.q{border:1px solid var(--line);border-radius:11px;padding:14px 17px;margin-bottom:9px;background:var(--panel)}
+details.q summary{cursor:pointer;font-weight:600;font-size:.98rem}
+details.q .a{color:var(--text-mid);font-size:.94rem;margin-top:10px}
+details.q .a p{margin:0 0 10px}
+details.q .a p:last-child{margin:0}
+
+.chiusura{text-align:center;padding:52px 0}
+.chiusura h2{font-size:1.75rem;margin-bottom:8px}
+.chiusura p{color:var(--text-mid)}
+.btn{display:inline-block;background:var(--green);color:var(--on-green);text-decoration:none;
+  font-weight:600;border-radius:10px;padding:13px 26px;margin-top:10px}
+.btn:hover{background:var(--green-deep)}
+
+footer.site{border-top:1px solid var(--line);padding:32px 0 44px;text-align:center;background:var(--panel-soft)}
+footer.site p{color:var(--text-dim);font-size:.84rem;margin:0 0 12px}
+footer.site nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 22px;margin-bottom:8px}
+footer.site nav a{color:var(--text-mid);font-size:.82rem;text-decoration:none}
+footer.site nav.legale a{color:var(--text-dim);font-size:.8rem}
+footer.site nav a:hover{color:var(--green)}
+
+@media(max-width:600px){
+  h1{font-size:1.85rem}
+  table,thead,tbody,tr,td{display:block;width:100%}
+  thead{display:none}
+  td{border-bottom:0;padding:0}
+  td:first-child{width:auto;padding:0 0 4px}
+  tr{display:block;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "it",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Un programma può dirmi che un disco sta per rompersi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Tutti gli strumenti, il nostro compreso, leggono contatori che il disco stesso tiene. Quei contatori descrivono quello che è già successo, non quello che succederà. Un disco che ha cominciato a sostituire settori danneggiati ti sta dicendo una cosa vera e su cui vale la pena agire — ma è una misura, non una previsione, e chi te la vende come previsione ti sta vendendo paura."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Il mio disco esterno fa un ticchettio. È grave?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un ticchettio che si ripete, un disco che sparisce e ricompare, o un computer che si blocca quando apri una cartella su quel disco: trattali tutti e tre come il disco che ti chiede di fermarti. Copia via quello che non puoi perdere, partendo dal file più importante, e smetti di provarlo. Ogni ora d’uso in più è un rischio che non serve correre."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Il disco dice che il suo stato S.M.A.R.T. è OK. Basta quello?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Quell’autodiagnosi continua a dire OK fino all’ultimo momento utile: è fatta per segnalare un disco che ha già superato le proprie soglie, non uno che si sta deteriorando. È un’informazione, non una garanzia, ed è il motivo per cui i contatori sotto contano più del verdetto sopra."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quando un disco esterno è troppo vecchio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Non esiste un’età alla quale un disco diventa pericoloso. Sessantamila ore sono circa sette anni di lavoro continuo, e un disco può superarle senza niente che non vada. Quello che l’età cambia non è il rischio che questo disco si rompa domani: è quanto abbia senso tenerci sopra l’unica copia di qualcosa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Una temperatura alta vuol dire che il disco sta morendo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Di solito stai guardando la temperatura massima mai registrata, non quella di adesso. Un pomeriggio caldo di tre anni fa resta scritto per sempre. La temperatura di adesso merita un’occhiata; il picco del passato è storia."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#contenuto">Vai al contenuto</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/it/"><span class="chip">NT</span><span>Nano<span>Tracker</span></span></a>
+    <nav>
+      <a href="/it/#prezzi">Prezzi</a>
+      <a href="/it/#download">Scarica</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenuto">
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Salute dei dischi</p>
+    <h1>Questo disco sta per rompersi?<br><em>Cosa avvisa davvero, e cosa sembra solo un avviso.</em></h1>
+    <p class="lead">Togliamoci subito il pensiero, con onestà: <strong>nessun programma può dirti che un disco si romperà.</strong> Né questo né nessun altro. Quello che un disco in difficoltà fa di solito è dirlo prima — in due lingue diverse, e quasi tutti ne ascoltano una sola.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>Prima lingua: quello che si sente</h2>
+    <p class="intro">Sono i segnali che si notano senza nessun programma, e sono quelli su cui vale la pena agire subito.</p>
+
+    <div class="subito">
+      <p><b>Fermati e copia, adesso.</b> Un ticchettio che si ripete. Un disco che sparisce e ricompare da solo. Un computer che si blocca per dieci secondi ogni volta che apri una cartella su quel disco.</p>
+      <p>Copia via quello che non puoi perdere, partendo dal file più importante, e <strong>smetti di provarlo</strong>. Un disco che si comporta così può funzionare per un altro mese o per altri sei minuti, e non c’è modo di sapere quale dei due. Ogni ora d’uso in più è un rischio che non serve correre.</p>
+    </div>
+
+    <p style="margin-top:22px">Se non sta succedendo niente di tutto questo sei nel caso normale, e il resto della pagina serve a leggere bene la seconda lingua — che è dove quasi tutti si spaventano per niente.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Seconda lingua: quello che il disco conta</h2>
+    <p class="intro">Ogni disco tiene decine di contatori interni. Quasi tutti servono a chi ripara i dischi. Tre dicono quasi tutto a chi ci lavora e basta.</p>
+
+    <table>
+      <thead><tr><th>Il contatore</th><th>Cosa dice davvero</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Settori danneggiati</td>
+          <td>Pezzi di disco che non si riescono più a leggere, e che il disco ha sostituito in silenzio con altri di scorta. <strong>È quello affidabile.</strong> Zero è normale. Una manciata comparsa anni fa e mai cresciuta è storia passata. Un numero che <em>cresce</em> è l’avviso più chiaro che un disco sappia dare. <a href="/it/settori-riallocati-cosa-significano.html">Cosa sono, per esteso &rarr;</a></td>
+        </tr>
+        <tr>
+          <td>Ore di lavoro</td>
+          <td>Età, non pericolo. Sessantamila ore sono circa sette anni di lavoro continuo, e moltissimi dischi le superano in perfetta salute. Non dice che il disco si romperà: dice che quello non è più il posto dove tenere l’unica copia di qualcosa.</td>
+        </tr>
+        <tr>
+          <td>Errori sul cavo</td>
+          <td>Non è il disco: è il collegamento. Il computer rilegge il dato e non si perde niente. Tre errori in sette anni non sono niente. Tre questa settimana sono un cavo che sta cedendo, e si risolve con un cavo nuovo.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Cosa sembra allarmante e <em style="font-style:normal;color:var(--green)">non lo è</em></h2>
+    <p class="intro">È da qui che arriva quasi tutta la preoccupazione, e quasi tutta è fuori posto. Metà dei programmi che leggono questi numeri te li mostrano grezzi e ti lasciano spaventare da solo.</p>
+
+    <table>
+      <thead><tr><th>Quello che vedi</th><th>Perché non è il problema</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Un contatore di usura a 98 su 100</td>
+          <td>Misura il consumo previsto, non un guasto. Con zero settori danneggiati, un disco non si sta rompendo perché un numero è sceso di due.</td>
+        </tr>
+        <tr>
+          <td>Una temperatura che spaventa</td>
+          <td>Quasi sempre è la <em>massima mai raggiunta</em>, non quella di adesso. Un pomeriggio caldo di tre anni fa resta scritto per sempre.</td>
+        </tr>
+        <tr>
+          <td>Numeri enormi — 38.799.312 «errori»</td>
+          <td>I costruttori impacchettano più contatori dentro lo stesso numero. Letto alla lettera non significa niente. Su certi dischi quel campo non conta errori per niente.</td>
+        </tr>
+        <tr>
+          <td>«Stato S.M.A.R.T.: OK»</td>
+          <td>La trappola opposta: rassicura e non dovrebbe. Quell’autodiagnosi passa fino all’ultimo momento utile. È un’informazione, non una garanzia.</td>
+        </tr>
+        <tr>
+          <td>Il disco ha sette anni</td>
+          <td>L’età da sola non predice niente su domani. Cambia cosa conviene tenerci sopra, non quanto sia probabile che si fermi stanotte.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="nota">Un avviso che scatta per niente è peggio di nessun avviso. Dopo il secondo allarme falso non lo guarda più nessuno — e così resta non letto anche quello che contava.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>E allora cosa faccio?</h2>
+    <p class="intro">Tre situazioni, e una sola è urgente.</p>
+
+    <div class="livelli">
+      <div class="livello">
+        <span class="pallino verde"></span>
+        <div><b>Zero settori danneggiati, a qualunque età</b><span>Niente da fare. Si continua a lavorare. Un disco vecchio con i contatori puliti è un disco vecchio, non un disco malato.</span></div>
+      </div>
+      <div class="livello">
+        <span class="pallino giallo"></span>
+        <div><b>Un disco anziano, o metà della vita dichiarata consumata</b><span>Niente di urgente. Assicurati che non sia l’unica copia di qualcosa, e metti un ricambio in conto al prossimo acquisto — non a questa settimana.</span></div>
+      </div>
+      <div class="livello">
+        <span class="pallino rosso"></span>
+        <div><b>Settori danneggiati che crescono</b><span>È questo il caso. Copia adesso quello che ti serve e sostituisci il disco. Un disco passato da zero a otto in un mese va sostituito, non sorvegliato.</span></div>
+      </div>
+    </div>
+
+    <p class="nota">Nota che in due casi su tre la risposta giusta è <strong>non fare niente e smettere di preoccuparsi</strong>. È la parte che non ti dice nessuno, ed è il motivo per cui al terzo caso vale la pena credere quando arriva.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Dove un programma aiuta, e dove no</h2>
+    <p class="intro">Tutto questo lo puoi leggere da solo con un programma gratuito, una volta, oggi. La parte difficile non è leggerlo: è sapere quali numeri contano, e accorgersi quando uno comincia a muoversi.</p>
+    <p><strong>NanoTracker legge gli stessi contatori e dice cosa significano in parole semplici</strong> — e scrive <em>non verificabile</em> invece di inventare un verdetto quando un contenitore non lascia passare la domanda al disco. E prende una lettura al giorno, quindi confronta oggi con il mese scorso invece di mostrarti un istante solo. Fra «otto settori danneggiati» e «otto da settembre» c’è tutta la differenza.</p>
+    <p>Quello che non fa è prevedere qualcosa, e non farà finta del contrario. <a href="/it/salute-dischi.html">Come riporta la salute dei dischi &rarr;</a></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Domande frequenti</h2>
+
+    <details class="q">
+      <summary>Un programma può dirmi che un disco sta per rompersi?</summary>
+      <div class="a"><p>No. Tutti gli strumenti, il nostro compreso, leggono contatori che il disco stesso tiene. Quei contatori descrivono quello che è già successo, non quello che succederà. Un disco che ha cominciato a sostituire settori danneggiati ti sta dicendo una cosa vera e su cui vale la pena agire — ma è una misura, non una previsione, e chi te la vende come previsione ti sta vendendo paura.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Il mio disco esterno fa un ticchettio. È grave?</summary>
+      <div class="a"><p>Un ticchettio che si ripete, un disco che sparisce e ricompare, o un computer che si blocca quando apri una cartella su quel disco: trattali tutti e tre come il disco che ti chiede di fermarti. Copia via quello che non puoi perdere, partendo dal file più importante, e smetti di provarlo. Ogni ora d’uso in più è un rischio che non serve correre.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Il disco dice che il suo stato S.M.A.R.T. è OK. Basta quello?</summary>
+      <div class="a"><p>No. Quell’autodiagnosi continua a dire OK fino all’ultimo momento utile: è fatta per segnalare un disco che ha già superato le proprie soglie, non uno che si sta deteriorando. È un’informazione, non una garanzia, ed è il motivo per cui i contatori sotto contano più del verdetto sopra.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Quando un disco esterno è troppo vecchio?</summary>
+      <div class="a"><p>Non esiste un’età alla quale un disco diventa pericoloso. Sessantamila ore sono circa sette anni di lavoro continuo, e un disco può superarle senza niente che non vada. Quello che l’età cambia non è il rischio che questo disco si rompa domani: è quanto abbia senso tenerci sopra l’unica copia di qualcosa.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Una temperatura alta vuol dire che il disco sta morendo?</summary>
+      <div class="a"><p>Di solito stai guardando la temperatura massima mai registrata, non quella di adesso. Un pomeriggio caldo di tre anni fa resta scritto per sempre. La temperatura di adesso merita un’occhiata; il picco del passato è storia.</p></div>
+    </details>
+  </div>
+</section>
+
+<div class="chiusura">
+  <div class="wrap">
+    <h2>Il disco lo sapeva. Adesso lo sai anche tu.</h2>
+    <p>Prova gratuita — pagamento una volta sola, nessun abbonamento.</p>
+    <a class="btn" href="/it/#download">Scarica NanoTracker</a>
+  </div>
+</div>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>&copy; 2026 NanoTracker di Sixpeaks. Tutti i diritti riservati.</p>
+    <nav aria-label="Guide">
+      <a href="/it/trovare-file-dischi-spenti.html">Ritrovare il lavoro su dischi spenti</a>
+      <a href="/it/media-offline-quale-disco.html">Media offline: quale disco?</a>
+      <a href="/guida-nas.html">Catalogo su più computer</a>
+      <a href="/it/faq-database-condiviso.html">Domande sul catalogo condiviso</a>
+      <a href="/it/salute-dischi.html">Salute: quali valori contano</a>
+      <a href="/it/settori-riallocati-cosa-significano.html">Settori riallocati</a>
+    </nav>
+    <nav class="legale" aria-label="Link legali">
+      <a href="/it/terms.html">Termini di servizio</a>
+      <a href="/it/privacy.html">Privacy</a>
+      <a href="/it/refund.html">Politica di rimborso</a>
+      <a href="/it/changelog.html">Versioni</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
