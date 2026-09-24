@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://nanotracker.pro/external-drive-not-recognized.html">
+<link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/disco-non-riconosciuto.html">
+<link rel="alternate" hreflang="en" href="https://nanotracker.pro/external-drive-not-recognized.html">
+<link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/external-drive-not-recognized.html">
+<title>External hard drive not showing up? What to check before you format</title>
+<meta name="description" content="The drive is missing, or it appears with no letter. The causes in order of likelihood, and why formatting is almost always the wrong move.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2334D399'/><text x='32' y='44' font-family='monospace' font-size='30' font-weight='bold' text-anchor='middle' fill='%230B0D10'>NT</text></svg>">
+<link rel="preload" href="/fonts/IBMPlexSans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:100 700;font-display:swap;src:url(/fonts/IBMPlexSans-var-latin.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:swap;src:url(/fonts/JetBrainsMono-var-latin.woff2) format('woff2')}
+</style>
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="NanoTracker">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://nanotracker.pro/external-drive-not-recognized.html">
+<meta property="og:title" content="External hard drive not showing up? What to check before you format">
+<meta property="og:description" content="Before you format: why an external drive stops showing up, in order of likelihood, and what not to touch in Disk Management.">
+
+<style>
+:root{
+  --ground:#111316; --panel:#1A1D21; --panel-soft:#16191D; --raised:#22262C;
+  --line:#2C3138; --line-soft:#23272D;
+  --text:#F2F5F7; --text-mid:#9CA3AF; --text-dim:#828A94;
+  --green:#34D399; --green-deep:#10B981; --on-green:#0B0D10;
+  --amber:#F0883E; --red:#F87171; --blue:#60A5FA; --slate:#94A3B8;
+  --sans:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--text);font-family:var(--sans);
+  line-height:1.65;-webkit-font-smoothing:antialiased;font-size:16px}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+a{color:var(--green)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:var(--panel);padding:8px 12px;border-radius:8px;z-index:9}
+
+header.top{border-bottom:1px solid var(--line-soft);padding:16px 0}
+header.top .wrap{display:flex;align-items:center;gap:12px}
+.chip{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;
+  border-radius:8px;background:var(--green);color:var(--on-green);font-family:var(--mono);
+  font-weight:700;font-size:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:600}
+.brand span span{color:var(--green)}
+header.top nav{margin-left:auto;display:flex;gap:18px}
+header.top nav a{color:var(--text-mid);text-decoration:none;font-size:.86rem}
+header.top nav a:hover{color:var(--text)}
+
+.hero{padding:56px 0 40px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--green);margin:0 0 14px}
+h1{font-size:2.35rem;line-height:1.15;letter-spacing:-.025em;margin:0 0 18px}
+h1 em{font-style:normal;color:var(--green)}
+.lead{color:var(--text-mid);font-size:1.06rem;margin:0}
+
+section{padding:44px 0;border-top:1px solid var(--line-soft)}
+h2{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 10px}
+h3{font-size:1.02rem;margin:0 0 6px;letter-spacing:-.01em}
+.intro{color:var(--text-mid);margin:0 0 26px}
+p{margin:0 0 14px}
+strong{color:var(--text)}
+
+.subito{background:var(--panel);border:1px solid rgba(248,113,113,.3);border-left:3px solid var(--red);
+  border-radius:12px;padding:18px 20px;margin-top:8px}
+.subito b{color:var(--red)}
+.subito p:last-child{margin:0}
+
+table{width:100%;border-collapse:collapse;margin:8px 0 0}
+th{text-align:left;font-size:.74rem;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-dim);font-weight:500;padding:0 0 10px;border-bottom:1px solid var(--line)}
+td{padding:14px 0;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--text-mid);font-size:.94rem}
+td:first-child{width:38%;padding-right:22px;color:var(--text);font-weight:500}
+
+.livelli{display:grid;gap:10px;margin-top:8px}
+.livello{display:flex;gap:14px;align-items:flex-start;background:var(--panel);
+  border:1px solid var(--line);border-radius:12px;padding:15px 17px}
+.pallino{flex:0 0 9px;height:9px;border-radius:50%;margin-top:8px}
+.pallino.verde{background:var(--green)}
+.pallino.giallo{background:var(--amber)}
+.pallino.rosso{background:var(--red)}
+.livello b{display:block;font-size:.95rem;margin-bottom:2px}
+.livello span{color:var(--text-mid);font-size:.88rem}
+
+.nota{border-left:2px solid var(--green-deep);padding:2px 0 2px 16px;margin:22px 0 0;color:var(--text-mid)}
+
+details.q{border:1px solid var(--line);border-radius:11px;padding:14px 17px;margin-bottom:9px;background:var(--panel)}
+details.q summary{cursor:pointer;font-weight:600;font-size:.98rem}
+details.q .a{color:var(--text-mid);font-size:.94rem;margin-top:10px}
+details.q .a p{margin:0 0 10px}
+details.q .a p:last-child{margin:0}
+
+.chiusura{text-align:center;padding:52px 0}
+.chiusura h2{font-size:1.75rem;margin-bottom:8px}
+.chiusura p{color:var(--text-mid)}
+.btn{display:inline-block;background:var(--green);color:var(--on-green);text-decoration:none;
+  font-weight:600;border-radius:10px;padding:13px 26px;margin-top:10px}
+.btn:hover{background:var(--green-deep)}
+
+footer.site{border-top:1px solid var(--line);padding:32px 0 44px;text-align:center;background:var(--panel-soft)}
+footer.site p{color:var(--text-dim);font-size:.84rem;margin:0 0 12px}
+footer.site nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 22px;margin-bottom:8px}
+footer.site nav a{color:var(--text-mid);font-size:.82rem;text-decoration:none}
+footer.site nav.legale a{color:var(--text-dim);font-size:.8rem}
+footer.site nav a:hover{color:var(--green)}
+
+@media(max-width:600px){
+  h1{font-size:1.85rem}
+  table,thead,tbody,tr,td{display:block;width:100%}
+  thead{display:none}
+  td{border-bottom:0;padding:0}
+  td:first-child{width:auto;padding:0 0 4px}
+  tr{display:block;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Windows is asking me to format the drive. Will I lose everything?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, in the sense that matters: a quick format does not erase your files one by one, but it wipes the index that says where they are, and from that moment the system treats all that space as free to reuse. Anything written afterwards can land on top of your material. A drive asking to be formatted is not saying I am empty: it is saying I cannot read my own index, which is an entirely different thing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "The drive shows in Disk Management but not in File Explorer. Why?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because File Explorer only shows volumes mounted with a letter. If the drive is listed at its correct size, the data is there: what is missing is the name it gets shown under, or the disk is marked Offline. Those are the two least serious cases on this page, and neither one touches your content."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I ejected it and now it is gone. Did I break something?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Almost certainly not: this is the drive-left-offline case. It happens when an eject cannot complete cleanly and falls back to that state. The flag attaches to the slot — bus, enclosure model, port — rather than to the drive, which is why it can also hit the next drive you put in the same dock. It clears in two clicks, and your data was never involved."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "The drive makes a noise but the computer will not see it. Should I keep trying?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A repeating click is the one signal on this page that asks you to stop. Every replug is another read attempt on a mechanism that is already struggling. If there is something on it you cannot lose, this is the moment to stop and call a lab, not to try a fifth time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "It shows on one computer but not the other. Which one is at fault?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The one that cannot see it — and that is good news, because it means the drive is fine. Check the port, then the cable, then the format: a drive prepared on a Mac can be unreadable on Windows without anything being broken. That is not a reason to format it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I find out what was on a drive I can no longer open?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only if something catalogued it beforehand. That is why programs like this one exist: NanoTracker records the folders of every drive you connect, and that list stays readable when the drive itself is gone. If the drive was never catalogued by anything, there is no way to reconstruct what it held — which is exactly the situation worth not living through twice."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#contenuto">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="chip">NT</span><span>Nano<span>Tracker</span></span></a>
+    <nav>
+      <a href="/#prezzi">Pricing</a>
+      <a href="/#download">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenuto">
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">The drive is missing</p>
+    <h1>The drive is not showing up.<br><em>What to check, in order, before you format.</em></h1>
+    <p class="lead">A drive that disappears is more frightening than one that makes noise, because it feels like the bad thing has already happened. Usually it has not: in most cases the drive is fine and the problem sits between it and the computer. But there is a way to make things genuinely worse in one second, and it is the first thing many people try.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>First: do not format, do not initialise</h2>
+
+    <div class="subito">
+      <p><b>If Windows offers to format the drive, or Disk Management asks you to initialise it, say no.</b></p>
+      <p>Those two words sound like <em>repair</em> and they are not. Formatting wipes the index of what is on the drive; initialising rewrites the partition table, which is the map saying where your material begins. A drive that is not recognised because of a cable, a port or a system flag stays full and recoverable <strong>until something writes to it</strong>. Those two operations write to it.</p>
+    </div>
+
+    <p style="margin-top:22px">Everything else on this page can be tried without touching a single byte on the drive.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Can you hear it spin?</h2>
+    <p class="intro">The obvious question that solves more cases than all the clever ones put together. Put a hand on the drive and listen.</p>
+
+    <table>
+      <thead><tr><th>What you hear</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Nothing. No vibration, no light</td>
+          <td>It is not getting power. Change the <strong>cable</strong> and the <strong>port</strong>, and if the drive has its own power supply try a different one. USB cables fail inside the connector, where you cannot see it. A 3.5-inch drive running off a hub with no power of its own often will not spin up at all.</td>
+        </tr>
+        <tr>
+          <td>It spins steadily, but the computer shows nothing</td>
+          <td>The drive is alive: the problem is downstream, and that is what the rest of this page is about.</td>
+        </tr>
+        <tr>
+          <td>It starts, stops, starts again</td>
+          <td>Almost always still power, not a dying drive. Try it on a port on the computer itself rather than a hub, with no extension cable.</td>
+        </tr>
+        <tr>
+          <td>A repeating click</td>
+          <td>This is the one case where it is worth stopping. Do not keep replugging it: every attempt is another risk. <a href="/is-my-drive-failing.html">What actually warns you &rarr;</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The computer can see it. You cannot.</h2>
+    <p class="intro">This is the most common case of all, and you check it in one place. Press <b>Windows+X</b> and open <b>Disk Management</b>; on a Mac open <b>Disk Utility</b> and turn on <em>Show All Devices</em> in the View menu.</p>
+
+    <table>
+      <thead><tr><th>How it appears</th><th>What is going on</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>It is there, correct size, but <strong>no drive letter</strong></td>
+          <td>The drive and the data are all present: what is missing is the name Windows shows it under. Assign a letter and it comes back with its contents untouched. The most common case, and the least serious.</td>
+        </tr>
+        <tr>
+          <td>It is there, marked <strong>Offline</strong></td>
+          <td>Windows can see it and has decided not to mount it. This is not a fault, and it is the case the next section is about — the one that catches everybody out.</td>
+        </tr>
+        <tr>
+          <td>It is there, but entirely <strong>Unallocated</strong></td>
+          <td>The partition map cannot be read. The data is often still there, but this is also where Windows offers to initialise. <strong>Do not.</strong> If the material matters, this is the moment to stop and talk to a data recovery lab.</td>
+        </tr>
+        <tr>
+          <td>It is there, but the file system says <strong>RAW</strong></td>
+          <td>The drive responds, the format cannot be interpreted. Same rule as above: do not format. A RAW drive that has been formatted is an empty drive.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="nota">If the drive came from a Mac and you are looking at it on Windows — or the other way round — it can look perfectly healthy and unreadable at the same time. That is a format the other system cannot read without a driver. It is not broken, and formatting it to make it readable is exactly the wrong fix.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The case nobody expects: the drive is <em style="font-style:normal;color:var(--green)">offline</em></h2>
+    <p class="intro">It gets its own section because it is common, it takes seconds to fix, and its cause is nowhere near where anyone would look.</p>
+
+    <p>When a program ejects a drive and cannot do it cleanly, the fallback nearly everyone uses — ours included, until recently — is to mark it <strong>offline</strong>. It is safe for the data and looks harmless. The catch is that the flag <strong>does not clear itself</strong>: plug the drive back in and it returns offline, with no letter, invisible in File Explorer.</p>
+
+    <p>And there is a detail that makes it genuinely baffling: <strong>Windows does not attach that flag to the drive, it attaches it to the slot</strong> — bus type, enclosure model and port address. Take that drive out, put a different one into the same dock, and <strong>the new drive arrives offline too</strong>, though you never ejected it. Hence the feeling that the dock has died, or that two drives failed at once.</p>
+
+    <p>Two ways to fix it. By hand: in Disk Management, right-click the disk name on the left, <em>Online</em>. Or let the program do it — see below.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>If it is not in Disk Management either</h2>
+    <p class="intro">Here the list gets short, and almost none of it is about your files.</p>
+
+    <div class="livelli">
+      <div class="livello">
+        <span class="pallino verde"></span>
+        <div><b>The cable — and specifically, a different cable</b><span>Looking at it is not enough: cables fail inside the connector. If a second cable brings the drive back, that was it. The same goes for extension leads and hubs, which are suspect number one.</span></div>
+      </div>
+      <div class="livello">
+        <span class="pallino verde"></span>
+        <div><b>A different port, and a different computer</b><span>A port can stop delivering power while still running a keyboard perfectly well. And a drive that appears on a second computer has already told you the drive is fine.</span></div>
+      </div>
+      <div class="livello">
+        <span class="pallino giallo"></span>
+        <div><b>The enclosure, not the drive</b><span>Inside an external drive there is a real drive and a small board that translates for it. That board fails far more often than the disk it contains. A perfectly healthy drive inside a dead enclosure looks exactly like a dead drive — and people who open the case find it intact.</span></div>
+      </div>
+      <div class="livello">
+        <span class="pallino rosso"></span>
+        <div><b>It does not spin, and never did</b><span>If it is not power, and three ports on two computers produce nothing, this is the point to ask how much what is inside is worth before trying anything else.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Where a program helps, and where it does not</h2>
+    <p class="intro">Start with what no program can do, so there is no doubt left.</p>
+
+    <p><strong>No software brings back a drive that will not spin</strong>, and anyone promising otherwise is selling something else. If the material really matters, the only serious route is a data recovery lab, and every attempt made beforehand makes their job harder.</p>
+
+    <p>The useful things are three, and they are smaller than they sound.</p>
+
+    <p><strong>First: knowing what was on it.</strong> That is the question that arrives right after the fright, and without a catalogue it has no answer. NanoTracker keeps the folder list of every drive it has seen at least once: with that drive unplugged, dead or unrecoverable, you can still read what it held and work out whether a copy exists elsewhere. It is also the only way to answer the question that decides everything — <em>is it worth paying to recover?</em></p>
+
+    <p><strong>Second: USB drives left offline.</strong> The ones from the section above. NanoTracker notices them itself and brings them back online, including drives that something else marked offline: an external drive sitting offline is never a choice the user made. Internal drives are left alone, because there that state can be deliberate.</p>
+
+    <p><strong>Third: the drive letter.</strong> If it is missing, or taken by something else, you change it from the drive card without going through Disk Management — which matters most when an editing project is looking for files on one specific letter.</p>
+
+    <p>And if the drive does show up but you do not trust it, you can read its health from there. <a href="/disk-health.html">Which numbers actually matter &rarr;</a></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Common questions</h2>
+
+    <details class="q">
+      <summary>Windows is asking me to format the drive. Will I lose everything?</summary>
+      <div class="a"><p>Yes, in the sense that matters: a quick format does not erase your files one by one, but it wipes the index that says where they are, and from that moment the system treats all that space as free to reuse. Anything written afterwards can land on top of your material. A drive asking to be formatted is not saying I am empty: it is saying I cannot read my own index, which is an entirely different thing.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>The drive shows in Disk Management but not in File Explorer. Why?</summary>
+      <div class="a"><p>Because File Explorer only shows volumes mounted with a letter. If the drive is listed at its correct size, the data is there: what is missing is the name it gets shown under, or the disk is marked Offline. Those are the two least serious cases on this page, and neither one touches your content.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>I ejected it and now it is gone. Did I break something?</summary>
+      <div class="a"><p>Almost certainly not: this is the drive-left-offline case. It happens when an eject cannot complete cleanly and falls back to that state. The flag attaches to the slot — bus, enclosure model, port — rather than to the drive, which is why it can also hit the next drive you put in the same dock. It clears in two clicks, and your data was never involved.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>The drive makes a noise but the computer will not see it. Should I keep trying?</summary>
+      <div class="a"><p>No. A repeating click is the one signal on this page that asks you to stop. Every replug is another read attempt on a mechanism that is already struggling. If there is something on it you cannot lose, this is the moment to stop and call a lab, not to try a fifth time.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>It shows on one computer but not the other. Which one is at fault?</summary>
+      <div class="a"><p>The one that cannot see it — and that is good news, because it means the drive is fine. Check the port, then the cable, then the format: a drive prepared on a Mac can be unreadable on Windows without anything being broken. That is not a reason to format it.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>How can I find out what was on a drive I can no longer open?</summary>
+      <div class="a"><p>Only if something catalogued it beforehand. That is why programs like this one exist: NanoTracker records the folders of every drive you connect, and that list stays readable when the drive itself is gone. If the drive was never catalogued by anything, there is no way to reconstruct what it held — which is exactly the situation worth not living through twice.</p></div>
+    </details>
+  </div>
+</section>
+
+<div class="chiusura">
+  <div class="wrap">
+    <h2>The day a drive will not open, there is only one question: what was on it?</h2>
+    <p>Free trial — pay once, no subscription.</p>
+    <a class="btn" href="/#download">Download NanoTracker</a>
+  </div>
+</div>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>&copy; 2026 NanoTracker by Sixpeaks. All rights reserved.</p>
+    <nav aria-label="Guides">
+      <a href="/find-files-offline-drives.html">Finding work on drives that are off</a>
+      <a href="/offline-media-which-drive.html">Media offline: which drive?</a>
+      <a href="/en/nas-guide.html">Catalogue across computers</a>
+      <a href="/shared-database-faq.html">Shared catalogue FAQ</a>
+      <a href="/disk-health.html">Drive health: what matters</a>
+      <a href="/is-my-drive-failing.html">Is the drive failing?</a>
+      <a href="/reallocated-sectors-explained.html">Reallocated sectors</a>
+    </nav>
+    <nav class="legale" aria-label="Legal links">
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/refund.html">Refund Policy</a>
+      <a href="/changelog.html">Version</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

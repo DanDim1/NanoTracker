@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://nanotracker.pro/it/disco-non-riconosciuto.html">
+<link rel="alternate" hreflang="it" href="https://nanotracker.pro/it/disco-non-riconosciuto.html">
+<link rel="alternate" hreflang="en" href="https://nanotracker.pro/external-drive-not-recognized.html">
+<link rel="alternate" hreflang="x-default" href="https://nanotracker.pro/external-drive-not-recognized.html">
+<title>Hard disk esterno non riconosciuto: cosa fare prima di formattare</title>
+<meta name="description" content="Il disco non compare, o compare senza lettera. Le cause in ordine di probabilità, e perché formattare è quasi sempre la mossa sbagliata.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2334D399'/><text x='32' y='44' font-family='monospace' font-size='30' font-weight='bold' text-anchor='middle' fill='%230B0D10'>NT</text></svg>">
+<link rel="preload" href="/fonts/IBMPlexSans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:100 700;font-display:swap;src:url(/fonts/IBMPlexSans-var-latin.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 800;font-display:swap;src:url(/fonts/JetBrainsMono-var-latin.woff2) format('woff2')}
+</style>
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="NanoTracker">
+<meta property="og:locale" content="it_IT">
+<meta property="og:url" content="https://nanotracker.pro/it/disco-non-riconosciuto.html">
+<meta property="og:title" content="Hard disk esterno non riconosciuto: cosa fare prima di formattare">
+<meta property="og:description" content="Prima di formattare: le cause per cui un disco esterno non si vede, in ordine di probabilità, e cosa non toccare in Gestione disco.">
+
+<style>
+:root{
+  --ground:#111316; --panel:#1A1D21; --panel-soft:#16191D; --raised:#22262C;
+  --line:#2C3138; --line-soft:#23272D;
+  --text:#F2F5F7; --text-mid:#9CA3AF; --text-dim:#828A94;
+  --green:#34D399; --green-deep:#10B981; --on-green:#0B0D10;
+  --amber:#F0883E; --red:#F87171; --blue:#60A5FA; --slate:#94A3B8;
+  --sans:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--text);font-family:var(--sans);
+  line-height:1.65;-webkit-font-smoothing:antialiased;font-size:16px}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+a{color:var(--green)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:var(--panel);padding:8px 12px;border-radius:8px;z-index:9}
+
+header.top{border-bottom:1px solid var(--line-soft);padding:16px 0}
+header.top .wrap{display:flex;align-items:center;gap:12px}
+.chip{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;
+  border-radius:8px;background:var(--green);color:var(--on-green);font-family:var(--mono);
+  font-weight:700;font-size:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:600}
+.brand span span{color:var(--green)}
+header.top nav{margin-left:auto;display:flex;gap:18px}
+header.top nav a{color:var(--text-mid);text-decoration:none;font-size:.86rem}
+header.top nav a:hover{color:var(--text)}
+
+.hero{padding:56px 0 40px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--green);margin:0 0 14px}
+h1{font-size:2.35rem;line-height:1.15;letter-spacing:-.025em;margin:0 0 18px}
+h1 em{font-style:normal;color:var(--green)}
+.lead{color:var(--text-mid);font-size:1.06rem;margin:0}
+
+section{padding:44px 0;border-top:1px solid var(--line-soft)}
+h2{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 10px}
+h3{font-size:1.02rem;margin:0 0 6px;letter-spacing:-.01em}
+.intro{color:var(--text-mid);margin:0 0 26px}
+p{margin:0 0 14px}
+strong{color:var(--text)}
+
+.subito{background:var(--panel);border:1px solid rgba(248,113,113,.3);border-left:3px solid var(--red);
+  border-radius:12px;padding:18px 20px;margin-top:8px}
+.subito b{color:var(--red)}
+.subito p:last-child{margin:0}
+
+table{width:100%;border-collapse:collapse;margin:8px 0 0}
+th{text-align:left;font-size:.74rem;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-dim);font-weight:500;padding:0 0 10px;border-bottom:1px solid var(--line)}
+td{padding:14px 0;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--text-mid);font-size:.94rem}
+td:first-child{width:38%;padding-right:22px;color:var(--text);font-weight:500}
+
+.livelli{display:grid;gap:10px;margin-top:8px}
+.livello{display:flex;gap:14px;align-items:flex-start;background:var(--panel);
+  border:1px solid var(--line);border-radius:12px;padding:15px 17px}
+.pallino{flex:0 0 9px;height:9px;border-radius:50%;margin-top:8px}
+.pallino.verde{background:var(--green)}
+.pallino.giallo{background:var(--amber)}
+.pallino.rosso{background:var(--red)}
+.livello b{display:block;font-size:.95rem;margin-bottom:2px}
+.livello span{color:var(--text-mid);font-size:.88rem}
+
+.nota{border-left:2px solid var(--green-deep);padding:2px 0 2px 16px;margin:22px 0 0;color:var(--text-mid)}
+
+details.q{border:1px solid var(--line);border-radius:11px;padding:14px 17px;margin-bottom:9px;background:var(--panel)}
+details.q summary{cursor:pointer;font-weight:600;font-size:.98rem}
+details.q .a{color:var(--text-mid);font-size:.94rem;margin-top:10px}
+details.q .a p{margin:0 0 10px}
+details.q .a p:last-child{margin:0}
+
+.chiusura{text-align:center;padding:52px 0}
+.chiusura h2{font-size:1.75rem;margin-bottom:8px}
+.chiusura p{color:var(--text-mid)}
+.btn{display:inline-block;background:var(--green);color:var(--on-green);text-decoration:none;
+  font-weight:600;border-radius:10px;padding:13px 26px;margin-top:10px}
+.btn:hover{background:var(--green-deep)}
+
+footer.site{border-top:1px solid var(--line);padding:32px 0 44px;text-align:center;background:var(--panel-soft)}
+footer.site p{color:var(--text-dim);font-size:.84rem;margin:0 0 12px}
+footer.site nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 22px;margin-bottom:8px}
+footer.site nav a{color:var(--text-mid);font-size:.82rem;text-decoration:none}
+footer.site nav.legale a{color:var(--text-dim);font-size:.8rem}
+footer.site nav a:hover{color:var(--green)}
+
+@media(max-width:600px){
+  h1{font-size:1.85rem}
+  table,thead,tbody,tr,td{display:block;width:100%}
+  thead{display:none}
+  td{border-bottom:0;padding:0}
+  td:first-child{width:auto;padding:0 0 4px}
+  tr{display:block;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Windows mi chiede di formattare il disco. Se lo faccio, perdo tutto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sì, nel senso che conta: la formattazione veloce non cancella i tuoi file uno per uno, ma azzera l’indice che dice dove sono, e da quel momento il sistema considera tutto quello spazio libero e riutilizzabile. Ogni cosa che scrivi dopo può finire sopra il tuo materiale. Un disco che chiede di essere formattato non sta dicendo sono vuoto: sta dicendo non riesco a leggere il mio indice, che è tutta un’altra cosa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Il disco compare in Gestione disco ma non in Esplora file. Perché?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Perché Esplora file mostra solo i volumi montati con una lettera. Se il disco è lì con la sua dimensione giusta, i dati ci sono: manca il nome con cui viene mostrato, oppure il disco è in stato Offline. Sono i due casi meno gravi di tutta questa pagina, e si risolvono senza toccare il contenuto."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "L’ho espulso e adesso non si vede più. Ho fatto un danno?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Quasi certamente no: è il caso del disco rimasto offline. Succede quando un’espulsione non riesce nel modo pulito e ripiega su quello stato. Il contrassegno resta attaccato alla posizione — collegamento, modello del box, porta — e non al disco, quindi può capitare anche al disco successivo che infili nello stesso cassetto. Si toglie in due clic, e i dati non c’entrano."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Il disco fa rumore ma il computer non lo vede. Continuo a provare?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Un ticchettio che si ripete è l’unico segnale di questa pagina che chiede di smettere. Ogni ricollegamento è un altro tentativo di lettura su un meccanismo che sta faticando. Se dentro c’è qualcosa che non puoi perdere, questo è il momento di fermarsi e sentire un laboratorio, non di riprovare una quinta volta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Su un computer si vede e sull’altro no. Di chi è la colpa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Del computer che non lo vede, ed è una buona notizia: il disco sta bene. Guarda in quest’ordine la porta, il cavo, e poi il formato — un disco preparato su Mac può essere illeggibile su Windows senza che niente sia rotto. Non è un motivo per formattarlo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Come faccio a sapere cosa c’era su un disco che non riesco più ad aprire?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Solo se qualcuno l’aveva catalogato prima. È il motivo per cui esistono programmi come questo: NanoTracker registra le cartelle di ogni disco che collega, e quell’elenco resta leggibile anche quando il disco non c’è più. Se il disco non è mai stato catalogato da nessuno, non c’è modo di ricostruire cosa conteneva — ed è esattamente la situazione che conviene non trovarsi a vivere due volte."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#contenuto">Vai al contenuto</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/it/"><span class="chip">NT</span><span>Nano<span>Tracker</span></span></a>
+    <nav>
+      <a href="/it/#prezzi">Prezzi</a>
+      <a href="/it/#download">Scarica</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenuto">
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Il disco non si vede</p>
+    <h1>Il disco non viene riconosciuto.<br><em>Cosa guardare, in ordine, prima di formattare.</em></h1>
+    <p class="lead">Un disco che non compare spaventa più di uno che fa rumore, perché sembra già successo tutto. Quasi sempre non è così: nella maggior parte dei casi il disco sta benissimo e il problema è fra lui e il computer. Ma esiste un modo di peggiorare le cose in un secondo, ed è la prima cosa che molti provano.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>Prima di tutto: non formattare, non inizializzare</h2>
+
+    <div class="subito">
+      <p><b>Se Windows ti propone di formattare il disco, o Gestione disco ti chiede di inizializzarlo, dì di no.</b></p>
+      <p>Quelle due parole suonano come <em>ripara</em> e non lo sono. Formattare azzera l’indice di cosa c’è dentro; inizializzare riscrive la tabella delle partizioni, cioè la mappa che dice dove comincia il tuo materiale. Un disco che non viene riconosciuto per un cavo, per una porta o per un flag di sistema resta pieno e recuperabile <strong>finché non ci scrivi sopra</strong>. Quelle due operazioni ci scrivono sopra.</p>
+    </div>
+
+    <p style="margin-top:22px">Tutto il resto di questa pagina si può provare senza toccare un byte del disco.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Si sente girare?</h2>
+    <p class="intro">La domanda banale che risolve più casi di tutte le altre messe insieme. Appoggia una mano sul disco e ascolta.</p>
+
+    <table>
+      <thead><tr><th>Cosa senti</th><th>Cosa vuol dire</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Niente, nessuna vibrazione, nessuna spia</td>
+          <td>Non gli arriva corrente. Cambia <strong>cavo</strong> e <strong>porta</strong>, e se il disco ha un alimentatore suo prova quello di un altro. I cavi USB si rompono dalla parte del connettore e non si vede da fuori. Un disco da 3,5 pollici alimentato da un hub senza corrente propria spesso non parte proprio.</td>
+        </tr>
+        <tr>
+          <td>Gira regolare, ma il computer non lo mostra</td>
+          <td>Il disco è vivo: il problema sta a valle, ed è il caso di cui parla il resto della pagina.</td>
+        </tr>
+        <tr>
+          <td>Parte, si ferma, riparte</td>
+          <td>Quasi sempre è ancora corrente insufficiente, non il disco che muore. Provalo su una porta del computer, non su un hub, e senza prolunghe.</td>
+        </tr>
+        <tr>
+          <td>Un ticchettio che si ripete</td>
+          <td>Questo è l’unico caso in cui conviene fermarsi. Non insistere a ricollegarlo: ogni tentativo è un rischio in più. <a href="/it/il-disco-sta-per-rompersi.html">Cosa avvisa davvero &rarr;</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Il computer lo vede, tu no</h2>
+    <p class="intro">È il caso più frequente di tutti, e si guarda in un posto solo. Premi <b>Windows+X</b> e apri <b>Gestione disco</b>; su Mac apri <b>Utility Disco</b> e attiva <em>Mostra tutti i dispositivi</em> dal menu Vista.</p>
+
+    <table>
+      <thead><tr><th>Come appare</th><th>Cosa sta succedendo</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>C’è, con la sua dimensione giusta, ma <strong>senza lettera</strong></td>
+          <td>Il disco e i dati ci sono tutti: manca solo il nome con cui Windows lo mostra. Si assegna una lettera e ricompare, col suo contenuto intatto. È il caso più comune e il meno grave.</td>
+        </tr>
+        <tr>
+          <td>C’è, ma scritto <strong>Offline</strong></td>
+          <td>Windows lo vede e ha deciso di non montarlo. Non è un guasto ed è il caso di cui parla la sezione qui sotto — quello che coglie tutti di sorpresa.</td>
+        </tr>
+        <tr>
+          <td>C’è, ma tutto <strong>Non allocato</strong></td>
+          <td>La mappa delle partizioni non si legge. Qui i dati spesso ci sono ancora, ma è anche il punto in cui Windows offre di inizializzare. <strong>Non farlo</strong>: se il materiale ti serve, questo è il momento di fermarsi e rivolgerti a chi recupera dati.</td>
+        </tr>
+        <tr>
+          <td>C’è, ma il file system dice <strong>RAW</strong></td>
+          <td>Il disco risponde, il formato non si interpreta. Stessa regola di sopra: non formattare. Un disco RAW formattato è un disco vuoto.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="nota">Se il disco arriva da un Mac e lo stai guardando su Windows — o viceversa — può apparire perfettamente sano e illeggibile insieme: è solo un formato che l’altro sistema non legge senza un driver. Non è rotto, e non va formattato per farlo leggere.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Il caso che non si aspetta nessuno: il disco è <em style="font-style:normal;color:var(--green)">offline</em></h2>
+    <p class="intro">Merita una sezione sua perché è frequente, si risolve in un attimo, e la sua causa non è dove chiunque la cercherebbe.</p>
+
+    <p>Quando un programma espelle un disco e non riesce a farlo nel modo pulito, il ripiego che usano quasi tutti — il nostro compreso, fino a poco fa — è metterlo <strong>offline</strong>. È sicuro per i dati e sembra innocuo. Il punto è che quel flag <strong>non se ne va da solo</strong>: al ricollegamento il disco torna offline, senza lettera, invisibile in Esplora file.</p>
+
+    <p>E c’è un dettaglio che rende la cosa sconcertante: <strong>quel contrassegno Windows non lo attacca al disco, lo attacca alla posizione</strong> — tipo di collegamento, modello del box e porta. Se togli quel disco e ne infili un altro nello stesso cassetto, <strong>il disco nuovo nasce offline anche se non l’hai mai espulso</strong>. Da qui la sensazione che il cassetto abbia smesso di funzionare, o che due dischi si siano rotti insieme.</p>
+
+    <p>Si risolve in due modi. A mano: in Gestione disco, tasto destro sul nome del disco a sinistra, <em>Online</em>. Oppure si lascia fare al programma — vedi sotto.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Se non compare nemmeno in Gestione disco</h2>
+    <p class="intro">Qui la lista si accorcia, e quasi nessuna delle voci riguarda i tuoi file.</p>
+
+    <div class="livelli">
+      <div class="livello">
+        <span class="pallino verde"></span>
+        <div><b>Il cavo, e soprattutto un altro cavo</b><span>Non basta guardarlo: i cavi cedono all’interno del connettore. Se un secondo cavo lo fa comparire, era quello. Vale anche per le prolunghe e per gli hub, che sono il sospetto numero uno.</span></div>
+      </div>
+      <div class="livello">
+        <span class="pallino verde"></span>
+        <div><b>Un’altra porta, e su un altro computer</b><span>Una porta può smettere di dare corrente restando viva per la tastiera. E un disco che compare su un secondo computer ti ha già detto che il disco sta bene.</span></div>
+      </div>
+      <div class="livello">
+        <span class="pallino giallo"></span>
+        <div><b>Il box, non il disco</b><span>Nei dischi esterni il disco vero sta dentro un involucro con una scheda che traduce. Quella scheda si rompe molto più spesso del disco che contiene. Un disco perfettamente sano dentro un box morto sembra un disco morto — e chi apre il box lo ritrova intatto.</span></div>
+      </div>
+      <div class="livello">
+        <span class="pallino rosso"></span>
+        <div><b>Il disco non gira e non ha mai girato</b><span>Se non è la corrente, e su tre porte e due computer non succede niente, è il caso in cui vale la pena chiedersi quanto conta quello che c’è dentro prima di provare altro.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Dove un programma aiuta, e dove no</h2>
+    <p class="intro">Cominciamo da quello che nessun programma può fare, così non resta il dubbio.</p>
+
+    <p><strong>Un disco che non gira non lo fa ripartire nessun software</strong>, e chi promette il contrario sta vendendo qualcos’altro. Se il materiale conta davvero, l’unica strada seria è un laboratorio di recupero dati, e ogni tentativo fatto prima rende il loro lavoro più difficile.</p>
+
+    <p>Le cose utili sono tre, e sono più piccole di quanto sembri.</p>
+
+    <p><strong>La prima: sapere cosa c’era dentro.</strong> È la domanda che viene subito dopo lo spavento, e senza un catalogo non ha risposta. NanoTracker tiene l’elenco delle cartelle di ogni disco che ha visto almeno una volta: anche con quel disco scollegato, spento o irrecuperabile, puoi leggere cosa conteneva e capire se esiste una copia altrove. È anche l’unico modo di rispondere alla domanda che decide tutto — <em>vale la pena spendere per recuperarlo?</em></p>
+
+    <p><strong>La seconda: i dischi USB rimasti offline.</strong> Quelli della sezione sopra. NanoTracker se ne accorge da solo e li rimette online, compresi quelli messi offline da qualcun altro: un disco esterno che risulta offline non è mai una scelta dell’utente. I dischi interni non li tocca, perché lì quello stato può essere voluto.</p>
+
+    <p><strong>La terza: la lettera.</strong> Se manca o è occupata da un altro, si cambia dalla scheda del disco senza passare da Gestione disco — utile soprattutto quando un progetto di montaggio cerca i file su una lettera precisa.</p>
+
+    <p>E se il disco si fa vedere ma non ti fidi, la salute la leggi da lì. <a href="/it/salute-dischi.html">Quali valori contano davvero &rarr;</a></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Domande frequenti</h2>
+
+    <details class="q">
+      <summary>Windows mi chiede di formattare il disco. Se lo faccio, perdo tutto?</summary>
+      <div class="a"><p>Sì, nel senso che conta: la formattazione veloce non cancella i tuoi file uno per uno, ma azzera l’indice che dice dove sono, e da quel momento il sistema considera tutto quello spazio libero e riutilizzabile. Ogni cosa che scrivi dopo può finire sopra il tuo materiale. Un disco che chiede di essere formattato non sta dicendo sono vuoto: sta dicendo non riesco a leggere il mio indice, che è tutta un’altra cosa.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Il disco compare in Gestione disco ma non in Esplora file. Perché?</summary>
+      <div class="a"><p>Perché Esplora file mostra solo i volumi montati con una lettera. Se il disco è lì con la sua dimensione giusta, i dati ci sono: manca il nome con cui viene mostrato, oppure il disco è in stato Offline. Sono i due casi meno gravi di tutta questa pagina, e si risolvono senza toccare il contenuto.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>L’ho espulso e adesso non si vede più. Ho fatto un danno?</summary>
+      <div class="a"><p>Quasi certamente no: è il caso del disco rimasto offline. Succede quando un’espulsione non riesce nel modo pulito e ripiega su quello stato. Il contrassegno resta attaccato alla posizione — collegamento, modello del box, porta — e non al disco, quindi può capitare anche al disco successivo che infili nello stesso cassetto. Si toglie in due clic, e i dati non c’entrano.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Il disco fa rumore ma il computer non lo vede. Continuo a provare?</summary>
+      <div class="a"><p>No. Un ticchettio che si ripete è l’unico segnale di questa pagina che chiede di smettere. Ogni ricollegamento è un altro tentativo di lettura su un meccanismo che sta faticando. Se dentro c’è qualcosa che non puoi perdere, questo è il momento di fermarsi e sentire un laboratorio, non di riprovare una quinta volta.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Su un computer si vede e sull’altro no. Di chi è la colpa?</summary>
+      <div class="a"><p>Del computer che non lo vede, ed è una buona notizia: il disco sta bene. Guarda in quest’ordine la porta, il cavo, e poi il formato — un disco preparato su Mac può essere illeggibile su Windows senza che niente sia rotto. Non è un motivo per formattarlo.</p></div>
+    </details>
+
+    <details class="q">
+      <summary>Come faccio a sapere cosa c’era su un disco che non riesco più ad aprire?</summary>
+      <div class="a"><p>Solo se qualcuno l’aveva catalogato prima. È il motivo per cui esistono programmi come questo: NanoTracker registra le cartelle di ogni disco che collega, e quell’elenco resta leggibile anche quando il disco non c’è più. Se il disco non è mai stato catalogato da nessuno, non c’è modo di ricostruire cosa conteneva — ed è esattamente la situazione che conviene non trovarsi a vivere due volte.</p></div>
+    </details>
+  </div>
+</section>
+
+<div class="chiusura">
+  <div class="wrap">
+    <h2>Il giorno che un disco non si apre, la domanda è una sola: cosa c’era dentro?</h2>
+    <p>Prova gratuita — pagamento una volta sola, nessun abbonamento.</p>
+    <a class="btn" href="/it/#download">Scarica NanoTracker</a>
+  </div>
+</div>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>&copy; 2026 NanoTracker di Sixpeaks. Tutti i diritti riservati.</p>
+    <nav aria-label="Guide">
+      <a href="/it/trovare-file-dischi-spenti.html">Ritrovare il lavoro su dischi spenti</a>
+      <a href="/it/media-offline-quale-disco.html">Media offline: quale disco?</a>
+      <a href="/guida-nas.html">Catalogo su più computer</a>
+      <a href="/it/faq-database-condiviso.html">Domande sul catalogo condiviso</a>
+      <a href="/it/salute-dischi.html">Salute: quali valori contano</a>
+      <a href="/it/il-disco-sta-per-rompersi.html">Il disco sta per rompersi?</a>
+      <a href="/it/settori-riallocati-cosa-significano.html">Settori riallocati</a>
+    </nav>
+    <nav class="legale" aria-label="Link legali">
+      <a href="/it/terms.html">Termini di servizio</a>
+      <a href="/it/privacy.html">Privacy</a>
+      <a href="/it/refund.html">Politica di rimborso</a>
+      <a href="/it/changelog.html">Versioni</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
