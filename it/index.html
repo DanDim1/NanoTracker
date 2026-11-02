@@ -1101,13 +1101,25 @@ h2 { font-size: var(--step-3); line-height: 1.15; letter-spacing: -.025em; margi
     if(link) link.href=asset.browser_download_url;
     if(meta) meta.textContent=asset.name+' — '+fmtSize(asset.size);
   }
+  // Il numero di versione come valore confrontabile: 1.8.10 deve risultare piu'
+  // alto di 1.8.4, e come stringhe non lo sarebbe.
+  function numeroVersione(tag, piattaforma){
+    var m = /^([a-z]+)-v(\d+)\.(\d+)\.(\d+)/.exec(tag || '');
+    if(!m || m[1] !== piattaforma) return null;
+    return (+m[2]) * 1000000 + (+m[3]) * 1000 + (+m[4]);
+  }
   function process(rels){
     if(!rels||!rels.length) return;
-    var latest={};
+    var latest={}, massimo={};
     rels.forEach(function(r){
       if(r.draft||r.prerelease) return;
-      var tag=r.tag_name||'';
-      ['win','mac'].forEach(function(p){ if(tag.indexOf(p+'-v')===0 && !latest[p]) latest[p]=r; });
+      ['win','mac'].forEach(function(p){
+        // Si prende la versione PIU' ALTA, non la prima che arriva: l'API elenca
+        // per data di CREAZIONE, e le release ricreate dai backup nel luglio 2026
+        // hanno date che non seguono l'ordine delle versioni.
+        var v = numeroVersione(r.tag_name, p);
+        if(v !== null && (massimo[p] === undefined || v > massimo[p])){ massimo[p] = v; latest[p] = r; }
+      });
     });
     applyRelease('Win', latest.win);
     applyRelease('Mac', latest.mac);
